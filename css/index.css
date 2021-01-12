@@ -34,17 +34,22 @@ form {
 
 h2 {padding: 30px 0 15px 0;}
 
-input, button {
+input {
     margin-top: 10px;
     width: 250px;
     height: 35px;
-    border-radius: 30px;
-    
+    border-radius: 30px; 
+    text-align: center; 
 }
 
-input {text-align: center;}
+.obrigatorio {
+    display: none;
+    flex-direction: column;
+    font-size: 12px;
+    color: red;
+}
 
-.input:focus {
+.inputLogin:focus {
     outline: 0;
     width: 260px;
     border-color: #00008b;
@@ -59,21 +64,13 @@ input {text-align: center;}
     cursor: pointer;
 }
 
-label {
+#lembra-me {
     display: block;
     position: relative;
     top: -14px;
     width: 88px;
     margin-left: 106px;
     font-size: 12px;
-}
-
-#botao {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    bottom: 140px;
 }
 
 #btnLogin {
@@ -93,5 +90,5 @@ a {
 }
 
 #crie-um-conta {
-    margin-top: 50px;
+    margin-top: 25px;
 }

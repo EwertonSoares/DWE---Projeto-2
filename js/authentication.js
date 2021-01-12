@@ -1,7 +1,6 @@
 function login() {
     var loader = document.getElementById("backgroud-loader");
     loader.style.display = "block";
-    debugger
 
     if (firebase.auth().currentUser) {
         logout();
@@ -10,19 +9,7 @@ function login() {
     var email = document.getElementById("email");
     var senha = document.getElementById("senha");
 
-    if (email.value === "" && senha.value === "") {
-        //TODO
-        loader.style.display = "none"
-        return;
-    } else if (email.value === "") {
-        //TODO
-        loader.style.display = "none"
-        return;
-    } else if (senha.value === "") {
-        //TODO
-        loader.style.display = "none"
-        return;
-    }
+    validaEmailESenha(email, senha, loader);
 
     firebase.auth().signInWithEmailAndPassword(email.value, senha.value)
         .then(function (result) {
@@ -61,9 +48,39 @@ function forgotPassWord() {
         });;
 }
 
-
 function logout() {
     firebase.auth().signOut().then(function () {
         window.location.replace("index.html");
     });
+}
+
+
+function validaEmailESenha(email, senha, loader) {
+    if (email.value === "" && senha.value === "") {
+        loader.style.display = "none"
+
+        document.getElementById("email").style.borderColor = "red";
+        document.getElementById("senha").style.borderColor = "red";
+
+        document.getElementById("emailRequired").style.display = "flex";
+        document.getElementById("senhaRequired").style.display = "flex";
+
+        return;
+
+    } else if (email.value === "") {
+        loader.style.display = "none"
+
+        document.getElementById("email").style.borderColor = "red";
+        document.getElementById("emailRequired").style.display = "flex";
+
+        return;
+
+    } else if (senha.value === "") {
+        loader.style.display = "none"
+
+        document.getElementById("senha").style.borderColor = "red";
+        document.getElementById("senhaRequired").style.display = "flex";
+
+        return;
+    }
 }
