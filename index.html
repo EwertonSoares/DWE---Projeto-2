@@ -4,6 +4,7 @@
 <head>
     <title>Projeto 2 - Desevolvimento WEB</title>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="./css/index.css" media="screen" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300&display=swap" rel="stylesheet">
@@ -24,19 +25,26 @@
                 <form>
                     <h2>Bem vindo</h2>
 
-                    <input id="email"class="input" type="text" name="email" placeholder="  Entrar com endereço de email">
+                    <input id="email" class="input" type="text" name="email"
+                        placeholder="  Entrar com endereço de email">
                     <input id="senha" class="input" type="password" name="senha" placeholder="  Senha" />
 
                     <input id="checkbox" type="checkbox" name="lembrar" />
                     <label>Lembrar-me</label>
 
-                    
+
                     <a id="crie-um-conta" onclick="cadastrar()" href="#">Crie um conta</a>
                     <a id="esqueceu-a-senha" href="#" onclick="forgotPassWord()">Esqueceu a senha?</a>
                 </form>
-                <button id="btnLogin" onclick="login()">Login</button>
+                <div id="botao">
+                    <button id="btnLogin" onclick="login()">Login</button>
+                </div>
             </div>
         </div>
+    </div>
+
+    <div id="backgroud-loader">
+        <div class="loader"></div>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
@@ -45,4 +53,5 @@
     <script src="/js/authentication.js"></script>
 
 </body>
+
 </html>

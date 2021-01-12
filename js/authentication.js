@@ -1,4 +1,8 @@
 function login() {
+    var loader = document.getElementById("backgroud-loader");
+    loader.style.display = "block";
+    debugger
+
     if (firebase.auth().currentUser) {
         logout();
     }
@@ -6,9 +10,22 @@ function login() {
     var email = document.getElementById("email");
     var senha = document.getElementById("senha");
 
+    if (email.value === "" && senha.value === "") {
+        //TODO
+        loader.style.display = "none"
+        return;
+    } else if (email.value === "") {
+        //TODO
+        loader.style.display = "none"
+        return;
+    } else if (senha.value === "") {
+        //TODO
+        loader.style.display = "none"
+        return;
+    }
+
     firebase.auth().signInWithEmailAndPassword(email.value, senha.value)
         .then(function (result) {
-            console.log("Logado com sucesso")
             window.location.replace("pagina_inicial.html");
         })
         .catch(function (error) {
@@ -31,17 +48,17 @@ function cadastrar() {
         }).catch(function (error) {
             alert("Erro ao tentar cadastrar!!!")
         });
-    }
+}
 
 function forgotPassWord() {
     var email = document.getElementById("email");
 
     firebase.auth().sendPasswordResetEmail(email.value)
-    .then(function () {
-        alert("Senha alterada com sucesso!!!");
-    }).catch(function (error) {
-        alert("Erro ao resetar a senha!!!")
-    });;
+        .then(function () {
+            alert("Senha alterada com sucesso!!!");
+        }).catch(function (error) {
+            alert("Erro ao resetar a senha!!!")
+        });;
 }
 
 

@@ -1,20 +1,10 @@
-* {
-    margin: 0;
-    padding: 0;
-    font-family: 'Fraunces', serif;
-}
-
-body {
-    background-image: url("/img/background1.jpeg");
-    background-size: 100%;
-}
 
 h1 {
  text-align: center;
  margin-top: 30px;
  font-family: 'East Sea Dokdo', cursive;
  font-size: 80px;
- color: #fff8dc;
+ color: #808080;
 }
 
 #container, #interna {
@@ -49,7 +39,10 @@ input, button {
     width: 250px;
     height: 35px;
     border-radius: 30px;
+    
 }
+
+input {text-align: center;}
 
 .input:focus {
     outline: 0;
@@ -75,17 +68,22 @@ label {
     font-size: 12px;
 }
 
-button {
-    margin-top: 8px;
+#botao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    bottom: 140px;
+}
+
+#btnLogin {
+    margin: 0px;
     outline: none;
     cursor: pointer;
     background-color: #3cb371;
-    position: absolute;
-    bottom: 220px;
-    right: 300px;
 }
 
-button:active {box-shadow: 3px 3px;}
+#btnLogin:active {box-shadow: 3px 3px;}
 
 a {
     display: block;
