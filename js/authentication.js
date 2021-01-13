@@ -1,10 +1,7 @@
+
 function login() {
     var loader = document.getElementById("backgroud-loader");
     loader.style.display = "block";
-
-    if (firebase.auth().currentUser) {
-        logout();
-    }
 
     var email = document.getElementById("email");
     var senha = document.getElementById("senha");
@@ -12,12 +9,11 @@ function login() {
     validaEmailESenha(email, senha, loader);
 
     firebase.auth().signInWithEmailAndPassword(email.value, senha.value)
-        .then(function (result) {
-            window.location.replace("pagina_inicial.html");
+        .then(function () {
+            window.location.replace("pagina-inicial.html");
         })
         .catch(function (error) {
             var errorMessage = error.message;
-
             console.log("Erro ao logar: " + errorMessage);
         });
 }
@@ -42,7 +38,7 @@ function forgotPassWord() {
 
     firebase.auth().sendPasswordResetEmail(email.value)
         .then(function () {
-            alert("Senha alterada com sucesso!!!");
+            alert("Enviamos um email para alteração de senha!!!");
         }).catch(function (error) {
             alert("Erro ao resetar a senha!!!")
         });;
@@ -53,7 +49,6 @@ function logout() {
         window.location.replace("index.html");
     });
 }
-
 
 function validaEmailESenha(email, senha, loader) {
     if (email.value === "" && senha.value === "") {

@@ -74,6 +74,9 @@ input {
 }
 
 #btnLogin {
+    position: relative;
+    bottom: 145px;
+    left: 100px;
     margin: 0px;
     outline: none;
     cursor: pointer;
@@ -90,5 +93,5 @@ a {
 }
 
 #crie-um-conta {
-    margin-top: 25px;
+    margin-top: 60px;
 }
