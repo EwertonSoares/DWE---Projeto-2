@@ -6,10 +6,12 @@
 }
 
 body {
-  /* background-image: url("/img/background1.jpeg");
-  background-size: 100%; */
   background-color: #d3d3d3;
   z-index: 1;
+}
+
+button {
+  cursor: pointer;
 }
 
 #backgroud-loader {

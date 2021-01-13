@@ -23,7 +23,9 @@
 
             <div id="direta" class="geral">
                 <form>
-                    <h2>Bem vindo</h2>
+                    <span id="erro-ao-logar">Erro ao Logar</span>
+
+                    <h2 id="bem-vindo">Bem vindo</h2>
 
                     <input id="email" class="inputLogin" type="text" name="email" placeholder=" Entrar com email"
                         required />
@@ -33,13 +35,13 @@
                     <span id="senhaRequired" class="obrigatorio">Campo obrigatorio</span>
 
                     <input id="checkbox" type="checkbox" name="lembrar" />
-                    <label id="lembra-me">Lembrar-me</label>
+                    <label id="mostrar-senha">Mostrar senha</label>
 
-                    <a id="crie-um-conta" onclick="cadastrar()" href="#">Crie um conta</a>
-                    <a id="esqueceu-a-senha" href="#" onclick="forgotPassWord()">Esqueceu a senha?</a>
+                    <a id="crie-uma-conta" href="#">Crie uma conta</a>
+                    <a id="esqueceu-a-senha" href="#">Esqueceu a senha?</a>
                 </form>
 
-                <input type="submit" id="btnLogin" value="Entrar" onclick="login()">
+                <input type="submit" id="btnLogin" value="Entrar">
             </div>
         </div>
     </div>
@@ -51,8 +53,8 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
     <script src="./js/app.js"></script>
-    <script src="./js/authentication.js"></script>
-    <script src="./js/main.js"></script>
+    <script src="./js/index-authentication.js"></script>
+    <script src="./js/index.js"></script>
 </body>
 
 </html>

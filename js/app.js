@@ -1,4 +1,4 @@
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyAR0rfymoGdcrvY6ryXg-D7Wx3SkDze03c",
   authDomain: "registro-de-problemas-d501d.firebaseapp.com",
   projectId: "registro-de-problemas-d501d",

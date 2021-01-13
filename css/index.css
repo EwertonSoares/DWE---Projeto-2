@@ -32,6 +32,16 @@ form {
     background-color: #fcfcfc;
 }
 
+#erro-ao-logar {
+    display: none;
+    flex-direction: column;
+    padding: 40px 0 15px 0;
+    font-family: inherit;
+    font-size: 15px;
+    color: red;
+    font-weight: bold;
+}
+
 h2 {padding: 30px 0 15px 0;}
 
 input {
@@ -64,12 +74,12 @@ input {
     cursor: pointer;
 }
 
-#lembra-me {
+#mostrar-senha {
     display: block;
     position: relative;
     top: -14px;
     width: 88px;
-    margin-left: 106px;
+    margin-left: 112px;
     font-size: 12px;
 }
 
@@ -92,6 +102,6 @@ a {
     font-size: 14px;
 }
 
-#crie-um-conta {
-    margin-top: 60px;
+#crie-uma-conta {
+    margin-top: 45px;
 }
