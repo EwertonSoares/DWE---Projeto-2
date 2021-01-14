@@ -5,6 +5,11 @@
     font-family: 'Fraunces', serif;
 }
 
+#container {
+  display: flex;
+  flex-direction: row;
+}
+
 body {
   background-color: #d3d3d3;
   z-index: 1;

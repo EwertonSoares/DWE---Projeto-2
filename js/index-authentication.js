@@ -1,14 +1,18 @@
 const inputEmail = document.getElementById("email");
 const inputSenha = document.getElementById("senha");
-const btnLogin = document.getElementById("btnLogin");
+const btnEnviar = document.getElementById("btnEnviar");
 const btnCadastar = document.getElementById("crie-uma-conta");
 const btnEsqueceuAsenha = document.getElementById("esqueceu-a-senha");
+const loader = document.getElementById("backgroud-loader");
 
-btnLogin.addEventListener("click", function () {
-    var loader = document.getElementById("backgroud-loader");
+btnEnviar.addEventListener("click", function () {
     loader.style.display = "block";
 
-    validaEmailESenha(inputEmail, inputSenha, loader);
+    let resultado = validaEmailESenha(inputEmail, inputSenha, loader);
+
+    if (!resultado) {
+        return;
+    }
 
     firebase.auth().signInWithEmailAndPassword(inputEmail.value, inputSenha.value)
         .then(function (result) {
@@ -16,10 +20,7 @@ btnLogin.addEventListener("click", function () {
             window.location.replace("pagina-inicial.html");
         })
         .catch(function (error) {
-            loader.style.display = "none";
-
-            tratarErro(error.message);
-
+            tratarErro(error.message, loader);
         });
 });
 

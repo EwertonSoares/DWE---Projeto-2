@@ -1,19 +1,15 @@
 
 h1 {
  text-align: center;
- margin-top: 30px;
+ margin: 30px 0 15px 0;
  font-family: 'East Sea Dokdo', cursive;
  font-size: 80px;
  color: #808080;
 }
 
-#container, #interna {
+#interna {
     display: flex;
     flex-direction: row;
-    margin-top: 40px;
-}
-
-#interna {
     margin: 0 auto;
     margin-top: 0;
     border: solid #808080 0.5px;
@@ -83,7 +79,7 @@ input {
     font-size: 12px;
 }
 
-#btnLogin {
+#btnEnviar {
     position: relative;
     bottom: 145px;
     left: 100px;
@@ -93,7 +89,7 @@ input {
     background-color: #3cb371;
 }
 
-#btnLogin:active {box-shadow: 3px 3px;}
+#btnEnviar:active {box-shadow: 3px 3px;}
 
 a {
     display: block;
