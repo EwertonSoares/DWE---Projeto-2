@@ -65,7 +65,7 @@ ckbMostrarSenha.addEventListener("change", function () {
     }
 })
 
-function tratarErro(menssagem, loader) {
+function tratarErroLogin(menssagem, loader) {
     loader.style.display = "none";
     h2BemVindo.style.display = "none";
     spanErroLogin.style.display = "flex";

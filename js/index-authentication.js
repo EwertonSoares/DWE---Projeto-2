@@ -8,7 +8,7 @@ const loader = document.getElementById("backgroud-loader");
 btnEnviar.addEventListener("click", function () {
     loader.style.display = "block";
 
-    let resultado = validaEmailESenha(inputEmail, inputSenha, loader);
+    let resultado = validaEmailESenha(inputEmail, inputSenha);
 
     if (!resultado) {
         return;
@@ -20,7 +20,7 @@ btnEnviar.addEventListener("click", function () {
             window.location.replace("pagina-inicial.html");
         })
         .catch(function (error) {
-            tratarErro(error.message, loader);
+            tratarErroLogin(error.message);
         });
 });
 
