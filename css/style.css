@@ -19,6 +19,15 @@ button {
   cursor: pointer;
 }
 
+#btnEnviar:active {box-shadow: 3px 3px;}
+
+.inputFocus:focus {
+  outline: 0;
+  width: 260px;
+  border-color: #00008b;
+
+}
+
 #backgroud-loader {
     display: none;
     position: fixed;

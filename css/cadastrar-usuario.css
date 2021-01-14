@@ -1,0 +1,39 @@
+#interna, form {
+    width: 500px;
+    height: 400px;
+    margin: 0 auto;
+}
+
+#interna {
+    margin-top: 70px;
+}
+
+form {
+    background-color: #fcfcfc;
+    border: solid #808080 0.5px;
+    text-align: center;
+}
+
+h2 {margin-top: 60px;}
+
+input {
+    margin-top: 15px;
+    width: 360px;
+    height: 35px;
+    border-radius: 30px; 
+    text-align: center; 
+}
+
+.inputFocus:focus {width: 370px;}
+
+#email { margin-top: 30px; }
+
+#btnEnviar {
+    position: relative;
+    bottom: 130px;
+    left: 71px;
+    height: 40px;
+    outline: none;
+    cursor: pointer;
+    background-color: #3cb371;
+}

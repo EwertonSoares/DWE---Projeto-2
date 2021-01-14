@@ -14,24 +14,26 @@
 
 <body>
     <div id="container">
-        <form>
-            <span id="erro-ao-logar">Erro ao Logar</span>
+        <div id="interna">
+            <form>
+                <!-- <span id="erro-ao-cadastrar">Erro ao fazer o cadastro. Tente novamente</span> -->
 
-            <h2 id="bem-vindo">Bem vindo</h2>
+                <h2 id="bem-vindo">Faça seu cadastro</h2>
 
-            <input id="email" class="inputLogin" type="text" name="email" placeholder=" Entrar com email"
-                required />
-            <span id="emailRequired" class="obrigatorio">Campo obrigatorio</span>
+                <input id="email" class="inputFocus" type="text" name="email" placeholder=" Email" required />
+                <!--    <span id="emailRequired" class="obrigatorio">Campo obrigatorio</span> -->
 
-            <input id="senha" class="inputLogin" type="password" name="senha" placeholder="Senha" required />
-            <span id="senhaRequired" class="obrigatorio">Campo obrigatorio</span>
+                <input id="senha" class="inputFocus" type="password" name="senha" placeholder="Senha" required />
+                <!--    <span id="senhaRequired" class="obrigatorio">Campo obrigatorio</span> -->
 
-            <input id="checkbox" type="checkbox" name="lembrar" />
-            <label id="mostrar-senha">Mostrar senha</label>
+                <input id="confirmar-senha" class="inputFocus" type="password" name="confirmar-senha"
+                    placeholder="confirmar senha" required />
+                <!--    <span id="senhaRequired" class="obrigatorio">Campo obrigatorio</span> -->
 
-            <a id="crie-uma-conta" href="#">Crie uma conta</a>
-            <a id="esqueceu-a-senha" href="#">Esqueceu a senha?</a>
-        </form>
+            </form>
+            <input type="submit" id="btnEnviar" />
+
+        </div>
     </div>
 
     <div id="backgroud-loader">

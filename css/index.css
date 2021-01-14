@@ -13,7 +13,6 @@ h1 {
     margin: 0 auto;
     margin-top: 0;
     border: solid #808080 0.5px;
-    border-radius: 15px;
 }
 
 .geral, img, form {
@@ -44,7 +43,7 @@ input {
     margin-top: 10px;
     width: 250px;
     height: 35px;
-    border-radius: 30px; 
+    border-radius: 30px;
     text-align: center; 
 }
 
@@ -53,13 +52,6 @@ input {
     flex-direction: column;
     font-size: 12px;
     color: red;
-}
-
-.inputLogin:focus {
-    outline: 0;
-    width: 260px;
-    border-color: #00008b;
-
 }
 
 #checkbox {
@@ -88,8 +80,6 @@ input {
     cursor: pointer;
     background-color: #3cb371;
 }
-
-#btnEnviar:active {box-shadow: 3px 3px;}
 
 a {
     display: block;

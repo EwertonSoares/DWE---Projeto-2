@@ -65,7 +65,7 @@ ckbMostrarSenha.addEventListener("change", function () {
     }
 })
 
-function tratarErroLogin(menssagem, loader) {
+function tratarErroLogin(menssagem) {
     loader.style.display = "none";
     h2BemVindo.style.display = "none";
     spanErroLogin.style.display = "flex";
@@ -85,7 +85,7 @@ function tratarErroLogin(menssagem, loader) {
     }
 }
 
-function validaEmailESenha(email, senha, loader) {
+function validaEmailESenha(email, senha) {
     let linkcrieUmaconta = document.getElementById("crie-uma-conta");
 
     if (email.value === "" && senha.value === "") {
