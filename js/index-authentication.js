@@ -1,7 +1,6 @@
 const inputEmail = document.getElementById("email");
 const inputSenha = document.getElementById("senha");
 const btnEnviar = document.getElementById("btnEnviar");
-const btnCadastar = document.getElementById("crie-uma-conta");
 const btnEsqueceuAsenha = document.getElementById("esqueceu-a-senha");
 const loader = document.getElementById("backgroud-loader");
 
@@ -25,18 +24,6 @@ btnEnviar.addEventListener("click", function () {
         })
         .catch(function (error) {
             tratarErroLogin(error.message);
-        });
-});
-
-btnCadastar.addEventListener("click", function () {
-    var auth = null;
-
-    firebase.auth().createUserWithEmailAndPassword(inputEmail.value, inputSenha.value)
-        .then(function (user) {
-            alert("Cadastrado com sucesso!!!")
-            auth = user;
-        }).catch(function (error) {
-            alert("Erro ao tentar cadastrar!!!")
         });
 });
 
