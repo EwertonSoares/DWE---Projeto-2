@@ -7,20 +7,24 @@ var loader = document.getElementById("backgroud-loader");
 btnCadastar.addEventListener("click", function () {
     loader.style.display = "block";
 
-    var checkCampos = verificaCampos(inputEmail, inputSenha, inputConfirmarSenha);    
-    if (!checkCampos) {
+    var checkCampos = verificaCampos(inputEmail, inputSenha, inputConfirmarSenha);
+    if (checkCampos) {
         return;
     }
 
     var checkSenhas = verificaSenhas(inputSenha, inputConfirmarSenha);
-    if (!checkSenhas) {
+    if (checkSenhas) {
         return;
     }
 
     firebase.auth().createUserWithEmailAndPassword(inputEmail.value, inputSenha.value)
-        .then(function (user) {
-            alert("Cadastrado com sucesso!!!")
+        .then(function () {
+            loader.style.display = "none";
+            alert("Usuario cadastrado com sucesso!");
+            window.location.replace("index.html");
+
         }).catch(function (error) {
-            alert("Erro ao tentar cadastrar!!!")
+
+            trataErroCadastraUsuario(error.message);
         });
 });

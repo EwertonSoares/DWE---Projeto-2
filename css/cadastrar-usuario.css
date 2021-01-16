@@ -14,9 +14,9 @@ form {
     text-align: center;
 }
 
-h2, #senhas {margin-top: 60px;}
+h2, #senhas, #erroAoCadastrarUsuario {margin-top: 60px;}
 
-#senhas {
+#senhas, #erroAoCadastrarUsuario {
     display: none;
     color: #ff0000;
 }
