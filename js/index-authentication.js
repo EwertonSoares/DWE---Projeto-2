@@ -1,28 +1,16 @@
-const inputEmail = document.getElementById("email");
-const inputSenha = document.getElementById("senha");
-const btnEnviar = document.getElementById("btnEnviar");
-const loader = document.getElementById("backgroud-loader");
+const sair = document.getElementById("logout");
 
-btnEnviar.addEventListener("click", function () {
-    loader.style.display = "block";
-debugger
-    let resultado = validaEmailESenha(inputEmail, inputSenha);
+sair.addEventListener("click", function logout() {
+    firebase.auth().signOut()
+        .then(function () {
+            
+            localStorage.setItem("acesso", false);
+            localStorage.removeItem("userEmail");
+            localStorage.removeItem("userUid");
 
-    if (!resultado) {
-        return;
-    }
+            window.location.href = "login.html";
+        
+        }).catch(function () {
 
-    firebase.auth().signInWithEmailAndPassword(inputEmail.value, inputSenha.value)
-        .then(function (result) {
-
-            localStorage.setItem("acesso", true);
-            localStorage.setItem("userUid", result.user.uid);
-            localStorage.setItem("userEmail", result.user.email);
-    
-            window.location.href = `pagina-inicial.html`;
-
-        })
-        .catch(function (error) {
-            tratarErroLogin(error.message);
         });
 });

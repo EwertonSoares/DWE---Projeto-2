@@ -6,6 +6,6 @@ window.addEventListener("load", function () {
     }
 
     if (logado === false) {
-        window.location.href = "index.html";
+        window.location.href = "login.html";
     }
 });
