@@ -1,93 +1,55 @@
 
-h1 {
- text-align: center;
- margin: 30px 0 15px 0;
- font-family: 'East Sea Dokdo', cursive;
- font-size: 80px;
- color: #808080;
+nav {
+  position: fixed;
+  padding: 1px;
+  background-color: white;
+  width: 320px;
+  height: 800px;
 }
 
-#interna {
-    display: flex;
-    flex-direction: row;
-    margin: 0 auto;
-    margin-top: 0;
-    border: solid #808080 0.5px;
+nav a img {width: 30px;}
+
+ul, #feedback {
+  margin-top: 5px;
+  background-color: #000000;
+  opacity: 0.8;
+  width: 320px;
 }
 
-.geral, img, form {
-    width: 450px;
-    height: 350px;
-    display: inline-block;
-}
-
-form {
-    display: block;
-    text-align: center;
-    background-color: #fcfcfc;
-}
-
-#erro-ao-logar {
-    display: none;
-    flex-direction: column;
-    padding: 40px 0 15px 0;
-    font-family: inherit;
-    font-size: 15px;
-    color: red;
-    font-weight: bold;
-}
-
-h2 {padding: 30px 0 15px 0;}
-
-input {
-    margin-top: 10px;
-    width: 250px;
-    height: 35px;
-    border-radius: 30px;
-    text-align: center; 
-}
-
-.obrigatorio {
-    display: none;
-    flex-direction: column;
-    font-size: 12px;
-    color: red;
-}
-
-#checkbox {
-    display: block;
-    width: 12px;
-    height: 12px;
-    margin: 10px 0 0 100px;
-    cursor: pointer;
-}
-
-#mostrar-senha {
-    display: block;
-    position: relative;
-    top: -14px;
-    width: 88px;
-    margin-left: 112px;
-    font-size: 12px;
-}
-
-#btnEnviar {
-    position: relative;
-    bottom: 145px;
-    left: 100px;
-    margin: 0px;
-    outline: none;
-    cursor: pointer;
-    background-color: #3cb371;
+ul li {
+  margin: 0; padding: 0px;
+  border-bottom: 1px solid #CCC;
+  text-align: left;
+  list-style-type: none;
 }
 
 a {
-    display: block;
-    margin-top: 5px;
-    text-decoration: none;
-    font-size: 14px;
+  color: #faebd7;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 8px;
+  display: block;
 }
 
-#crie-uma-conta {
-    margin-top: 45px;
+a:hover {
+  color: #0000ff;
+  font-weight: bold;
+}
+
+#fundo-menu {
+  /* display: none; */
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 0;
+  background-color: #000000;
+  opacity: 0.6;
+}
+
+#feedback {
+  position: fixed;
+  margin-top: 0;
+  bottom: 0;
+  width: 320px;
 }

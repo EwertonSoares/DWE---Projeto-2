@@ -1,0 +1,93 @@
+
+h1 {
+ text-align: center;
+ margin: 30px 0 15px 0;
+ font-family: 'East Sea Dokdo', cursive;
+ font-size: 80px;
+ color: #808080;
+}
+
+#interna {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    margin-top: 0;
+    border: solid #808080 0.5px;
+}
+
+.geral, img, form {
+    width: 450px;
+    height: 350px;
+    display: inline-block;
+}
+
+form {
+    display: block;
+    text-align: center;
+    background-color: #fcfcfc;
+}
+
+#erro-ao-logar {
+    display: none;
+    flex-direction: column;
+    padding: 40px 0 15px 0;
+    font-family: inherit;
+    font-size: 15px;
+    color: red;
+    font-weight: bold;
+}
+
+h2 {padding: 30px 0 15px 0;}
+
+input {
+    margin-top: 10px;
+    width: 250px;
+    height: 35px;
+    border-radius: 30px;
+    text-align: center; 
+}
+
+.obrigatorio {
+    display: none;
+    flex-direction: column;
+    font-size: 12px;
+    color: red;
+}
+
+#checkbox {
+    display: block;
+    width: 12px;
+    height: 12px;
+    margin: 10px 0 0 100px;
+    cursor: pointer;
+}
+
+#mostrar-senha {
+    display: block;
+    position: relative;
+    top: -14px;
+    width: 88px;
+    margin-left: 112px;
+    font-size: 12px;
+}
+
+#btnEnviar {
+    position: relative;
+    bottom: 145px;
+    left: 100px;
+    margin: 0px;
+    outline: none;
+    cursor: pointer;
+    background-color: #3cb371;
+}
+
+a {
+    display: block;
+    margin-top: 5px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+#crie-uma-conta {
+    margin-top: 45px;
+}

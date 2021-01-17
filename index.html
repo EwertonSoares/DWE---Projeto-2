@@ -4,6 +4,7 @@
 <head>
     <title>Pagina inicial</title>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="./css/index.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="./css/style.css" media="screen" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300&display=swap" rel="stylesheet">
@@ -15,9 +16,22 @@
 <body>
 
     <div id="container">
-        <h1>Redirecionou</h1>
-        <label id="login-usuario"></label>
-        <button id="logout" onclick="logout()">Sair</a>
+        <div id="fundo-menu">
+            <nav>
+                <a href="#"><img src="/img/home.svg" alt="home"/></a>
+
+                <ul>
+                    <li><a href="#">Cadastrar novo problema</a></li>
+                    <li><a href="#">Listar meus problemas cadastrados</a></li>
+                    <li><a href="#">Alterar senha</a></li>
+
+                    <li id="feedback"><a href="#">Enviar feedback</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- <h1>Redirecionou</h1>
+        <label id="login-usuario"></label> -->
+        <!-- <button id="logout" onclick="logout()">Sair</a> -->
 
 
 
@@ -28,6 +42,6 @@
         <script src="/js/index.js"></script>
         <script src="./js/main.js"></script>
     </div>
-    </body>
+</body>
 
 </html>
