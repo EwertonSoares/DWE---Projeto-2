@@ -3,7 +3,13 @@ const sair = document.getElementById("logout");
 sair.addEventListener("click", function logout() {
     firebase.auth().signOut()
         .then(function () {
-            window.location.replace("index.html");
+            
+            localStorage.setItem("acesso", false);
+            localStorage.removeItem("userEmail");
+            localStorage.removeItem("userUid");
+
+            window.location.href = "index.html";
+        
         }).catch(function () {
 
         });

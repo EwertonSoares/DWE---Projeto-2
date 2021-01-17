@@ -1,10 +1,11 @@
 const inputEmail = document.getElementById("email");
 const inputSenha = document.getElementById("senha");
 const btnEnviar = document.getElementById("btnEnviar");
+const loader = document.getElementById("backgroud-loader");
 
 btnEnviar.addEventListener("click", function () {
     loader.style.display = "block";
-
+debugger
     let resultado = validaEmailESenha(inputEmail, inputSenha);
 
     if (!resultado) {
@@ -14,10 +15,11 @@ btnEnviar.addEventListener("click", function () {
     firebase.auth().signInWithEmailAndPassword(inputEmail.value, inputSenha.value)
         .then(function (result) {
 
-            localStorage.setItem("useremail", result.user.email);
+            localStorage.setItem("acesso", true);
             localStorage.setItem("userUid", result.user.uid);
-            
-            window.location.replace("pagina-inicial.html");
+            localStorage.setItem("userEmail", result.user.email);
+    
+            window.location.href = `pagina-inicial.html`;
 
         })
         .catch(function (error) {

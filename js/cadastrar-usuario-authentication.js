@@ -20,11 +20,11 @@ btnCadastar.addEventListener("click", function () {
     firebase.auth().createUserWithEmailAndPassword(inputEmail.value, inputSenha.value)
         .then(function () {
             loader.style.display = "none";
+
             alert("Usuario cadastrado com sucesso!");
             window.location.replace("index.html");
 
         }).catch(function (error) {
-
             trataErroCadastraUsuario(error.message);
         });
 });

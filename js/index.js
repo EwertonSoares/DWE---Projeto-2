@@ -85,6 +85,21 @@ function tratarErroLogin(menssagem) {
     }
 }
 
+function checkEmailESenha() {
+    if (email.value.length === 0 && senha.value.length === 0 ||
+        email.value.length > 0 && senha.value.length > 0) {
+
+        lblMostrarSenha.style.display = "block";
+        ckbMostrarSenha.style.display = "block";
+        spanSenha.style.display = "none";
+        spanEmail.style.display = "none";
+
+        return true;
+    }
+
+    return false;
+}
+
 function validaEmailESenha(email, senha) {
     let linkcrieUmaconta = document.getElementById("crie-uma-conta");
 
@@ -124,19 +139,4 @@ function validaEmailESenha(email, senha) {
     }
 
     return true;
-}
-
-function checkEmailESenha() {
-    if (email.value.length === 0 && senha.value.length === 0 ||
-        email.value.length > 0 && senha.value.length > 0) {
-
-        lblMostrarSenha.style.display = "block";
-        ckbMostrarSenha.style.display = "block";
-        spanSenha.style.display = "none";
-        spanEmail.style.display = "none";
-
-        return true;
-    }
-
-    return false;
 }

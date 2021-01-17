@@ -11,6 +11,7 @@ btnConfirmar.addEventListener("click", function () {
         .then(function () {
             loader.style.display = "none";
             alert(`Enviamos um email para de redifinição de senha para ${email.value}`);
+            window.location.replace("index.html");
 
         }).catch(function (error) {
             loader.style.display = "none";
