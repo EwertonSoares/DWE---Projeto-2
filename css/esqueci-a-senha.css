@@ -1,0 +1,37 @@
+#esqueci-a-senha {
+    width: 500px;
+    height: 180px;
+    margin: 0 auto;
+    margin-top: 70px;
+    background-color: #fcfcfc;
+    border: solid #808080 0.5px;
+    text-align: center;
+}
+
+h2 {margin-top: 30px;}
+
+input {
+    width: 380px;
+    height: 35px;
+    margin-top: 15px;
+    margin-left: -4px;
+    border-radius: 30px; 
+    text-align: center; 
+}
+
+.inputFocus:focus {width: 390px;}
+
+#email { margin-top: 30px; }
+
+#btnConfirmar {
+    width: 60px;
+    height: 35px;
+    margin-left: 5px;
+    background-color: #3cb371;
+}
+
+#email-vazio, #erro-email {
+    display: none;
+    margin-top: 40px;
+    color: #ff0000;
+}

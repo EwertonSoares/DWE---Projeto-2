@@ -1,8 +1,6 @@
 const inputEmail = document.getElementById("email");
 const inputSenha = document.getElementById("senha");
 const btnEnviar = document.getElementById("btnEnviar");
-const btnEsqueceuAsenha = document.getElementById("esqueceu-a-senha");
-const loader = document.getElementById("backgroud-loader");
 
 btnEnviar.addEventListener("click", function () {
     loader.style.display = "block";
@@ -25,15 +23,4 @@ btnEnviar.addEventListener("click", function () {
         .catch(function (error) {
             tratarErroLogin(error.message);
         });
-});
-
-btnEsqueceuAsenha.addEventListener("click", function () {
-    var email = document.getElementById("email");
-
-    firebase.auth().sendPasswordResetEmail(email.value)
-        .then(function () {
-            alert("Enviamos um email para alteração de senha!!!");
-        }).catch(function (error) {
-            alert("Erro ao resetar a senha!!!")
-        });;
 });
