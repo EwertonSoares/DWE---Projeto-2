@@ -29,6 +29,22 @@
             </ul>
         </nav>
 
+        <div id="div-form">
+            <h2>Registre a ocorrencia de um problema</h2>
+
+            <form>
+                <label>Local</label>
+                <input type="text" name="local" id="local">
+
+                <input type="file" name="img-problema" id="inputImage">
+
+                <label id="lblDescricao">Descrição do problema</label>
+                <textarea id="textArea" maxlength="500"></textarea>
+            </form>
+
+            <input type="button" id="enviarProblema" name="botaoProblema" value="Enviar"></input>
+        </div>
+
         <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
         <script defer src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
         <script src="/js/app.js"></script>
