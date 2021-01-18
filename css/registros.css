@@ -1,0 +1,28 @@
+.interna {margin-top: 30px;}
+
+table { width: 900px; }
+
+table, th, td { 
+    margin-top: 15px;
+    color: white;
+    background-color: #1C1C1C;
+    font-size: 12px;
+    text-align: center;
+    opacity: 0.9;
+}
+
+th, td {
+    padding: 5px;
+}
+
+table button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+table button:active {
+    background-color: aliceblue;
+}
+
+table img {width: 20px;}

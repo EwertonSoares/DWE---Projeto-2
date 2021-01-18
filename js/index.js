@@ -1,18 +1,26 @@
 var inputLocal = document.getElementById("local");
 var inputImg = document.getElementById("inputImage");
 var inputTextArea = document.getElementById("textArea");
+
 var spanErro = document.getElementById("erroCmapos");
 var h2Message = document.getElementById("h2Message");
+
 var bgModal = document.getElementById("bg-modal");
 var btnSim = document.getElementById("sim");
 var btnNao = document.getElementById("nao");
+var btnEnviar = document.getElementById("enviarProblema");
+
+var cadastrarProblema = document.getElementById("cadastrar-problema");
+var tabela = document.getElementById("tabela");
+var formulario = document.getElementById("formulario");
+var listarProblemas = document.getElementById("listar-problemas");
 
 btnSim.addEventListener("click", function () {
     window.location.href = "index.html";
 })
 
-btnNao.addEventListener("click", function() {
-    
+btnNao.addEventListener("click", function () {
+
 })
 
 inputLocal.addEventListener("change", function () {
@@ -114,6 +122,62 @@ inputTextArea.addEventListener("change", function () {
         return;
     }
 })
+
+cadastrarProblema.addEventListener("click", function () {
+    h2Message.innerHTML = "Registre a ocorrencia de um problema";
+    tabela.style.display = "none";
+    formulario.style.display = "block";
+    btnEnviar.style.display = "block";
+
+});
+
+listarProblemas.addEventListener("click", function () {
+    h2Message.innerHTML = "Problemas cadastrados por você!";
+    tabela.style.display = "block";
+    formulario.style.display = "none";
+    btnEnviar.style.display = "none";
+
+})
+
+function preenchertabela(obj) {
+    var tdLocal = document.createElement("td")
+    tdLocal.innerHTML = obj.local;
+
+    var img = document.createElement("img");
+    img.src = obj.image;
+
+    var tdDesc = document.createElement("td")
+    tdDesc.innerHTML = obj.descricao;
+
+    var tdStatus = document.createElement("td")
+    tdStatus.innerHTML = obj.status;
+
+    var tdNOCorrencia = document.createElement("td")
+    tdNOCorrencia.innerHTML = obj.nOCorrencia;
+
+    var imgRemove = document.createElement("img");
+    imgRemove.src = './img/lixeira.png';
+
+    var botao = document.createElement("button");
+    botao.appendChild(imgRemove);
+    botao.addEventListener("click", function () {
+        // var valorRemovido = this.parentNode.parentNode.childNodes.item(2).textContent;
+        tabela.deleteRow(this.parentNode.parentNode.rowIndex);
+    })
+
+    var tdRemover = document.createElement("td");
+    tdRemover.appendChild(botao);
+
+    var tr = document.createElement("tr");
+    tr.appendChild(tdLocal);
+    tr.appendChild(img);
+    tr.appendChild(tdDesc);
+    tr.appendChild(tdStatus);
+    tr.appendChild(tdNOCorrencia);
+    tr.appendChild(tdRemover);
+
+    tabela.appendChild(tr);
+}
 
 function checkSeCamposSaoIguais() {
     if (inputLocal.value.length > 0 && inputImg.value.length > 0 &&

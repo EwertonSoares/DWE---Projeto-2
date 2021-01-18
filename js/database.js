@@ -35,20 +35,22 @@ btnEnviar.addEventListener("click", function () {
 
 });
 
-//Para update
-// window.addEventListener("load", function () {
+//Buscando dados no banco
+window.addEventListener("load", function () {
+    bgLoader.style.display = "block";
 
-//     db.ref('problemas/').once('value', function (snapshot) {
-//         if(snapshot === null) {
-//             console.log("Objeto nulo")
-//         }
-//         // console.log(snapshot.val()["-MRLPo97OvxOmXmmU2uP"])    
-//         snapshot.forEach(function (elem) {
-//             console.log();
-//             console.log("Chave do elemento: " + elem.key);
-//             console.log(snapshot.val()[elem.key])    
-//         });
-//     }).catch(function error() {
-
-//     })
-// })
+    db.ref('problemas/').once('value', function (snapshot) {
+        snapshot.forEach(function (elem) {
+            let obj = {
+                local: snapshot.val()[elem.key].local,
+                image: snapshot.val()[elem.key].image,
+                descricao: snapshot.val()[elem.key].descricao,
+                status: snapshot.val()[elem.key].status,
+                nOCorrencia: elem.key
+            }
+        
+            preenchertabela(obj);
+        });
+        bgLoader.style.display = "none";
+    })
+})

@@ -1,5 +1,5 @@
 
-#interna {
+.interna {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,6 +9,7 @@
 }
 
 form {
+  display: none;
   width: 550px;
   height: 440px;
   margin: 0 auto;
@@ -49,6 +50,7 @@ textarea {
 }
 
 #enviarProblema {
+  display: none;
   position: relative;
   left: 220px;
   bottom: 45px;
@@ -60,7 +62,11 @@ textarea {
 
 #enviarProblema:active {box-shadow: 2px 2px;}
 
-h2, #erroCmapos {margin-bottom: 20px;}
+#erroCmapos {margin-bottom: 20px;}
+
+h2 {margin-bottom: 10px;}
+
+a {cursor: pointer;}
 
 #erroCampos {
   display: none;

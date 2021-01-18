@@ -6,6 +6,7 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="./css/index.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="./css/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="./css/registros.css" media="screen" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -20,8 +21,8 @@
             <a href="index.html"><img src="/img/home.svg" alt="home" /></a>
 
             <ul>
-                <li><a href="#">Cadastrar novo problema</a></li>
-                <li><a href="#">Listar meus problemas cadastrados</a></li>
+                <li><a id="cadastrar-problema">Cadastrar novo problema</a></li>
+                <li><a id="listar-problemas">Listar meus problemas cadastrados</a></li>
                 <li><a href="#">Alterar senha</a></li>
                 <li><a id="logout" onclick="logout()">Sair</a></li>
 
@@ -29,11 +30,23 @@
             </ul>
         </nav>
 
-        <div id="interna">
+        <div class="interna">
             <span id="erroCampos">Todos os campos devem estar preenchidos</span>
-            <h2 id="h2Message">Registre a ocorrencia de um problema</h2>
+            <h2 id="h2Message">Problemas registrados por você!</h2>
 
-            <form>
+            <table id="tabela">
+                <thead>
+                    <tr>
+                        <th>Local</th>
+                        <th>imagem</th>
+                        <th>Descrição</th>
+                        <th>Status</th>
+                        <th>Nº Ocorrencia</th>
+                    </tr>
+                </thead>
+            </table>
+
+            <form id="formulario">
                 <label>Local</label>
                 <input type="text" name="local" id="local" required>
 
