@@ -16,24 +16,18 @@
 <body>
 
     <div id="container">
-        <div id="fundo-menu">
-            <nav>
-                <a href="#"><img src="/img/home.svg" alt="home"/></a>
+        <nav>
+            <a href="index.html"><img src="/img/home.svg" alt="home" /></a>
 
-                <ul>
-                    <li><a href="#">Cadastrar novo problema</a></li>
-                    <li><a href="#">Listar meus problemas cadastrados</a></li>
-                    <li><a href="#">Alterar senha</a></li>
+            <ul>
+                <li><a href="#">Cadastrar novo problema</a></li>
+                <li><a href="#">Listar meus problemas cadastrados</a></li>
+                <li><a href="#">Alterar senha</a></li>
+                <li><a id="logout" onclick="logout()">Sair</a></li>
 
-                    <li id="feedback"><a href="#">Enviar feedback</a></li>
-                </ul>
-            </nav>
-        </div>
-        <!-- <h1>Redirecionou</h1>
-        <label id="login-usuario"></label> -->
-        <!-- <button id="logout" onclick="logout()">Sair</a> -->
-
-
+                <li id="feedback"><a href="#">Enviar feedback</a></li>
+            </ul>
+        </nav>
 
         <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
         <script defer src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>

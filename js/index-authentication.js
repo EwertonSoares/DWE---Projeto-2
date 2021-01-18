@@ -1,16 +1,16 @@
-// const sair = document.getElementById("logout");
+const sair = document.getElementById("logout");
 
-// sair.addEventListener("click", function logout() {
-//     firebase.auth().signOut()
-//         .then(function () {
-            
-//             localStorage.setItem("acesso", false);
-//             localStorage.removeItem("userEmail");
-//             localStorage.removeItem("userUid");
+sair.addEventListener("click", function logout() {
+    firebase.auth().signOut()
+        .then(function () {
 
-//             window.location.href = "login.html";
-        
-//         }).catch(function () {
+            localStorage.setItem("acesso", false);
+            localStorage.removeItem("userEmail");
+            localStorage.removeItem("userUid");
 
-//         });
-// });
+            window.location.href = "login.html";
+
+        }).catch(function () {
+
+        });
+});

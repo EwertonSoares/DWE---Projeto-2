@@ -1,7 +1,7 @@
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Fraunces', serif;
+  margin: 0;
+  padding: 0;
+  font-family: 'Fraunces', serif;
 }
 
 #container {
@@ -24,7 +24,53 @@ button {
   outline: 0;
   width: 260px;
   border-color: #00008b;
+}
 
+nav {
+  position: fixed;
+  padding: 1px;
+  background-color: #ffffff;
+  width: 275px;
+  height: 100%;
+}
+
+nav a img {width: 30px;}
+
+ul, #feedback {
+  margin-top: 5px;
+  background-color: #000000;
+  opacity: 0.8;
+  width: 275px;
+}
+
+#feedback {
+  position: fixed;
+  bottom: 0;
+}
+
+ul li {
+  margin: 0; padding: 0px;
+  border-bottom: 1px solid #CCCCCC;
+  text-align: left;
+  list-style-type: none;
+}
+
+a {
+  color: #f5f5f5;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 8px;
+  display: block;
+}
+
+a:hover {
+  color: lightseagreen;
+  font-weight: bold;
+}
+
+
+#logout {
+  cursor: pointer;
 }
 
 #backgroud-loader {
