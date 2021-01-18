@@ -29,27 +29,39 @@
             </ul>
         </nav>
 
-        <div id="div-form">
-            <h2>Registre a ocorrencia de um problema</h2>
+        <div id="interna">
+            <span id="erroCmapos">Todos os campos devem estar preenchidos</span>
+            <h2 id="h2Message">Registre a ocorrencia de um problema</h2>
 
             <form>
                 <label>Local</label>
-                <input type="text" name="local" id="local">
+                <input type="text" name="local" id="local" required>
 
-                <input type="file" name="img-problema" id="inputImage">
+                <input type="file" name="img-problema" id="inputImage" required>
 
                 <label id="lblDescricao">Descrição do problema</label>
-                <textarea id="textArea" maxlength="500"></textarea>
+                <textarea id="textArea" maxlength="500" required></textarea>
             </form>
 
             <input type="button" id="enviarProblema" name="botaoProblema" value="Enviar"></input>
         </div>
 
+        <div id="bg-modal">
+            <div id="modal">
+                <h2 id="sucesso">Ocorrencia registrada com sucesso!</h2>
+                <p id="nova-ocorrencia">Deseja registrar uma nova ocorrencia?</p>
+                <button id="sim">Sim</button>
+                <button id="nao">Não</button>
+            </div> 
+        </div>
+
         <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-database.js"></script>
         <script defer src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
         <script src="/js/app.js"></script>
         <script src="/js/index-authentication.js"></script>
         <script src="/js/index.js"></script>
+        <script src="/js/database.js"></script>
         <script src="./js/main.js"></script>
     </div>
 </body>

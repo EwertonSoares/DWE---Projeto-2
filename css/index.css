@@ -1,5 +1,5 @@
 
-#div-form {
+#interna {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,10 +10,11 @@
 
 form {
   width: 550px;
-  height: 430px;
+  height: 440px;
   margin: 0 auto;
   text-align: center;
   border: solid 1px #000000;
+  background-color: #ffffff;
 }
 
 label{
@@ -50,13 +51,19 @@ textarea {
 #enviarProblema {
   position: relative;
   left: 220px;
-  bottom: 37px;
+  bottom: 45px;
   width: 60px;
   height: 30px;
   background-color: #3cb371;
   cursor: pointer;
 }
 
-#enviarProblema:active {box-shadow: 5px 5px;}
+#enviarProblema:active {box-shadow: 2px 2px;}
 
-h2 {margin-bottom: 30px;}
+h2, #erroCmapos {margin-bottom: 20px;}
+
+#erroCmapos {
+  display: none;
+  color: red;
+  font-size: 20px;
+}

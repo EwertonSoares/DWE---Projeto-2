@@ -1,4 +1,4 @@
-const spanErroEmail = document.getElementById("erro-email");
+var spanErroEmail = document.getElementById("erro-email");
 
 email.addEventListener("change", function () {
     if (spanErroEmail.style.display === "block" || spanEmailVazio.style.display === "block") {

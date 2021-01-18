@@ -2,7 +2,7 @@ const btnConfirmar = document.getElementById("btnConfirmar");
 const spanEmailVazio = document.getElementById("email-vazio");
 const h2 = document.getElementById("faca-seu-cadastro");
 const email = document.getElementById("email");
-const loader = document.getElementById("backgroud-loader");
+var loader = document.getElementById("backgroud-loader");
 
 btnConfirmar.addEventListener("click", function () {
     loader.style.display = "block";

@@ -1,4 +1,4 @@
-const sair = document.getElementById("logout");
+var sair = document.getElementById("logout");
 
 sair.addEventListener("click", function logout() {
     firebase.auth().signOut()

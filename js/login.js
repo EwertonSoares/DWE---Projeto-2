@@ -1,10 +1,10 @@
-const spanEmail = document.getElementById("emailRequired");
-const spanSenha = document.getElementById("senhaRequired");
-const ckbMostrarSenha = document.getElementById("checkbox");
-const lblMostrarSenha = document.getElementById("mostrar-senha");
-const acrieUmaconta = document.getElementById("crie-uma-conta");
-const spanErroLogin = document.getElementById("erro-ao-logar");
-const h2BemVindo = document.getElementById("bem-vindo");
+var spanEmail = document.getElementById("emailRequired");
+var spanSenha = document.getElementById("senhaRequired");
+var ckbMostrarSenha = document.getElementById("checkbox");
+var lblMostrarSenha = document.getElementById("mostrar-senha");
+var acrieUmaconta = document.getElementById("crie-uma-conta");
+var spanErroLogin = document.getElementById("erro-ao-logar");
+var h2BemVindo = document.getElementById("bem-vindo");
 
 email.addEventListener("change", function () {
     email.style.borderColor = "#808080";

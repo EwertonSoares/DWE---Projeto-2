@@ -86,8 +86,9 @@ a {
     margin-top: 5px;
     text-decoration: none;
     font-size: 14px;
+    color: blue;
 }
 
-#crie-uma-conta {
-    margin-top: 45px;
-}
+#crie-uma-conta {margin-top: 45px;}
+
+#esqueceu-a-senha{margin-top: -5px;}
