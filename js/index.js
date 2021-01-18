@@ -3,6 +3,17 @@ var inputImg = document.getElementById("inputImage");
 var inputTextArea = document.getElementById("textArea");
 var spanErro = document.getElementById("erroCmapos");
 var h2Message = document.getElementById("h2Message");
+var bgModal = document.getElementById("bg-modal");
+var btnSim = document.getElementById("sim");
+var btnNao = document.getElementById("nao");
+
+btnSim.addEventListener("click", function () {
+    window.location.href = "index.html";
+})
+
+btnNao.addEventListener("click", function() {
+    
+})
 
 inputLocal.addEventListener("change", function () {
 
@@ -18,7 +29,7 @@ inputLocal.addEventListener("change", function () {
         return;
     }
 
-    if (inputLocal.value.length > 0 && inputImg.value.length > 0 && 
+    if (inputLocal.value.length > 0 && inputImg.value.length > 0 &&
         inputTextArea.value.length === 0) {
 
         inputLocal.style.borderColor = "black";
@@ -27,7 +38,7 @@ inputLocal.addEventListener("change", function () {
         return;
     }
 
-    if (inputLocal.value.length > 0 && inputTextArea.value.length > 0 && 
+    if (inputLocal.value.length > 0 && inputTextArea.value.length > 0 &&
         inputImg.value.length === 0) {
 
         inputLocal.style.borderColor = "black";
@@ -52,7 +63,7 @@ inputImg.addEventListener("change", function () {
         return;
     }
 
-    if (inputImg.value.length > 0 && inputLocal.value.length > 0 && 
+    if (inputImg.value.length > 0 && inputLocal.value.length > 0 &&
         inputTextArea.value.length === 0) {
 
         inputLocal.style.borderColor = "black";
@@ -61,7 +72,7 @@ inputImg.addEventListener("change", function () {
         return;
     }
 
-    if (inputImg.value.length > 0 && inputTextArea.value.length > 0 && 
+    if (inputImg.value.length > 0 && inputTextArea.value.length > 0 &&
         inputLocal.value.length === 0) {
 
         inputImg.style.borderColor = "black";
@@ -85,7 +96,7 @@ inputTextArea.addEventListener("change", function () {
         return;
     }
 
-    if (inputTextArea.value.length > 0 && inputLocal.value.length > 0 && 
+    if (inputTextArea.value.length > 0 && inputLocal.value.length > 0 &&
         inputImg.value.length === 0) {
 
         inputLocal.style.borderColor = "black";
@@ -94,7 +105,7 @@ inputTextArea.addEventListener("change", function () {
         return;
     }
 
-    if (inputTextArea.value.length > 0 && inputImg.value.length > 0 && 
+    if (inputTextArea.value.length > 0 && inputImg.value.length > 0 &&
         inputLocal.value.length === 0) {
 
         inputImg.style.borderColor = "black";
@@ -103,11 +114,6 @@ inputTextArea.addEventListener("change", function () {
         return;
     }
 })
-
-function problemaCadastrado() {
-
-}
-
 
 function checkSeCamposSaoIguais() {
     if (inputLocal.value.length > 0 && inputImg.value.length > 0 &&

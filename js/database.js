@@ -4,10 +4,12 @@ var inputImg = document.getElementById("inputImage");
 var inputTextArea = document.getElementById("textArea");
 var userUid = localStorage.getItem("userUid");
 var userEmail = localStorage.getItem("userEmail");
+var bgLoader = document.getElementById("backgroud-loader");
 
 const db = firebase.database();
 
 btnEnviar.addEventListener("click", function () {
+    bgLoader.style.display = "block";
     let id = db.ref().child('problemas').push().key;
 
     let problema = {
@@ -24,8 +26,13 @@ btnEnviar.addEventListener("click", function () {
         return;
     }
 
-    db.ref('problemas/' + id).set(problema);
-    problemaCadastrado();
+    setTimeout(function () {
+        db.ref('problemas/' + id).set(problema);
+
+        bgLoader.style.display = "none";
+        bgModal.style.display = "block";
+    }, 1000);
+
 });
 
 //Para update
