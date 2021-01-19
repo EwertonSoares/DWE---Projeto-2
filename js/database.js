@@ -12,6 +12,8 @@ btnEnviar.addEventListener("click", function () {
     bgLoader.style.display = "block";
     let id = db.ref().child('problemas').push().key;
 
+    salvarImageNoStorage(id);
+
     let problema = {
         userUid: userUid,
         userEmail: userEmail,

@@ -2,7 +2,7 @@ var inputLocal = document.getElementById("local");
 var inputImg = document.getElementById("inputImage");
 var inputTextArea = document.getElementById("textArea");
 
-var spanErro = document.getElementById("erroCmapos");
+var spanErro = document.getElementById("erroCampos");
 var h2Message = document.getElementById("h2Message");
 
 var bgModal = document.getElementById("bg-modal");
