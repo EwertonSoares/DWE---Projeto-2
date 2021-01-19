@@ -1,8 +1,13 @@
 const btnConfirmar = document.getElementById("btnConfirmar");
 const spanEmailVazio = document.getElementById("email-vazio");
 const h2 = document.getElementById("faca-seu-cadastro");
-const email = document.getElementById("email");
 var loader = document.getElementById("backgroud-loader");
+
+var path = window.location.pathname;
+var email = document.getElementById("email");
+if (path === "/index.html") {
+    email = document.getElementById("email-nova-senha");
+}
 
 btnConfirmar.addEventListener("click", function () {
     loader.style.display = "block";

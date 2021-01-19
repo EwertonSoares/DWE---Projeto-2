@@ -63,7 +63,7 @@ textarea {
 
 #enviarProblema:active {box-shadow: 2px 2px;}
 
-#erroCmapos {margin-bottom: 20px;}
+#erroCampos {margin-bottom: 20px;}
 
 h2 {margin-bottom: 10px;}
 
@@ -77,15 +77,11 @@ a {cursor: pointer;}
 
 #esqueci-a-senha {display: none;}
 
-#tabela {background-color:#757575 }
-
-#tabela th td {font-family: initial;}
-
 #esqueci-a-senha {
   width: 500px;
   height: 160px;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 20px;
   background-color: #fcfcfc;
   border: solid #808080 0.5px;
   text-align: center;

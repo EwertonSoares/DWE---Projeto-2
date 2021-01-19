@@ -3,7 +3,7 @@ function salvarImageNoStorage(id) {
 
     let file = document.querySelector("#inputImage").files[0];
     let metadata = {
-        content: file.type 
+        content: file.type
     }
 
     let upload = storage.ref().child("imagens").child(`${id}-image`).put(file, metadata);

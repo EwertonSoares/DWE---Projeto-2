@@ -6,6 +6,7 @@ var userUid = localStorage.getItem("userUid");
 var userEmail = localStorage.getItem("userEmail");
 var bgLoader = document.getElementById("backgroud-loader");
 
+var checkSnap = true;
 const db = firebase.database();
 
 btnEnviar.addEventListener("click", function () {
@@ -42,6 +43,16 @@ window.addEventListener("load", function () {
     bgLoader.style.display = "block";
 
     db.ref('problemas/').once('value', function (snapshot) {
+        if (snapshot.val() === null) {
+            checkSnap = false;
+
+            document.getElementById("tabela").style.display = "none";
+            document.getElementById("h2Message").innerHTML = "Não há problemas cadastrados por você!";
+            bgLoader.style.display = "none";
+
+            return;
+        }
+
         snapshot.forEach(function (elem) {
             let obj = {
                 local: snapshot.val()[elem.key].local,
@@ -50,9 +61,10 @@ window.addEventListener("load", function () {
                 status: snapshot.val()[elem.key].status,
                 nOCorrencia: elem.key
             }
-        
+
             preenchertabela(obj);
         });
+
         bgLoader.style.display = "none";
     })
 })
