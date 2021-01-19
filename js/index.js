@@ -14,6 +14,8 @@ var cadastrarProblema = document.getElementById("cadastrar-problema");
 var tabela = document.getElementById("tabela");
 var formulario = document.getElementById("formulario");
 var listarProblemas = document.getElementById("listar-problemas");
+var alterarSenha = document.getElementById("altera-senha");
+var esquecisenha = document.getElementById("esqueci-a-senha");
 
 btnSim.addEventListener("click", function () {
     window.location.href = "index.html";
@@ -127,6 +129,7 @@ cadastrarProblema.addEventListener("click", function () {
     h2Message.innerHTML = "Registre a ocorrencia de um problema";
     tabela.style.display = "none";
     formulario.style.display = "block";
+    esquecisenha.style.display = "none";
     btnEnviar.style.display = "block";
 
 });
@@ -135,8 +138,17 @@ listarProblemas.addEventListener("click", function () {
     h2Message.innerHTML = "Problemas cadastrados por você!";
     tabela.style.display = "block";
     formulario.style.display = "none";
+    esquecisenha.style.display = "none";
     btnEnviar.style.display = "none";
 
+})
+
+alterarSenha.addEventListener("click", function() {
+    h2Message.innerHTML = "";
+    tabela.style.display = "none";
+    formulario.style.display = "none";
+    btnEnviar.style.display = "none";
+    esquecisenha.style.display = "block";
 })
 
 function preenchertabela(obj) {
@@ -145,6 +157,9 @@ function preenchertabela(obj) {
 
     var img = document.createElement("img");
     img.src = obj.image;
+
+    var tdImg = document.createElement("td")
+    tdImg.appendChild(img);
 
     var tdDesc = document.createElement("td")
     tdDesc.innerHTML = obj.descricao;
@@ -170,7 +185,7 @@ function preenchertabela(obj) {
 
     var tr = document.createElement("tr");
     tr.appendChild(tdLocal);
-    tr.appendChild(img);
+    tr.appendChild(tdImg);
     tr.appendChild(tdDesc);
     tr.appendChild(tdStatus);
     tr.appendChild(tdNOCorrencia);
@@ -204,7 +219,6 @@ function verificaCampos() {
         esconderH2MostrarSpan();
 
         inputLocal.style.borderColor = "red";
-
     }
 
     if (inputLocal.value.length === 0) {
