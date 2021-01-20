@@ -31,6 +31,7 @@ function preenchertabela(obj) {
 
     var tdRemover = document.createElement("td");
     tdRemover.appendChild(botao);
+    tdRemover.classList.add("remover")
 
     var tr = document.createElement("tr");
     tr.appendChild(tdLocal);
