@@ -140,3 +140,13 @@ function validaEmailESenha(email, senha) {
 
     return true;
 }
+
+function esconderPaginaDeLogin() {
+    document.getElementById("titulo").value = "Problemas registrados em campinas";
+    document.getElementById("titulo").style.marginBottom = "0";
+    document.getElementById("visualizar-problemas-cadastrados").style.display = "none";
+    document.getElementById("esquerda").style.display = "none";
+    document.getElementById("direta").style.display = "none";
+    document.getElementById("interna").style.border = "none";
+    document.getElementById("tabela").style.display = "table";
+}

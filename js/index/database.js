@@ -38,7 +38,7 @@ btnEnviar.addEventListener("click", function () {
 
 });
 
-//Buscando dados no banco
+//Buscar dados por id do usuario
 window.addEventListener("load", function () {
     bgLoader.style.display = "block";
 

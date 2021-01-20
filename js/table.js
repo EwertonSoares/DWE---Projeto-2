@@ -20,6 +20,7 @@ function preenchertabela(obj) {
 
     var imgRemove = document.createElement("img");
     imgRemove.src = './img/lixeira.png';
+    imgRemove.id = "imgRemover"
 
     var botao = document.createElement("button");
     botao.appendChild(imgRemove);

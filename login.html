@@ -5,6 +5,8 @@
     <title>Projeto 2 - Desevolvimento WEB</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="./css/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="./css/tabela.css" media="screen" />
+
     <link rel="stylesheet" type="text/css" href="./css/login.css" media="screen" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300&display=swap" rel="stylesheet">
@@ -13,12 +15,16 @@
 </head>
 
 <body>
-    <h1>Registro de problemas na cidade de campinas</h1>
+    <h1 id="titulo">Registro de problemas na cidade de campinas</h1>
 
     <div id="container">
         <div id="interna">
+            <div id="visualizar-problemas-cadastrados">
+                <a id="ver-problemas-cadastrados">Visualizar problemas cadastrados</a>
+            </div>
+
             <div id="esquerda" class="geral">
-                <img src="img/campinas.jpg" alt="Imagem da cidade de campinas" />
+                <img id="imgCidade" src="img/campinas.jpg" alt="Imagem da cidade de campinas" />
             </div>
 
             <div id="direta" class="geral">
@@ -43,6 +49,17 @@
 
                 <input type="submit" id="btnEnviar" value="Entrar">
             </div>
+
+            <table id="tabela">
+                <tr>
+                    <th>Local</th>
+                    <th>imagem</th>
+                    <th>Descrição</th>
+                    <th>Status</th>
+                    <th>Nº Ocorrencia</th>
+                    <th>Deletar</th>
+                </tr>
+            </table>
         </div>
     </div>
 
@@ -52,10 +69,13 @@
 
     <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
-    
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-database.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/7.23.0/firebase-storage.js"></script>
+
     <script src="./js/app.js"></script>
     <script src="./js/login/login.js"></script>
     <script src="./js/login/login-authentication.js"></script>
+    <script src="./js/login/login-database.js"></script>
     <script src="./js/table.js"></script>
 </body>
 
