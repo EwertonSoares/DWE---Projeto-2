@@ -12,6 +12,10 @@ var alterarSenha = document.getElementById("altera-senha");
 var esquecisenha = document.getElementById("esqueci-a-senha");
 
 cadastrarProblema.addEventListener("click", function () {
+    document.getElementById("local").value = "";
+    document.getElementById("inputImage").style.display = "inlineblock";
+    document.getElementById("textArea").innerHTML = "";
+
     redirecionaCadastraOcorrencia();
 });
 
@@ -27,13 +31,8 @@ listarProblemas.addEventListener("click", function () {
 
         return;
     }
-
-    h2Message.innerHTML = "Problemas cadastrados por você!";
-    tabela.style.display = "table";
-    formulario.style.display = "none";
-    esquecisenha.style.display = "none";
-    btnEnviar.style.display = "none";
-
+    
+    window.location.href = "index.html";
 })
 
 alterarSenha.addEventListener("click", function () {

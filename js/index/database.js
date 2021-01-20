@@ -5,41 +5,51 @@ var inputTextArea = document.getElementById("textArea");
 var userUid = localStorage.getItem("userUid");
 var userEmail = localStorage.getItem("userEmail");
 var bgLoader = document.getElementById("backgroud-loader");
+var h2Message = document.getElementById("h2Message");
 
 var checkSnap = true;
 const db = firebase.database();
 
+window.addEventListener("load", function () {
+    buscarProblemasCadastrados();
+})
+
 btnEnviar.addEventListener("click", function () {
     bgLoader.style.display = "block";
-    let id = db.ref().child('problemas').push().key;
 
-    salvarImageNoStorage(id);
+    if (inputImg.style.display != "none") {
+        let id = db.ref().child('problemas').push().key;
 
-    let problema = {
-        userUid: userUid,
-        userEmail: userEmail,
-        local: inputLocal.value,
-        image: inputImg.value,
-        descricao: inputTextArea.value,
-        status: "Cadastrado"
+        salvarImageNoStorage(id);
+
+        let problema = {
+            userUid: userUid,
+            userEmail: userEmail,
+            local: inputLocal.value,
+            image: inputImg.value,
+            descricao: inputTextArea.value,
+            status: "Cadastrado"
+        }
+
+        var check = verificaCampos();
+        if (check) {
+            return;
+        }
+
+        setTimeout(function () {
+            db.ref('problemas/' + id).set(problema);
+
+            bgLoader.style.display = "none";
+            bgModal.style.display = "block";
+        }, 1000);
     }
-
-    var check = verificaCampos();
-    if (check) {
-        return;
+    else {
+        atualizarProblema();
     }
-
-    setTimeout(function () {
-        db.ref('problemas/' + id).set(problema);
-
-        bgLoader.style.display = "none";
-        bgModal.style.display = "block";
-    }, 1000);
-
 });
 
 //Buscar dados por id do usuario
-window.addEventListener("load", function () {
+function buscarProblemasCadastrados() {
     var objetos = [];
     bgLoader.style.display = "block";
 
@@ -74,12 +84,26 @@ window.addEventListener("load", function () {
 
         bgLoader.style.display = "none";
     })
-})
+}
 
-// function atualizarProblema(item) {} TODO
+function removerProblema(id) {
+    db.ref("problemas/" + id).remove();
+}
 
-function removerProblema(item) {
-    db.ref("problemas/"+item).remove();
+function atualizarProblema() {
+    let id = sessionStorage.getItem("idProblema");
+
+    db.ref("problemas/" + id).update({
+        userUid: userUid,
+        userEmail: userEmail,
+        local: inputLocal.value,
+        image: inputImg.value,
+        descricao: inputTextArea.value,
+        status: "Cadastrado"
+    })
+
+    window.location.href = "index.html";
+
 }
 
 function snapshotNulo() {

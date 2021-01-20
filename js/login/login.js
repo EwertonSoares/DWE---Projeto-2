@@ -150,12 +150,15 @@ function esconderPaginaDeLogin() {
     document.getElementById("interna").style.border = "none";
     document.getElementById("tabela").style.display = "table";
 
-    document.getElementById("thDeletar").style.display = "none";
     var tdList = document.getElementById("tabela").parentElement.getElementsByTagName("td");
 
     var i;
     for (i = 0; i <= tdList.length; i++) {
         if (tdList[i].className === "remover") {
+            tdList[i].remove();
+        }
+
+        if (tdList[i].className === "update") {
             tdList[i].remove();
         }
     }
