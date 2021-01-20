@@ -25,7 +25,8 @@ function preenchertabela(obj) {
     var botao = document.createElement("button");
     botao.appendChild(imgRemove);
     botao.addEventListener("click", function () {
-        // var valorRemovido = this.parentNode.parentNode.childNodes.item(2).textContent;
+        var item = this.parentNode.parentNode.childNodes.item(4).textContent;
+        removerProblema(item);
         tabela.deleteRow(this.parentNode.parentNode.rowIndex);
     })
 

@@ -76,6 +76,12 @@ window.addEventListener("load", function () {
     })
 })
 
+// function atualizarProblema(item) {} TODO
+
+function removerProblema(item) {
+    db.ref("problemas/"+item).remove();
+}
+
 function snapshotNulo() {
     checkSnap = false;
 
