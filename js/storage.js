@@ -23,7 +23,7 @@ function salvarproblemas(id, problema, tipo) {
 
                 db.ref('problemas/' + id).set(problema);
 
-                removerProblema(sessionStorage.getItem("idProblema"));                
+                removerProblema(sessionStorage.getItem("idProblema"));
                 window.location.href = "index.html";
             }
         })
@@ -37,11 +37,10 @@ function salvarproblemas(id, problema, tipo) {
 function deletarImagem(nomeImagem) {
     let str = firebase.storage();
 
-    // Create a reference to the file to delete
-str.ref().child('imagens/' + nomeImagem).delete().then(function () {
-        console.log("File deleted successfully");
+    str.ref().child("imagens").child(nomeImagem).delete().then(function () {
+        console.log("Arquivo deletado com sucesso!!!");
     }).catch(function (error) {
-        console.log("Erro ao deletar arquivo");
+        console.log("Erro ao deletar arquivo: " + error.message);
     });
 }
 

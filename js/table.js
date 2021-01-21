@@ -35,6 +35,7 @@ function preenchertabela(obj) {
     btnRemover.appendChild(imgRemover);
     btnRemover.addEventListener("click", function () {
         var item = this.parentNode.parentNode.childNodes.item(4).textContent;
+        deletarImagem(`${item}-image`);
         removerProblema(item);
         tabela.deleteRow(this.parentNode.parentNode.rowIndex);
     })
@@ -62,7 +63,7 @@ function preenchertabela(obj) {
         sessionStorage.setItem("nomeImagem", imag);
         sessionStorage.setItem("urlImagem", image);
         sessionStorage.setItem("idProblema", id);
-debugger
+
         inputLocal.value = local;
         inputTextArea.innerHTML = descricao;
         inputImg.type = "url";
