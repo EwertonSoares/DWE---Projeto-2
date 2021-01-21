@@ -113,3 +113,32 @@ a {cursor: pointer;}
   margin-top: 40px;
   color: #ff0000;
 }
+
+
+.rodape {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 2px 1px;
+  background-color: white;
+  border-top: solid 1px black;
+}
+.rodape .conteudo {text-align: center;}
+
+.rodape .conteudo a img {
+  width: 30px;
+  opacity: 0.9;
+} 
+
+.rodape .conteudo h2 {
+  font-size: 12px;
+  text-align: center;
+  margin-bottom: 0
+}
+
+.rodape .conteudo a {
+  display: inline; 
+  padding: 0;
+}
+
+#nome {color: blue}

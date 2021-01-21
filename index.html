@@ -26,8 +26,6 @@
                 <li><a id="cadastrar-problema">Cadastrar novo problema</a></li>
                 <li><a id="altera-senha">Alterar senha</a></li>
                 <li><a id="logout" onclick="logout()">Sair</a></li>
-
-                <li id="feedback"><a href="#">Enviar feedback</a></li>
             </ul>
         </nav>
 
@@ -37,14 +35,14 @@
 
             <!-- Tabela de problemas -->
             <table id="tabela">
-                    <tr>
-                        <th>Local</th>
-                        <th>imagem</th>
-                        <th>Descrição</th>
-                        <th>Status</th>
-                        <th>Deletar</th>
-                        <th>Atualizar</th>
-                    </tr>
+                <tr>
+                    <th>Local</th>
+                    <th>imagem</th>
+                    <th>Descrição</th>
+                    <th>Status</th>
+                    <th>Deletar</th>
+                    <th>Atualizar</th>
+                </tr>
             </table>
 
             <!-- Formulario para cadastrar problemas -->
@@ -58,7 +56,7 @@
                 <textarea id="textArea" maxlength="500" required></textarea>
             </form>
             <input type="button" id="enviarProblema" name="botaoProblema" value="Enviar"></input>
-            
+
             <!-- Formulario para alteração de senha -->
             <div id="esqueci-a-senha">
 
@@ -66,10 +64,27 @@
                 <span id="email-vazio">Preencha o campo abaixo com email para redefinição de senha</span>
                 <span id="erro-email">l</span>
 
-                <input id="email-nova-senha" class="inputFocus" type="text" name="email" placeholder=" Email" required />
-    
+                <input id="email-nova-senha" class="inputFocus" type="text" name="email" placeholder=" Email"
+                    required />
+
                 <button type="submit" id="btnConfirmar">Enviar</button>
             </div>
+
+        </div>
+
+        <div class="rodape">
+            <div class="conteudo">
+                <a href="https://www.facebook.com/ewerton.soares.5" target="_blank"><img src="./img/facebook.png"></a>
+                <a href="https://www.instagram.com/ewerton.soares.5/?hl=pt-br" target="_blank"><img
+                        src="./img/instagram.png" target="_blank"></a>
+
+                <h2>
+                    Copyright © 2020 |
+                    <a id="nome" href="mailto:soares.ewerton@aluno.ifsp.edu.br" target="_blank">
+                        Ewerton Soares da Silva</a>
+                </h2>
+            </div>
+
         </div>
 
         <div id="bg-modal">
@@ -78,7 +93,7 @@
                 <p id="nova-ocorrencia">Deseja registrar uma nova ocorrencia?</p>
                 <button id="sim">Sim</button>
                 <button id="nao">Não</button>
-            </div> 
+            </div>
         </div>
 
         <div id="backgroud-loader">
@@ -89,9 +104,9 @@
         <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-database.js"></script>
         <script defer src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
         <script defer src="https://www.gstatic.com/firebasejs/7.23.0/firebase-storage.js"></script>
-       
+
         <script src="/js/app.js"></script>
-       
+
         <script src="/js/index/index.js"></script>
         <script src="/js/index/index-authentication.js"></script>
         <script src="/js/index/database.js"></script>
@@ -103,6 +118,8 @@
         <script src="./js/esqueci-a-senha-authentication.js"></script>
         <script src="./js/esqueci-a-senha.js"></script>
     </div>
+
+
 </body>
 
 </html>
