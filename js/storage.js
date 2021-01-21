@@ -1,4 +1,4 @@
-function salvarproblemas(id, problema) {
+function salvarproblemas(id, problema, tipo) {
     let storage = firebase.storage();
     let nomeImg = `${id}-image`;
     let file = document.querySelector("#inputImage").files[0];
@@ -10,11 +10,22 @@ function salvarproblemas(id, problema) {
     upload.on("state_changed", function () {
         upload.snapshot.ref.getDownloadURL().then(function (url) {
 
-            problema.nomeImagem = nomeImg;
-            problema.imgUrl = url;
+            if (tipo === "cadastrar") {
+                problema.nomeImagem = nomeImg;
+                problema.imgUrl = url;
 
-            db.ref('problemas/' + id).set(problema);
-            abrirModal();
+                db.ref('problemas/' + id).set(problema);
+                abrirModal();
+            } else {
+                // problema.userUid
+                problema.nomeImagem = nomeImg;
+                problema.imgUrl = url;
+
+                db.ref('problemas/' + id).set(problema);
+
+                removerProblema(sessionStorage.getItem("idProblema"));                
+                window.location.href = "index.html";
+            }
         })
 
     }, function (erro) {
@@ -27,10 +38,7 @@ function deletarImagem(nomeImagem) {
     let str = firebase.storage();
 
     // Create a reference to the file to delete
-    var desertRef = str.ref().child('imagens/' + nomeImagem);
-
-    // Delete the file
-    desertRef.delete().then(function () {
+str.ref().child('imagens/' + nomeImagem).delete().then(function () {
         console.log("File deleted successfully");
     }).catch(function (error) {
         console.log("Erro ao deletar arquivo");

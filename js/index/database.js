@@ -37,7 +37,7 @@ btnEnviar.addEventListener("click", function () {
             status: "Cadastrado"
         }
 
-        salvarproblemas(id, problema);
+        salvarproblemas(id, problema, "cadastrar");
     }
 
     else {
@@ -92,31 +92,39 @@ function removerProblema(id) {
 }
 
 function atualizarProblema() {
-    let id = localStorage.getItem("idProblema");
-    let img;
+    let idProblema = sessionStorage.getItem("idProblema");
+    let nomeImg = sessionStorage.getItem("nomeImagem");
 
-    if (inputImg.type === "url") {
-        img = inputImg.value;
-    } else {
-        deletarImagem(localStorage.getItem("nomeImagem"));
-        
-        let id = db.ref().child('problemas').push().key;
-
-        salvarImageNoStorage(id);
-        img = localStorage.getItem("url");
-    }
-
-    db.ref("problemas/" + id).update({
+    let problema = {
         userUid: userUid,
         userEmail: userEmail,
         local: inputLocal.value,
-        image: img,
+        nomeImagem: nomeImg,
+        imgUrl: inputImg.value,
         descricao: inputTextArea.value,
         status: "Cadastrado"
-    })
+    }
 
-    window.location.href = "index.html";
+    if (inputImg.type !== "url") {
+        deletarImagem(nomeImg);
 
+        let id = db.ref().child('problemas').push().key;
+
+        // img = sessionStorage.getItem("url");
+        salvarproblemas(id, problema, "");
+    } else {
+        db.ref("problemas/" + idProblema).update({
+            userUid: problema.userUid,
+            userEmail: problema.userEmail,
+            local: problema.local,
+            image: problema.nomeImagem,
+            imgUrl: problema.imgUrl,
+            descricao: problema.descricao,
+            status: "Cadastrado"
+        })
+
+        window.location.href = "index.html";
+    }
 }
 
 function snapshotNulo() {

@@ -53,15 +53,16 @@ function preenchertabela(obj) {
     btnUpdate.appendChild(imgUpdate);
     btnUpdate.addEventListener("click", function () {
 
+        var local = this.parentNode.parentNode.childNodes.item(0).textContent;
+        var descricao = this.parentNode.parentNode.childNodes.item(2).textContent;
+        var image = this.parentNode.parentNode.childNodes.item(1).childNodes.item(0).currentSrc;
         var id = this.parentNode.parentNode.childNodes.item(4).textContent;
         var imag = this.parentNode.parentNode.childNodes.item(5).textContent;
-        localStorage.setItem("nomeImagem", imag);
-        localStorage.setItem("idProblema", id);
 
-        var local = this.parentNode.parentNode.childNodes.item(0).textContent;
-        var image = this.parentNode.parentNode.childNodes.item(1).childNodes.item(0).currentSrc;
-        var descricao = this.parentNode.parentNode.childNodes.item(2).textContent;
-
+        sessionStorage.setItem("nomeImagem", imag);
+        sessionStorage.setItem("urlImagem", image);
+        sessionStorage.setItem("idProblema", id);
+debugger
         inputLocal.value = local;
         inputTextArea.innerHTML = descricao;
         inputImg.type = "url";

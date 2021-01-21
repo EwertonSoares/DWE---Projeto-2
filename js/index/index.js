@@ -13,8 +13,9 @@ var esquecisenha = document.getElementById("esqueci-a-senha");
 
 cadastrarProblema.addEventListener("click", function () {
     document.getElementById("local").value = "";
-    document.getElementById("inputImage").style.display = "inlineblock";
+    document.getElementById("inputImage").value = "";
     document.getElementById("textArea").innerHTML = "";
+    document.getElementById("inputImage").style.display = "inlineblock";
 
     redirecionaCadastraOcorrencia();
 });
