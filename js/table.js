@@ -44,7 +44,6 @@ function preenchertabela(obj) {
     tdRemover.appendChild(btnRemover);
     tdRemover.classList.add("remover");
 
-
     //Criando imagem e botão para update de problema cadastrado
     var imgUpdate = document.createElement("img");
     imgUpdate.src = './img/pencil.png';

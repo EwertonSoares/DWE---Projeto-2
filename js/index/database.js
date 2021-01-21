@@ -109,8 +109,6 @@ function atualizarProblema() {
         deletarImagem(nomeImg);
 
         let id = db.ref().child('problemas').push().key;
-
-        // img = sessionStorage.getItem("url");
         salvarproblemas(id, problema, "");
     } else {
         db.ref("problemas/" + idProblema).update({
