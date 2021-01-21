@@ -10,18 +10,21 @@ function preenchertabela(obj) {
     tdLocal.innerHTML = obj.local;
 
     var img = document.createElement("img");
-    img.src = obj.image;
+    img.src = obj.imgUrl;
+    img.classList.add("img-problema");
     var tdImg = document.createElement("td")
     tdImg.appendChild(img);
 
     var tdDesc = document.createElement("td")
     tdDesc.innerHTML = obj.descricao;
+    tdDesc.classList.add("descricao-class");
 
     var tdStatus = document.createElement("td")
     tdStatus.innerHTML = obj.status;
 
     var tdNOCorrencia = document.createElement("td")
     tdNOCorrencia.innerHTML = obj.nOCorrencia;
+    tdNOCorrencia.classList.add("numOcorrencia");
 
     //Criando imagem e botão para remoçao de problema cadastrado
     var imgRemover = document.createElement("img");
@@ -40,7 +43,7 @@ function preenchertabela(obj) {
     tdRemover.appendChild(btnRemover);
     tdRemover.classList.add("remover");
 
-    
+
     //Criando imagem e botão para update de problema cadastrado
     var imgUpdate = document.createElement("img");
     imgUpdate.src = './img/pencil.png';
@@ -49,16 +52,51 @@ function preenchertabela(obj) {
     var btnUpdate = document.createElement("button");
     btnUpdate.appendChild(imgUpdate);
     btnUpdate.addEventListener("click", function () {
-        
+
         var id = this.parentNode.parentNode.childNodes.item(4).textContent;
-        sessionStorage.setItem("idProblema", id);
+        var imag = this.parentNode.parentNode.childNodes.item(5).textContent;
+        localStorage.setItem("nomeImagem", imag);
+        localStorage.setItem("idProblema", id);
 
         var local = this.parentNode.parentNode.childNodes.item(0).textContent;
+        var image = this.parentNode.parentNode.childNodes.item(1).childNodes.item(0).currentSrc;
         var descricao = this.parentNode.parentNode.childNodes.item(2).textContent;
 
         inputLocal.value = local;
         inputTextArea.innerHTML = descricao;
-        inputImg.style.display = "none";
+        inputImg.type = "url";
+        inputImg.value = image;
+
+        var form = document.getElementById("formulario");
+        var b = document.createElement("button");
+        b.innerHTML = "Alterar imagem";
+        b.id = "btn-altera-imagem";
+
+        inputImg.style.marginTop = "15px";
+        inputImg.style.marginRight = "100px";
+        inputImg.style.height = "18px";
+        inputImg.style.width = "400px";
+
+        b.addEventListener("click", () => {
+            inputImg.type = "file";
+            b.style.display = "none"
+            inputImg.style.height = "20px";
+            inputImg.style.width = "500px";
+            inputImg.style.marginRight = "2px";
+        })
+
+        inputImg.addEventListener("mouseout", () => {
+            if (inputImg.value === "") {
+                inputImg.type = "url";
+                inputImg.value = image;
+                inputImg.style.width = "400px";
+                b.style.display = "inline-block";
+                inputImg.style.marginRight = "100px";
+            }
+
+        })
+
+        form.appendChild(b)
 
         redirecionaCadastraOcorrencia();
         h2Message.innerHTML = "Edição de poblema cadastrado!";
@@ -68,19 +106,20 @@ function preenchertabela(obj) {
     tdUpdate.appendChild(btnUpdate);
     tdUpdate.classList.add("update")
 
+    var tdNomeImagem = document.createElement("td")
+    tdNomeImagem.innerHTML = obj.nomeImagem;
+    tdNomeImagem.classList.add("nome-imagem-class");
+
     var tr = document.createElement("tr");
     tr.appendChild(tdLocal);
     tr.appendChild(tdImg);
     tr.appendChild(tdDesc);
     tr.appendChild(tdStatus);
     tr.appendChild(tdNOCorrencia);
+    tr.appendChild(tdNomeImagem);
     tr.appendChild(tdRemover);
     tr.appendChild(tdUpdate);
-   
+
 
     tabela.appendChild(tr);
-}
-
-function removerItemstabela() {
-    // tabela.remove(tr)
 }

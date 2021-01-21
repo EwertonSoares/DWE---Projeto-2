@@ -6,6 +6,7 @@ var userUid = localStorage.getItem("userUid");
 var userEmail = localStorage.getItem("userEmail");
 var bgLoader = document.getElementById("backgroud-loader");
 var h2Message = document.getElementById("h2Message");
+var message = "Registre uma nova ocorrencia de um problema";
 
 var checkSnap = true;
 const db = firebase.database();
@@ -17,32 +18,28 @@ window.addEventListener("load", function () {
 btnEnviar.addEventListener("click", function () {
     bgLoader.style.display = "block";
 
-    if (inputImg.style.display != "none") {
-        let id = db.ref().child('problemas').push().key;
+    var check = verificaCampos();
+    if (check) {
+        bgLoader.style.display = "none";
+        return;
+    }
 
-        salvarImageNoStorage(id);
+    if (h2Message.innerHTML === message) {
+        let id = db.ref().child('problemas').push().key;
 
         let problema = {
             userUid: userUid,
             userEmail: userEmail,
             local: inputLocal.value,
-            image: inputImg.value,
+            nomeImagem: "",
+            imgUrl: "",
             descricao: inputTextArea.value,
             status: "Cadastrado"
         }
 
-        var check = verificaCampos();
-        if (check) {
-            return;
-        }
-
-        setTimeout(function () {
-            db.ref('problemas/' + id).set(problema);
-
-            bgLoader.style.display = "none";
-            bgModal.style.display = "block";
-        }, 1000);
+        salvarproblemas(id, problema);
     }
+
     else {
         atualizarProblema();
     }
@@ -66,7 +63,8 @@ function buscarProblemasCadastrados() {
             if (snapshot.val()[elem.key].userUid === userUid) {
                 let obj = {
                     local: snapshot.val()[elem.key].local,
-                    image: snapshot.val()[elem.key].image,
+                    imgUrl: snapshot.val()[elem.key].imgUrl,
+                    nomeImagem: snapshot.val()[elem.key].nomeImagem,
                     descricao: snapshot.val()[elem.key].descricao,
                     status: snapshot.val()[elem.key].status,
                     userId: snapshot.val()[elem.key].userUid,
@@ -82,6 +80,9 @@ function buscarProblemasCadastrados() {
             snapshotNulo();
         }
 
+        removeTdDaTabela();
+
+
         bgLoader.style.display = "none";
     })
 }
@@ -91,13 +92,25 @@ function removerProblema(id) {
 }
 
 function atualizarProblema() {
-    let id = sessionStorage.getItem("idProblema");
+    let id = localStorage.getItem("idProblema");
+    let img;
+
+    if (inputImg.type === "url") {
+        img = inputImg.value;
+    } else {
+        deletarImagem(localStorage.getItem("nomeImagem"));
+        
+        let id = db.ref().child('problemas').push().key;
+
+        salvarImageNoStorage(id);
+        img = localStorage.getItem("url");
+    }
 
     db.ref("problemas/" + id).update({
         userUid: userUid,
         userEmail: userEmail,
         local: inputLocal.value,
-        image: inputImg.value,
+        image: img,
         descricao: inputTextArea.value,
         status: "Cadastrado"
     })
@@ -112,4 +125,20 @@ function snapshotNulo() {
     document.getElementById("tabela").style.display = "none";
     document.getElementById("h2Message").innerHTML = "Não há problemas cadastrados por você!";
     bgLoader.style.display = "none";
+}
+
+function removeTdDaTabela() {
+    var tdList = document.getElementById("tabela").parentElement.getElementsByTagName("td");
+    var i;
+    for (i = 0; i < tdList.length; i++) {
+        if (tdList[i].className === "numOcorrencia") {
+            tdList[i].style.display = "none";
+        }
+    }
+
+    for (i = 0; i < tdList.length; i++) {
+        if (tdList[i].className === "nome-imagem-class") {
+            tdList[i].style.display = "none";
+        }
+    }
 }

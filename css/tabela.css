@@ -11,10 +11,6 @@ table, th, td {
     opacity: 0.9;
 }
 
-th, td {
-    padding: 5px;
-}
-
 table button {
     background: none;
     border: none;
@@ -23,6 +19,24 @@ table button {
 
 table button:active {
     background-color: aliceblue;
+}
+
+.img-problema {
+    width: 170px;
+    height: 100px;
+}
+
+.descricao-class {
+    width: 200px;
+    text-align: left;
+    font-weight: 600;
+    padding: 15px;
+}
+
+#btn-altera-imagem {
+    position: relative;
+    bottom: 323px;
+    left: 205px;
 }
 
 table img {width: 20px;}
