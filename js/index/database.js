@@ -37,7 +37,7 @@ btnEnviar.addEventListener("click", function () {
             status: "Cadastrado"
         }
 
-        salvarproblemas(id, problema, "cadastrar");
+        salvarproblemas(id, problema);
     }
 
     else {
@@ -105,12 +105,7 @@ function atualizarProblema() {
         status: "Cadastrado"
     }
 
-    if (inputImg.type !== "url") {
-        deletarImagem(nomeImg);
-
-        let id = db.ref().child('problemas').push().key;
-        salvarproblemas(id, problema, "");
-    } else {
+    if (inputImg.type === "url") {
         db.ref("problemas/" + idProblema).update({
             userUid: problema.userUid,
             userEmail: problema.userEmail,
@@ -121,7 +116,12 @@ function atualizarProblema() {
             status: "Cadastrado"
         })
 
+        limparSessilStorage();
         window.location.href = "index.html";
+
+    } else {
+        atualizaProblema(idProblema, problema);
+        limparSessilStorage();
     }
 }
 
@@ -147,4 +147,10 @@ function removeTdDaTabela() {
             tdList[i].style.display = "none";
         }
     }
+}
+
+function limparSessilStorage() {
+    sessionStorage.removeItem("nomeImagem");
+    sessionStorage.removeItem("urlImagem");
+    sessionStorage.removeItem("idProblema");
 }
