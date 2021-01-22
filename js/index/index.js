@@ -11,6 +11,18 @@ var listarProblemas = document.getElementById("listar-problemas");
 var alterarSenha = document.getElementById("altera-senha");
 var esquecisenha = document.getElementById("esqueci-a-senha");
 
+window.addEventListener("load", function () {
+    var logado = false;
+
+    if (localStorage.getItem("acesso") === "true") {
+        logado = true;
+    }
+
+    if (logado === false) {
+        window.location.href = "login.html";
+    }
+});
+
 cadastrarProblema.addEventListener("click", function () {
     document.getElementById("local").value = "";
     document.getElementById("inputImage").value = "";
@@ -32,7 +44,7 @@ listarProblemas.addEventListener("click", function () {
 
         return;
     }
-    
+
     window.location.href = "index.html";
 })
 
