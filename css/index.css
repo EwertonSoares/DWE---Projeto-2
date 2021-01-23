@@ -66,8 +66,6 @@ textarea {
 
 #erroCampos {margin-bottom: 20px;}
 
-h2 {margin-bottom: 10px;}
-
 a {cursor: pointer;}
 
 #erroCampos {
@@ -141,4 +139,4 @@ a {cursor: pointer;}
   padding: 0;
 }
 
-#nome {color: blue}
+#nome {color: blue;}

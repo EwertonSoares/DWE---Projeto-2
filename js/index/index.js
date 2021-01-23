@@ -12,7 +12,10 @@ var alterarSenha = document.getElementById("altera-senha");
 var esquecisenha = document.getElementById("esqueci-a-senha");
 var sair = document.getElementById("logout");
 var loader = document.getElementById("backgroud-loader");
+var btnAnterior = document.getElementById("anterior");
 
+var ci = 0;
+var cc = 0;
 
 window.addEventListener("load", function () {
     var logado = false;
@@ -35,7 +38,7 @@ sair.addEventListener("click", function logout() {
             localStorage.setItem("acesso", false);
             localStorage.removeItem("userEmail");
             localStorage.removeItem("userUid");
-            
+
             loader.style.display = "none";
 
             window.location.href = "login.html";
@@ -110,3 +113,48 @@ function redirecionaCadastraOcorrencia() {
     formulario.style.display = "block";
     btnEnviar.style.display = "block";
 }
+
+btnAnterior.addEventListener("click", function () {
+    var trList = document.getElementById("tabela").parentElement.getElementsByTagName("tr");
+
+    for (var i = 8; i >= 4; i--) {
+        if(trList[i] === undefined) {
+            continue;
+        }
+
+        trList[i].style.display = "none";
+    }
+
+    for (var i = 1; i <= 4; i++) {
+        if(trList[i] === undefined) {
+            continue;
+        }
+        
+        trList[i].style.display = "table-row";
+    }
+})
+
+document.getElementById("proximo").addEventListener("click", function () {
+    btnAnterior.disabled = false;
+
+    var trList = document.getElementById("tabela").parentElement.getElementsByTagName("tr");
+
+    for (i = 1; i <= 4; i++) {
+        if(trList[i] === undefined) {
+            continue;
+        }
+        
+        trList[i].style.display = "none";
+    }
+
+    for (i = 5; i > 1; i++) {
+        if (i > 8) {
+            return;
+        }
+        if(trList[i] === undefined) {
+            continue;
+        }
+        
+        trList[i].style.display = "table-row";
+    }
+})

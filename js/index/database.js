@@ -61,6 +61,7 @@ function buscarProblemasCadastrados() {
         snapshot.forEach(function (elem) {
 
             if (snapshot.val()[elem.key].userUid === userUid) {
+
                 let obj = {
                     local: snapshot.val()[elem.key].local,
                     imgUrl: snapshot.val()[elem.key].imgUrl,
@@ -81,8 +82,7 @@ function buscarProblemasCadastrados() {
         }
 
         removeTdDaTabela();
-
-
+        mostrarApenasQuatroTrs();
         bgLoader.style.display = "none";
     })
 }
@@ -148,6 +148,17 @@ function removeTdDaTabela() {
         }
     }
 }
+
+function mostrarApenasQuatroTrs() {
+    var trList = document.getElementById("tabela").parentElement.getElementsByTagName("tr");
+
+    var i;
+    for (i = 0; i < trList.length; i++) {
+        if (i > 4) {
+            trList[i].style.display = "none";
+        }
+    }
+};
 
 function limparSessilStorage() {
     sessionStorage.removeItem("nomeImagem");

@@ -1,5 +1,4 @@
 var tabela = document.getElementById("tabela");
-
 var inputLocal = document.getElementById("local");
 var inputImg = document.getElementById("inputImage");
 var inputTextArea = document.getElementById("textArea");
@@ -123,4 +122,20 @@ function preenchertabela(obj) {
 
 
     tabela.appendChild(tr);
+    desabilitarBotaoAnterior()
+}
+
+function desabilitarBotaoAnterior() {
+
+    var trList = document.getElementById("tabela").parentElement.getElementsByTagName("tr");
+    var btnAnterior = document.getElementById("anterior");
+
+    if (trList[1] === undefined) {
+        return;
+    }
+
+    if (trList[1].style.display !== "table-row") {
+        debugger
+        btnAnterior.disabled = true;
+    }
 }
