@@ -26,7 +26,7 @@ function preenchertabela(obj) {
     tdNOCorrencia.innerHTML = obj.nOCorrencia;
     tdNOCorrencia.classList.add("numOcorrencia");
 
-    //Criando imagem e botão para remoçao de problema cadastrado
+    //Criando botão para remoçao de problema cadastrado
     var imgRemover = document.createElement("img");
     imgRemover.src = './img/lixeira.png';
     imgRemover.id = "imgRemover"
@@ -44,7 +44,7 @@ function preenchertabela(obj) {
     tdRemover.appendChild(btnRemover);
     tdRemover.classList.add("remover");
 
-    //Criando imagem e botão para update de problema cadastrado
+    //Criando botão para update de problema cadastrado
     var imgUpdate = document.createElement("img");
     imgUpdate.src = './img/pencil.png';
     imgUpdate.id = "imgUpdate"

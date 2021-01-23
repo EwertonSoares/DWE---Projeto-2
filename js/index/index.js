@@ -10,6 +10,9 @@ var cadastrarProblema = document.getElementById("cadastrar-problema");
 var listarProblemas = document.getElementById("listar-problemas");
 var alterarSenha = document.getElementById("altera-senha");
 var esquecisenha = document.getElementById("esqueci-a-senha");
+var sair = document.getElementById("logout");
+var loader = document.getElementById("backgroud-loader");
+
 
 window.addEventListener("load", function () {
     var logado = false;
@@ -21,6 +24,26 @@ window.addEventListener("load", function () {
     if (logado === false) {
         window.location.href = "login.html";
     }
+});
+
+sair.addEventListener("click", function logout() {
+    loader.style.display = "block";
+
+    firebase.auth().signOut()
+        .then(function () {
+
+            localStorage.setItem("acesso", false);
+            localStorage.removeItem("userEmail");
+            localStorage.removeItem("userUid");
+            
+            loader.style.display = "none";
+
+            window.location.href = "login.html";
+
+        }).catch(function (error) {
+            loader.style.display = "none";
+            console.log(error.message);
+        });
 });
 
 cadastrarProblema.addEventListener("click", function () {

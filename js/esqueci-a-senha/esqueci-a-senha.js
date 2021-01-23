@@ -1,4 +1,5 @@
 var spanErroEmail = document.getElementById("erro-email");
+var email = document.getElementById("email-nova-senha");
 
 email.addEventListener("change", function () {
     if (spanErroEmail.style.display === "block" || spanEmailVazio.style.display === "block") {

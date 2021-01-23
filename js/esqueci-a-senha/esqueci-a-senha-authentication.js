@@ -1,10 +1,10 @@
-const btnConfirmar = document.getElementById("btnConfirmar");
-const spanEmailVazio = document.getElementById("email-vazio");
-const h2 = document.getElementById("faca-seu-cadastro");
+var btnConfirmar = document.getElementById("btnConfirmar");
+var spanEmailVazio = document.getElementById("email-vazio");
+var h2 = document.getElementById("faca-seu-cadastro");
 var loader = document.getElementById("backgroud-loader");
-
 var path = window.location.pathname;
 var email = document.getElementById("email");
+
 if (path === "/index.html") {
     email = document.getElementById("email-nova-senha");
 }

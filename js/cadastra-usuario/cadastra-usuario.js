@@ -1,9 +1,12 @@
-var spanEmail = document.getElementById("emailRequired");
-var spanSenha = document.getElementById("senhaRequired");
-var spanConfirmaSenha = document.getElementById("confirmaSenhaRequired");
 var h2facaSeuCadastro = document.getElementById("faca-seu-cadastro");
 var spanSenhas = document.getElementById("senhas");
 var spanErroAoCadastrarUsuario = document.getElementById("erroAoCadastrarUsuario");
+var spanEmail = document.getElementById("emailRequired");
+var spanSenha = document.getElementById("senhaRequired");
+var spanConfirmaSenha = document.getElementById("confirmaSenhaRequired");
+var inputEmail = document.getElementById("email");
+var inputSenha = document.getElementById("senha");
+var inputConfirmaSenha = document.getElementById("confirmar-senha");
 
 inputEmail.addEventListener("change", function () {
 
@@ -17,7 +20,7 @@ inputSenha.addEventListener("change", function () {
 
 });
 
-inputConfirmarSenha.addEventListener("change", function () {
+inputConfirmaSenha.addEventListener("change", function () {
 
     retornaCssInicial();
 });
@@ -70,7 +73,7 @@ function trataErroCadastraUsuario(menssagem) {
 
 function retornaCssInicial() {
 
-    if (inputEmail.value.length > 0 && inputSenha.value.length > 0 && inputConfirmarSenha.value.length > 0) {
+    if (inputEmail.value.length > 0 && inputSenha.value.length > 0 && inputConfirmaSenha.value.length > 0) {
 
         btnCadastar.style.bottom = "130px";
         spanEmail.style.display = "none";
@@ -79,7 +82,7 @@ function retornaCssInicial() {
         h2facaSeuCadastro.style.marginTop = "60px";
         inputEmail.style.borderColor = "#808080";
         inputSenha.style.borderColor = "#808080";
-        inputConfirmarSenha.style.borderColor = "#808080";
+        inputConfirmaSenha.style.borderColor = "#808080";
     }
 }
 
