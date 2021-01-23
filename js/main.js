@@ -1,19 +1,15 @@
 function salvarproblemas(id, problema) {
-    let storage = firebase.storage();
     let nomeImg = `${id}-image`;
-    let file = document.querySelector("#inputImage").files[0];
-    let metadata = {
-        content: file.type
-    }
 
-    let upload = storage.ref().child("imagens").child(nomeImg).put(file, metadata);
+    let upload = salvaImagemNoStorage(nomeImg);
+
     upload.on("state_changed", function () {
         upload.snapshot.ref.getDownloadURL().then(function (url) {
 
             problema.nomeImagem = nomeImg;
             problema.imgUrl = url;
             db.ref('problemas/' + id).set(problema);
-            
+
             limparSessilStorage();
             abrirModal();
         })
@@ -22,6 +18,31 @@ function salvarproblemas(id, problema) {
         console.log("Não foi possivel fazer o resgistro desse problema! " + erro.message);
         abrirModal();
     })
+}
+
+function atualizaProblema(id, problema) {
+    let nomeImg = `${id}-image`;
+
+    let upload = salvaImagemNoStorage(nomeImg);
+
+    upload.on("state_changed", function () {
+        upload.snapshot.ref.getDownloadURL().then(function (url) {
+
+            db.ref("problemas/" + id).update({
+                userUid: problema.userUid,
+                userEmail: problema.userEmail,
+                local: problema.local,
+                image: nomeImg,
+                imgUrl: url,
+                descricao: problema.descricao,
+                status: "Cadastrado"
+            });
+
+            limparSessilStorage();
+            window.location.href = "index.html";
+
+        })
+    });
 }
 
 function deletarImagem(nomeImagem) {
@@ -36,33 +57,14 @@ function deletarImagem(nomeImagem) {
     });
 }
 
-function atualizaProblema(idProblema, obj) {
+function salvaImagemNoStorage(nomeImg) {
     let storage = firebase.storage();
-    let nomeNovaImg = `${idProblema}-image`;
     let file = document.querySelector("#inputImage").files[0];
     let metadata = {
         content: file.type
     }
 
-    let upload = storage.ref().child("imagens").child(nomeNovaImg).put(file, metadata);
-    upload.on("state_changed", function () {
-        upload.snapshot.ref.getDownloadURL().then(function (url) {
-
-            db.ref("problemas/" + idProblema).update({
-                userUid: obj.userUid,
-                userEmail: obj.userEmail,
-                local: obj.local,
-                image: nomeNovaImg,
-                imgUrl: url,
-                descricao: obj.descricao,
-                status: "Cadastrado"
-            });
-
-            limparSessilStorage() ;
-            window.location.href = "index.html";
-
-        })
-    });
+    return storage.ref().child("imagens").child(nomeImg).put(file, metadata);
 }
 
 function abrirModal() {
