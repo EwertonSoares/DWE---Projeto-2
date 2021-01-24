@@ -15,8 +15,9 @@ function salvarproblemas(id, problema) {
         })
 
     }, function (erro) {
-        console.log("Não foi possivel fazer o resgistro desse problema! " + erro.message);
-        abrirModal();
+        console.log("Não foi possivel fazer o cadastro desse problema! " + erro.message);
+        alert("Não foi possivel fazer o cadastro desse problema, por favor tente novamente!");
+        window.location.href = "cadastra-usuario.html";
     })
 }
 
@@ -64,7 +65,14 @@ function salvaImagemNoStorage(nomeImg) {
         content: file.type
     }
 
-    return storage.ref().child("imagens").child(nomeImg).put(file, metadata);
+    try {
+
+        var upload = storage.ref().child("imagens").child(nomeImg).put(file, metadata);
+        return upload;
+
+    } catch (e) {
+        console.log("Deu ruim: " + e);
+    }
 }
 
 function abrirModal() {

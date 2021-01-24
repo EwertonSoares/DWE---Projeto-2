@@ -52,6 +52,7 @@ function preenchertabela(obj) {
     btnUpdate.appendChild(imgUpdate);
     btnUpdate.addEventListener("click", function () {
 
+        document.getElementById("next-previous").style.display = "none";
         var local = this.parentNode.parentNode.childNodes.item(0).textContent;
         var descricao = this.parentNode.parentNode.childNodes.item(2).textContent;
         var image = this.parentNode.parentNode.childNodes.item(1).childNodes.item(0).currentSrc;
