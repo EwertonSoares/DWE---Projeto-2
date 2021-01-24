@@ -44,7 +44,7 @@ table img {width: 20px;}
     display: none;
     position: relative;
     top: 473px;
-    left: 420px;
+    left: 390px;
 }
 
 #next-previous #anterior #img-anterior,
@@ -55,7 +55,10 @@ table img {width: 20px;}
 
 #next-previous #anterior,
 #next-previous #proximo {
-background-color: white;}
+    width: 60px;
+    background-color: white;
+    margin: 0 auto;
+}
 
-#next-previous #anterior:active,
-#next-previous #proximo:active {background-color: lightseagreen;}
+#next-previous #anterior:hover,
+#next-previous #proximo:hover { background-color: #423e3e;}
