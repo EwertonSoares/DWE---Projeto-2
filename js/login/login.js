@@ -155,8 +155,11 @@ function esconderPaginaDeLogin() {
     
     document.getElementById("tabela").style.display = "table";
     document.getElementById("next-previous").style.display = "block";
-    document.getElementById("next-previous").style.top = "440px";
-    document.getElementById("next-previous").style.left = "900px";
+    document.getElementById("next-previous").style.width = "900px";
+    document.getElementById("next-previous").style.top = "15px";
+    document.getElementById("next-previous").style.left = "236px";
+    document.getElementById("next-previous").style.textAlign = "center";
+
 
     var tdList = document.getElementById("tabela").parentElement.getElementsByTagName("td");
 
