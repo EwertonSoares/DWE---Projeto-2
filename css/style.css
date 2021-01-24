@@ -37,7 +37,7 @@ nav {
 
 nav a img {width: 30px;}
 
-ul, #feedback {
+ul {
   margin-top: 5px;
   background-color: #000000;
   opacity: 0.8;
@@ -47,6 +47,14 @@ ul, #feedback {
 #feedback {
   position: fixed;
   bottom: 0;
+  background-color: black;
+  height: 50px;
+  width: 275px;
+}
+
+#feedback a {
+  margin: 5px 0 5px 0;
+  font-size: 18px;
 }
 
 ul li {
@@ -126,7 +134,7 @@ a:hover {
     width: 100%;
     height: 100%;
     top: 0;
-    z-index: 1;
+    z-index: 3;
     background-color: #000000;
     opacity: 0.6;
 }

@@ -156,8 +156,8 @@ function esconderPaginaDeLogin() {
     document.getElementById("tabela").style.display = "table";
     document.getElementById("next-previous").style.display = "block";
     document.getElementById("next-previous").style.width = "900px";
-    document.getElementById("next-previous").style.top = "15px";
-    document.getElementById("next-previous").style.left = "236px";
+    document.getElementById("next-previous").style.marginTop = "15px";
+    document.getElementById("next-previous").style.marginLeft = "236px";
     document.getElementById("next-previous").style.textAlign = "center";
 
 
@@ -226,7 +226,6 @@ btnAnterior.addEventListener("click", function () {
 })
 
 btnProximo.addEventListener("click", function () {
-    debugger
     btnAnterior.disabled = false;
 
     var trList = document.getElementById("tabela").parentElement.getElementsByTagName("tr");

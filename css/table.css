@@ -40,12 +40,7 @@ table button:active {
 
 table img {width: 20px;}
 
-#next-previous {
-    display: none;
-    position: relative;
-    top: 473px;
-    left: 390px;
-}
+#next-previous {display: none;}
 
 #next-previous #anterior #img-anterior,
 #next-previous #proximo #img-proximo {

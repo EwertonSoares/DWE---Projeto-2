@@ -13,6 +13,11 @@ const db = firebase.database();
 
 window.addEventListener("load", function () {
     buscarProblemasCadastrados();
+    document.getElementById("interna").style.marginTop = "0";
+    document.getElementById("next-previous").style.position = "fixed";
+    document.getElementById("next-previous").style.top = "515px";
+    h2Message.style.marginTop = "20px";
+    h2Message.style.marginBottom = "20px";
 })
 
 btnEnviar.addEventListener("click", function () {
@@ -132,6 +137,7 @@ function snapshotNulo() {
     checkSnap = false;
 
     document.getElementById("tabela").style.display = "none";
+    document.getElementById("next-previous").style.display = "none";
     document.getElementById("h2Message").innerHTML = "Não há problemas cadastrados por você!";
     bgLoader.style.display = "none";
 }

@@ -72,7 +72,6 @@ listarProblemas.addEventListener("click", function () {
         return;
     }
 
-    document.getElementById("next-previous").style.display = "flex";
     window.location.href = "index.html";
 
 })
