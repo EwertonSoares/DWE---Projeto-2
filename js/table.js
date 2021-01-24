@@ -3,6 +3,10 @@ var inputLocal = document.getElementById("local");
 var inputImg = document.getElementById("inputImage");
 var inputTextArea = document.getElementById("textArea");
 var h2Message = document.getElementById("h2Message");
+var btnAnterior = document.getElementById("anterior");
+var btnProximo = document.getElementById("proximo");
+
+var n = [1, 2, 3, 4];
 
 function preenchertabela(obj) {
     var tdLocal = document.createElement("td")
@@ -126,7 +130,109 @@ function preenchertabela(obj) {
     desabilitarBotaoAnterior()
 }
 
+
+btnAnterior.addEventListener("click", function () {
+    btnProximo.disabled = false;
+
+    var trList = document.getElementById("tabela").parentElement.getElementsByTagName("tr");
+
+    if (trList[n[0]] !== undefined) {
+        trList[n[0]].style.display = "none";
+    }
+    if (trList[n[1]] !== undefined) {
+        trList[n[1]].style.display = "none";
+    }
+    if (trList[n[2]] !== undefined) {
+        trList[n[2]].style.display = "none";
+    }
+    if (trList[n[3]] !== undefined) {
+        trList[n[3]].style.display = "none";
+    }
+
+    n[0] = n[0] - 4;
+    n[1] = n[1] - 4;
+    n[2] = n[2] - 4;
+    n[3] = n[3] - 4;
+
+    if (trList[n[0]] !== undefined) {
+        trList[n[0]].style.display = "table-row";
+    } else {
+        btnAnterior.disabled = true;
+    }
+
+    if (trList[n[1]] !== undefined) {
+        trList[n[1]].style.display = "table-row";
+
+    }
+
+    if (trList[n[2]] !== undefined) {
+        trList[n[2]].style.display = "table-row";
+
+    }
+
+    if (trList[n[3]] !== undefined) {
+        trList[n[3]].style.display = "table-row";
+
+    }
+
+    if (trList[1].style.display == "table-row") {
+        btnAnterior.disabled = "true;";
+    }
+
+})
+
+btnProximo.addEventListener("click", function () {
+    btnAnterior.disabled = false;
+
+    var trList = document.getElementById("tabela").parentElement.getElementsByTagName("tr");
+
+    trList[n[0]].style.display = "none";
+    trList[n[1]].style.display = "none";
+    trList[n[2]].style.display = "none";
+    trList[n[3]].style.display = "none";
+
+    n[0] = n[0] + 4;
+    n[1] = n[1] + 4;
+    n[2] = n[2] + 4;
+    n[3] = n[3] + 4;
+
+    if (n[0] === (trList.length - 1) ||
+        n[1] === (trList.length - 1) ||
+        n[2] === (trList.length - 1) ||
+        n[3] === (trList.length - 1)) {
+
+        btnProximo.disabled = true;
+    }
+
+debugger
+    if (trList[n[0]] !== undefined) {
+        trList[n[0]].style.display = "table-row";
+    } else {
+        btnProximo.disabled = true;
+    }
+
+    if (trList[n[1]] !== undefined) {
+        trList[n[1]].style.display = "table-row";
+    }
+    else {
+        btnProximo.disabled = true;
+    }
+
+    if (trList[n[2]] !== undefined) {
+        trList[n[2]].style.display = "table-row";
+    } else {
+        btnProximo.disabled = true;
+    }
+
+    if (trList[n[3]] !== undefined) {
+        trList[n[3]].style.display = "table-row";
+    } else {
+        btnProximo.disabled = true;
+    }
+})
+
 function desabilitarBotaoAnterior() {
+    btnProximo.disabled = true;
 
     var trList = document.getElementById("tabela").parentElement.getElementsByTagName("tr");
     var btnAnterior = document.getElementById("anterior");
@@ -137,5 +243,9 @@ function desabilitarBotaoAnterior() {
 
     if (trList[1].style.display !== "table-row") {
         btnAnterior.disabled = true;
+    }
+
+    if (trList.length > 4) {
+        btnProximo.disabled = false;
     }
 }

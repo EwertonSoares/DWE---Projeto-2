@@ -51,8 +51,10 @@ table img {width: 20px;}
 #next-previous #anterior,
 #next-previous #proximo {
     width: 60px;
-    background-color: white;
     margin: 0 auto;
+    cursor: pointer;
+    outline: none;
+    background-color: white;
 }
 
 #next-previous #anterior:hover,

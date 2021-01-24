@@ -55,7 +55,7 @@ textarea {
   display: none;
   position: relative;
   left: 222px;
-  bottom: 29px;
+  bottom: 27px;
   width: 60px;
   height: 25px;
   background-color: #3cb371;
@@ -112,7 +112,6 @@ a {cursor: pointer;}
   color: #ff0000;
 }
 
-
 .rodape {
   position: fixed;
   bottom: 0;
@@ -122,6 +121,7 @@ a {cursor: pointer;}
   border-top: solid 1px black;
   z-index: 2;
 }
+
 .rodape .conteudo {text-align: center;}
 
 .rodape .conteudo a img {
