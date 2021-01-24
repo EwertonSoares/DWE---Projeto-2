@@ -5,6 +5,10 @@ var lblMostrarSenha = document.getElementById("mostrar-senha");
 var acrieUmaconta = document.getElementById("crie-uma-conta");
 var spanErroLogin = document.getElementById("erro-ao-logar");
 var h2BemVindo = document.getElementById("bem-vindo");
+var btnAnterior = document.getElementById("anterior");
+var btnProximo = document.getElementById("proximo");
+
+var n = [1, 2, 3, 4];
 
 email.addEventListener("change", function () {
     email.style.borderColor = "#808080";
@@ -148,7 +152,11 @@ function esconderPaginaDeLogin() {
     document.getElementById("esquerda").style.display = "none";
     document.getElementById("direta").style.display = "none";
     document.getElementById("interna").style.border = "none";
+    
     document.getElementById("tabela").style.display = "table";
+    document.getElementById("next-previous").style.display = "block";
+    document.getElementById("next-previous").style.top = "440px";
+    document.getElementById("next-previous").style.left = "900px";
 
     var tdList = document.getElementById("tabela").parentElement.getElementsByTagName("td");
 
@@ -163,3 +171,95 @@ function esconderPaginaDeLogin() {
         }
     }
 }
+
+btnAnterior.addEventListener("click", function () {
+    btnProximo.disabled = false;
+
+    var trList = document.getElementById("tabela").parentElement.getElementsByTagName("tr");
+
+    if (trList[n[0]] !== undefined) {
+        trList[n[0]].style.display = "none";
+    }
+    if (trList[n[1]] !== undefined) {
+        trList[n[1]].style.display = "none";
+    }
+    if (trList[n[2]] !== undefined) {
+        trList[n[2]].style.display = "none";
+    }
+    if (trList[n[3]] !== undefined) {
+        trList[n[3]].style.display = "none";
+    }
+
+    n[0] = n[0] - 4;
+    n[1] = n[1] - 4;
+    n[2] = n[2] - 4;
+    n[3] = n[3] - 4;
+
+    if (trList[n[0]] !== undefined) {
+        trList[n[0]].style.display = "table-row";
+    } else {
+        btnAnterior.disabled = true;
+    }
+
+    if (trList[n[1]] !== undefined) {
+        trList[n[1]].style.display = "table-row";
+
+    }
+
+    if (trList[n[2]] !== undefined) {
+        trList[n[2]].style.display = "table-row";
+
+    }
+
+    if (trList[n[3]] !== undefined) {
+        trList[n[3]].style.display = "table-row";
+
+    }
+
+    if (trList[1].style.display == "table-row") {
+        btnAnterior.disabled = "true;";
+    }
+
+})
+
+btnProximo.addEventListener("click", function () {
+    debugger
+    btnAnterior.disabled = false;
+
+    var trList = document.getElementById("tabela").parentElement.getElementsByTagName("tr");
+
+    trList[n[0]].style.display = "none";
+    trList[n[1]].style.display = "none";
+    trList[n[2]].style.display = "none";
+    trList[n[3]].style.display = "none";
+
+    n[0] = n[0] + 4;
+    n[1] = n[1] + 4;
+    n[2] = n[2] + 4;
+    n[3] = n[3] + 4;
+
+    if (trList[n[0]] !== undefined) {
+        trList[n[0]].style.display = "table-row";
+    } else {
+        btnProximo.disabled = true;
+    }
+
+    if (trList[n[1]] !== undefined) {
+        trList[n[1]].style.display = "table-row";
+    }
+    else {
+        btnProximo.disabled = true;
+    }
+
+    if (trList[n[2]] !== undefined) {
+        trList[n[2]].style.display = "table-row";
+    } else {
+        btnProximo.disabled = true;
+    }
+
+    if (trList[n[3]] !== undefined) {
+        trList[n[3]].style.display = "table-row";
+    } else {
+        btnProximo.disabled = true;
+    }
+})

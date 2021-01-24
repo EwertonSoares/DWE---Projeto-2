@@ -84,7 +84,7 @@ function buscarProblemasCadastrados() {
         }
 
         removeTdDaTabela();
-        mostrarApenasQuatroTrs();
+        mostrarQuatroItemsDaTabela();
         bgLoader.style.display = "none";
     })
 }
@@ -93,6 +93,7 @@ function removerProblema(id) {
     db.ref("problemas/" + id).remove();
 }
 
+//Update de um problema cadastrado
 function atualizarProblema() {
     let idProblema = sessionStorage.getItem("idProblema");
     let nomeImg = sessionStorage.getItem("nomeImagem");
@@ -151,7 +152,7 @@ function removeTdDaTabela() {
     }
 }
 
-function mostrarApenasQuatroTrs() {
+function mostrarQuatroItemsDaTabela() {
     var trList = document.getElementById("tabela").parentElement.getElementsByTagName("tr");
 
     var i;

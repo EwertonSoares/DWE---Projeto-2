@@ -35,11 +35,22 @@ verProdutosCadastrados.addEventListener("click", function () {
 
         removeTdDaTabela();
 
-
         bgLoader.style.display = "none";
         esconderPaginaDeLogin();
+        mostrarQuatroItemsDaTabela();
     })
 });
+
+function mostrarQuatroItemsDaTabela() {
+    var trList = document.getElementById("tabela").parentElement.getElementsByTagName("tr");
+
+    var i;
+    for (i = 0; i < trList.length; i++) {
+        if (i > 4) {
+            trList[i].style.display = "none";
+        }
+    }
+};
 
 function removeTdDaTabela() {
     var tdList = document.getElementById("tabela").parentElement.getElementsByTagName("td");
