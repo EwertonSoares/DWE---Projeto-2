@@ -54,6 +54,7 @@ cadastrarProblema.addEventListener("click", function () {
     document.getElementById("inputImage").value = "";
     document.getElementById("textArea").innerHTML = "";
     document.getElementById("inputImage").style.display = "inlineblock";
+    document.getElementById("next-previous").style.display = "none";
 
     redirecionaCadastraOcorrencia();
 });
@@ -71,7 +72,9 @@ listarProblemas.addEventListener("click", function () {
         return;
     }
 
+    document.getElementById("next-previous").style.display = "flex";
     window.location.href = "index.html";
+
 })
 
 alterarSenha.addEventListener("click", function () {
@@ -80,6 +83,7 @@ alterarSenha.addEventListener("click", function () {
     formulario.style.display = "none";
     btnEnviar.style.display = "none";
     esquecisenha.style.display = "block";
+    document.getElementById("next-previous").style.display = "none";
 });
 
 btnSim.addEventListener("click", function () {

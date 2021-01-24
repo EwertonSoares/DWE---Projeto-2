@@ -75,6 +75,8 @@ function buscarProblemasCadastrados() {
                 objetos.push(obj);
                 preenchertabela(obj);
             }
+
+            document.getElementById("next-previous").style.display = "flex";
         });
 
         if (objetos.length === 0) {

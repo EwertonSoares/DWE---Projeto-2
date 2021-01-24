@@ -41,7 +41,21 @@ table button:active {
 table img {width: 20px;}
 
 #next-previous {
-    display: flex;
+    display: none;
     position: relative;
-    top: 480px;
+    top: 473px;
+    left: 420px;
 }
+
+#next-previous #anterior #img-anterior,
+#next-previous #proximo #img-proximo {
+    width: 25px;
+    height: 25px;
+}
+
+#next-previous #anterior,
+#next-previous #proximo {
+background-color: white;}
+
+#next-previous #anterior:active,
+#next-previous #proximo:active {background-color: lightseagreen;}

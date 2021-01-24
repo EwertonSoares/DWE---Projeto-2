@@ -135,7 +135,6 @@ function desabilitarBotaoAnterior() {
     }
 
     if (trList[1].style.display !== "table-row") {
-        debugger
         btnAnterior.disabled = true;
     }
 }
