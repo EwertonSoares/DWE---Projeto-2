@@ -51,7 +51,6 @@ table img {width: 20px;}
 #next-previous #anterior,
 #next-previous #proximo {
     width: 60px;
-    margin: 0 auto;
     cursor: pointer;
     outline: none;
     background-color: white;

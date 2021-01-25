@@ -6,6 +6,7 @@ const db = firebase.database();
 
 //Buscando todos dados no banco
 verProdutosCadastrados.addEventListener("click", function () {
+    var objetos = [];
     bgLoader.style.display = "block";
 
     db.ref('problemas/').once('value', function (snapshot) {
@@ -29,8 +30,13 @@ verProdutosCadastrados.addEventListener("click", function () {
                 userId: snapshot.val()[elem.key].userUid,
                 nOCorrencia: elem.key
             }
+            objetos.push(obj);
+        });
 
-            preenchertabela(obj);
+        objetos.reverse();
+        objetos.forEach(function(item) {
+            preenchertabela(item);
+
         });
 
         removeTdDaTabela();

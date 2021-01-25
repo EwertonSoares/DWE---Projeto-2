@@ -19,7 +19,7 @@ btnEnviar.addEventListener("click", function () {
             localStorage.setItem("userUid", result.user.uid);
             localStorage.setItem("userEmail", result.user.email);
     
-            window.location.href = "index.html";
+            window.location.href = "https://registro-de-problemas-d501d.web.app/index.html";
 
         })
         .catch(function (error) {

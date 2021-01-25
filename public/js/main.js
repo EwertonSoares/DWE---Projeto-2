@@ -17,7 +17,7 @@ function salvarproblemas(id, problema) {
     }, function (erro) {
         console.log("Não foi possivel fazer o cadastro desse problema! " + erro.message);
         alert("Não foi possivel fazer o cadastro desse problema, por favor tente novamente!");
-        window.location.href = "cadastra-usuario.html";
+        window.location.href = "https://registro-de-problemas-d501d.web.app/cadastra-usuario.html";
     })
 }
 
@@ -40,7 +40,7 @@ function atualizaProblema(id, problema) {
             });
 
             limparSessilStorage();
-            window.location.href = "index.html";
+            window.location.href = "https://registro-de-problemas-d501d.web.app/index.html";
 
         })
     });
@@ -71,7 +71,7 @@ function salvaImagemNoStorage(nomeImg) {
         return upload;
 
     } catch (e) {
-        console.log("Deu ruim: " + e);
+        console.log("Algo deu errado, a imagem não foi recuperada do firebase storage: " + e);
     }
 }
 

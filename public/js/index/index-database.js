@@ -78,7 +78,6 @@ function buscarProblemasCadastrados() {
                 }
 
                 objetos.push(obj);
-                preenchertabela(obj);
             }
 
             document.getElementById("next-previous").style.display = "flex";
@@ -87,6 +86,11 @@ function buscarProblemasCadastrados() {
         if (objetos.length === 0) {
             snapshotNulo();
         }
+
+        objetos.reverse();
+        objetos.forEach(function (item) {
+            preenchertabela(item);
+        });
 
         removeTdDaTabela();
         mostrarQuatroItemsDaTabela();
@@ -125,7 +129,7 @@ function atualizarProblema() {
         })
 
         limparSessilStorage();
-        window.location.href = "index.html";
+        window.location.href = "https://registro-de-problemas-d501d.web.app/index.html";
 
     } else {
         atualizaProblema(idProblema, problema);

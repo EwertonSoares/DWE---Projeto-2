@@ -104,3 +104,17 @@ a {
     font-size: 15px;
     cursor: pointer
   }
+
+  #voltar {
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 60px;
+    height: 30px;
+    margin: 10px 0 0 10px;
+    border-radius: 15px;
+    color: white;
+    background-color: #423e3e;
+}
+
+#voltar:hover {background-color: #000000;}

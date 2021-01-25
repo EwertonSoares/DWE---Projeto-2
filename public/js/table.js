@@ -204,7 +204,7 @@ btnProximo.addEventListener("click", function () {
         btnProximo.disabled = true;
     }
 
-debugger
+
     if (trList[n[0]] !== undefined) {
         trList[n[0]].style.display = "table-row";
     } else {
@@ -247,5 +247,10 @@ function desabilitarBotaoAnterior() {
 
     if (trList.length > 4) {
         btnProximo.disabled = false;
+        btnProximo.style.display = "block";
+        btnAnterior.style.display = "block";
+    } else {
+        btnProximo.style.display = "none";
+        btnAnterior.style.display = "none";
     }
 }

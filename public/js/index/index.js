@@ -22,7 +22,7 @@ window.addEventListener("load", function () {
     }
 
     if (logado === false) {
-        window.location.href = "login.html";
+        window.location.href = "https://registro-de-problemas-d501d.web.app/login.html";
     }
 });
 
@@ -38,7 +38,7 @@ sair.addEventListener("click", function logout() {
 
             loader.style.display = "none";
 
-            window.location.href = "login.html";
+            window.location.href = "https://registro-de-problemas-d501d.web.app/login.html";
 
         }).catch(function (error) {
             loader.style.display = "none";
@@ -69,7 +69,7 @@ listarProblemas.addEventListener("click", function () {
         return;
     }
 
-    window.location.href = "index.html";
+    window.location.href = "https://registro-de-problemas-d501d.web.app/index.html";
 
 })
 
@@ -102,7 +102,7 @@ btnSim.addEventListener("click", function () {
 
 
 btnNao.addEventListener("click", function () {
-    window.location.href = "index.html";
+    window.location.href = "https://registro-de-problemas-d501d.web.app/index.html";
 });
 
 
