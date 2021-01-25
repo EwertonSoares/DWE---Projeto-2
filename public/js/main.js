@@ -1,23 +1,34 @@
 function salvarproblemas(id, problema) {
+    var storage = firebase.storage();
     var nomeImg = `${id}-image`;
+    var upload;
+    var file = document.querySelector("#inputImage").files[0];
+    var metadata = {
+        content: file.type
+    }
 
-    var upload = salvaImagemNoStorage(nomeImg);
+    try {
+        upload = storage.ref().child("imagens").child(nomeImg).put(file, metadata);
+
+    } catch (error) {
+        console.log("Algo deu errado, a imagem não foi salva no firebase storage: " + error.message);
+    }
 
     upload.on("state_changed", function () {
-        upload.snapshot.ref.getDownloadURL().then(function (url) {
+        upload.snapshot.ref.getDownloadURL()
+            .then(function (url_imagem) {
 
-            problema.nomeImagem = nomeImg;
-            problema.imgUrl = url;
+                problema.imgUrl = url_imagem;
+                problema.nomeImagem = nomeImg;
 
-            db.ref('problemas/' + id).set(problema);
+                db.ref('problemas/' + id).set(problema);
 
-            abrirModal();
-        })
-
-    }, function (erro) {
-        console.log("Não foi possivel fazer o cadastro desse problema! " + erro.message);
-        alert("Não foi possivel fazer o cadastro desse problema, por favor tente novamente!");
-        window.location.href = "https://registro-de-problemas-d501d.web.app/cadastra-usuario.html";
+                abrirModal();
+            }).catch(function (error) {
+                console.log("Não foi possivel fazer o cadastro desse problema! " + error.message);
+                alert("Não foi possivel fazer o cadastro desse problema, por favor tente novamente!");
+                window.location.href = "https://registro-de-problemas-d501d.web.app/cadastra-usuario.html";
+            })
     })
 }
 
