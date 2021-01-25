@@ -1,16 +1,16 @@
 function salvarproblemas(id, problema) {
-    let nomeImg = `${id}-image`;
+    var nomeImg = `${id}-image`;
 
-    let upload = salvaImagemNoStorage(nomeImg);
+    var upload = salvaImagemNoStorage(nomeImg);
 
     upload.on("state_changed", function () {
         upload.snapshot.ref.getDownloadURL().then(function (url) {
 
             problema.nomeImagem = nomeImg;
             problema.imgUrl = url;
+
             db.ref('problemas/' + id).set(problema);
 
-            limparSessilStorage();
             abrirModal();
         })
 
@@ -22,9 +22,9 @@ function salvarproblemas(id, problema) {
 }
 
 function atualizaProblema(id, problema) {
-    let nomeImg = `${id}-image`;
+    var img = `${id}-image`;
 
-    let upload = salvaImagemNoStorage(nomeImg);
+    var upload = salvaImagemNoStorage(img);
 
     upload.on("state_changed", function () {
         upload.snapshot.ref.getDownloadURL().then(function (url) {
@@ -33,7 +33,7 @@ function atualizaProblema(id, problema) {
                 userUid: problema.userUid,
                 userEmail: problema.userEmail,
                 local: problema.local,
-                image: nomeImg,
+                image: img,
                 imgUrl: url,
                 descricao: problema.descricao,
                 status: "Cadastrado"
@@ -58,16 +58,15 @@ function deletarImagem(nomeImagem) {
     });
 }
 
-function salvaImagemNoStorage(nomeImg) {
-    let storage = firebase.storage();
-    let file = document.querySelector("#inputImage").files[0];
-    let metadata = {
+function salvaImagemNoStorage(image) {
+    var storage = firebase.storage();
+    var file = document.querySelector("#inputImage").files[0];
+    var metadata = {
         content: file.type
     }
 
     try {
-
-        var upload = storage.ref().child("imagens").child(nomeImg).put(file, metadata);
+        var upload = storage.ref().child("imagens").child(image).put(file, metadata);
         return upload;
 
     } catch (e) {
