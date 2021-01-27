@@ -167,16 +167,13 @@ function esconderPaginaDeLogin() {
     document.getElementById("esquerda").style.display = "none";
     document.getElementById("direta").style.display = "none";
     document.getElementById("interna").style.border = "none";
+    
     btnVolta.style.display = "block";
-
+    
     document.getElementById("tabela").style.display = "table";
     document.getElementById("next-previous").style.display = "flex";
-    document.getElementById("next-previous").style.width = "900px";
-    document.getElementById("next-previous").style.marginTop = "15px";
-    document.getElementById("next-previous").style.marginLeft = "232px";
+    document.getElementById("next-previous").style.marginTop = "10px";
     document.getElementById("next-previous").style.justifyContent = "center";
-    document.getElementById("proximo").style.display = "inline";
-    document.getElementById("anterior").style.display = "inline";
 
     var tdList = document.getElementById("tabela").parentElement.getElementsByTagName("td");
 

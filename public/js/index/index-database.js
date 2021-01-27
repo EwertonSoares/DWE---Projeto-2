@@ -42,11 +42,14 @@ btnEnviar.addEventListener("click", function () {
             status: "Cadastrado"
         }
 
-        salvarproblemas(id, problema);
+        salvaImagemNoStorage(`${id}image`);
+        cadastraProblema(id, problema);
+        setSession(id,`${id}image`);
+        atualizarProblema("cadastro");
     }
 
     else {
-        atualizarProblema();
+        atualizarProblema("update");
     }
 });
 
@@ -103,7 +106,7 @@ function removerProblema(id) {
 }
 
 //Update de um problema cadastrado
-function atualizarProblema() {
+function atualizarProblema(tipo) {
     let idProblema = sessionStorage.getItem("idProblema");
     let nomeImg = sessionStorage.getItem("nomeImagem");
 
@@ -129,10 +132,10 @@ function atualizarProblema() {
         })
 
         limparSessilStorage();
-        window.location.href = "https://registro-de-problemas-d501d.web.app/index.html";
+        window.location.href = "index.html";
 
     } else {
-        atualizaProblema(idProblema, problema);
+        atualizaProblema(idProblema, problema, tipo);
         limparSessilStorage();
     }
 }
@@ -177,4 +180,11 @@ function limparSessilStorage() {
     sessionStorage.removeItem("nomeImagem");
     sessionStorage.removeItem("urlImagem");
     sessionStorage.removeItem("idProblema");
+}
+
+function setSession(idProblema, img) {
+    sessionStorage.setItem("idProblema", idProblema);
+    sessionStorage.setItem("nomeImagem", img );
+
+    inputImg.type = "file";
 }
