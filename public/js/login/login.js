@@ -174,17 +174,4 @@ function esconderPaginaDeLogin() {
     document.getElementById("next-previous").style.display = "flex";
     document.getElementById("next-previous").style.marginTop = "10px";
     document.getElementById("next-previous").style.justifyContent = "center";
-
-    var tdList = document.getElementById("tabela").parentElement.getElementsByTagName("td");
-
-    var i;
-    for (i = 0; i <= tdList.length; i++) {
-        if (tdList[i].className === "remover") {
-            tdList[i].remove();
-        }
-
-        if (tdList[i].className === "update") {
-            tdList[i].remove();
-        }
-    }
 }

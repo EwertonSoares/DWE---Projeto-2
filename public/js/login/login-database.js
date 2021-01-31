@@ -6,8 +6,12 @@ const db = firebase.database();
 
 //Buscando todos dados no banco
 verProdutosCadastrados.addEventListener("click", function () {
-    var objetos = [];
+    // var objetos = [];
     bgLoader.style.display = "block";
+
+    var objFinalizado = [];
+    var objEmAndamento = [];
+    var objCadastrado = [];
 
     db.ref('problemas/').once('value', function (snapshot) {
         if (snapshot.val() === null) {
@@ -28,16 +32,29 @@ verProdutosCadastrados.addEventListener("click", function () {
                 descricao: snapshot.val()[elem.key].descricao,
                 status: snapshot.val()[elem.key].status,
                 userId: snapshot.val()[elem.key].userUid,
+                resposta: snapshot.val()[elem.key].resposta,
                 nOCorrencia: elem.key
             }
-            objetos.push(obj);
+
+            if (obj.status === "Cadastrado") {
+                objCadastrado.push(obj);
+            } else if (obj.status === "Em andamento") {
+                objEmAndamento.push(obj);
+            }
+            else {
+                objFinalizado.push(obj);
+            }
+
+            // objetos.push(obj);
         });
 
-        objetos.reverse();
-        objetos.forEach(function(item) {
-            preenchertabela(item);
+        ordenarTabela(objCadastrado, objEmAndamento, objFinalizado);
 
-        });
+        // objetos.reverse();
+        // objetos.forEach(function(item) {
+        //     preenchertabela(item);
+
+        // });
 
         removeTdDaTabela();
 
@@ -46,6 +63,21 @@ verProdutosCadastrados.addEventListener("click", function () {
         mostrarQuatroItemsDaTabela();
     })
 });
+
+function ordenarTabela(objCadastrado, objEmAndamento, objFinalizado) {
+
+    objEmAndamento.forEach(function (item) {
+        preenchertabela(item);
+    })
+
+    objFinalizado.forEach(function (item) {
+        preenchertabela(item);
+    })
+
+    objCadastrado.forEach(function (item) {
+        preenchertabela(item);
+    })
+}
 
 function mostrarQuatroItemsDaTabela() {
     var trList = document.getElementById("tabela").parentElement.getElementsByTagName("tr");
@@ -69,6 +101,24 @@ function removeTdDaTabela() {
 
     for (i = 0; i < tdList.length; i++) {
         if (tdList[i].className === "nome-imagem-class") {
+            tdList[i].style.display = "none";
+        }
+    }
+
+    for (i = 0; i < tdList.length; i++) {
+        if (tdList[i].className === "resposta") {
+            tdList[i].style.display = "none";
+        }
+    }
+
+    for (i = 0; i < tdList.length; i++) {
+        if (tdList[i].className === "remover") {
+            tdList[i].style.display = "none";
+        }
+    }
+
+    for (i = 0; i < tdList.length; i++) {
+        if (tdList[i].className === "update") {
             tdList[i].style.display = "none";
         }
     }

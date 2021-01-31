@@ -77,6 +77,7 @@ function buscarProblemasCadastrados() {
                     descricao: snapshot.val()[elem.key].descricao,
                     status: snapshot.val()[elem.key].status,
                     userId: snapshot.val()[elem.key].userUid,
+                    resposta: snapshot.val()[elem.key].resposta,
                     nOCorrencia: elem.key
                 }
 
@@ -132,7 +133,7 @@ function atualizarProblema(tipo) {
         })
 
         limparSessilStorage();
-        window.location.href = "index.html";
+        window.location.href = "/index.html";
 
     } else {
         atualizaProblema(idProblema, problema, tipo);

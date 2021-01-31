@@ -24,7 +24,7 @@ function atualizaProblema(id, problema, tipo) {
 
                 limparSessilStorage();
                 if (tipo === "update") {
-                    window.location.href = "https://registro-de-problemas-d501d.web.app/index.html";
+                    window.location.href = "/index.html";
                 } else {
                     abrirModal();
                 }

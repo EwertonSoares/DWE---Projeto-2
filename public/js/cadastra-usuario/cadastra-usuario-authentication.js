@@ -22,7 +22,7 @@ btnCadastar.addEventListener("click", function () {
             loader.style.display = "none";
 
             alert("Usuario cadastrado com sucesso!");
-            window.location.replace("login.html");
+            window.location.replace("/login.html");
 
         }).catch(function (error) {
             trataErroCadastraUsuario(error.message);

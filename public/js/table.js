@@ -1,14 +1,156 @@
-var tabela = document.getElementById("tabela");
 var inputLocal = document.getElementById("local");
 var inputImg = document.getElementById("inputImage");
 var inputTextArea = document.getElementById("textArea");
 var h2Message = document.getElementById("h2Message");
 var btnAnterior = document.getElementById("anterior");
 var btnProximo = document.getElementById("proximo");
+var userUid = localStorage.getItem("userUid");
 
 var n = [1, 2, 3, 4];
+var idTabela = "tabela";
+
+function preenchertabelaAdm(obj) {
+    var tabela = document.getElementById("tabela-adm");
+
+    var tdUserEmail = document.createElement("td")
+    tdUserEmail.innerHTML = obj.userEmail;
+
+    var tdLocal = document.createElement("td")
+    tdLocal.innerHTML = obj.local;
+
+    var img = document.createElement("img");
+    img.src = obj.imgUrl;
+    img.classList.add("img-problema");
+    var tdImg = document.createElement("td")
+    tdImg.appendChild(img);
+
+    var tdDesc = document.createElement("td")
+    tdDesc.innerHTML = obj.descricao;
+    tdDesc.classList.add("descricao-class");
+
+
+    var selectStatus = document.createElement("select");
+    selectStatus.id = "idStatus";
+    selectStatus.addEventListener("change", function () {
+        var email = this.parentNode.parentNode.childNodes.item(0).textContent;
+        var local = this.parentNode.parentNode.childNodes.item(1).textContent;
+        var url = this.parentNode.parentNode.childNodes.item(2).childNodes.item(0).currentSrc;
+        var descricao = this.parentNode.parentNode.childNodes.item(3).textContent;
+        var id = this.parentNode.parentNode.childNodes.item(5).textContent;
+        sessionStorage.setItem("status", selectStatus.value);
+
+        var problema = {
+            userUid: userUid,
+            userEmail: email,
+            local: local,
+            nomeImagem: `${id}image`,
+            imgUrl: url,
+            descricao: descricao,
+            status: selectStatus.value,
+            resposta: "",
+            idProblema: id
+
+        }
+
+        atualizarProblema(problema);
+    });
+
+    var option1 = document.createElement("option");
+    option1.id = "opt-cadastrado";
+    option1.innerHTML = obj.status;
+
+    var option2 = document.createElement("option");
+    option2.id = "opt-em-analise";
+    option2.innerHTML = "Em andamento";
+
+    var option3 = document.createElement("option");
+    option3.id = "opt-finalizado";
+    option3.innerHTML = "Finalizado";
+
+    var option4 = document.createElement("option");
+    option4.id = "opt-finalizado";
+    option4.innerHTML = "Cadastrado";
+
+    selectStatus.appendChild(option1);
+    selectStatus.appendChild(option2);
+    selectStatus.appendChild(option3);
+    selectStatus.appendChild(option4);
+
+    if (obj.status === "Em andamento") {
+        selectStatus.removeChild(option2)
+    }
+
+    if (obj.status === "Cadastrado") {
+        selectStatus.removeChild(option4)
+    }
+
+    if (obj.status === "Finalizado") {
+        selectStatus.removeChild(option3)
+    }
+
+    var tdStatus = document.createElement("td")
+    tdStatus.appendChild(selectStatus);
+
+    var tdNOCorrencia = document.createElement("td")
+    tdNOCorrencia.innerHTML = obj.nOCorrencia;
+    tdNOCorrencia.classList.add("numOcorrencia");
+
+    var imgResponder = document.createElement("img");
+    imgResponder.src = "./img/responder.png";
+    imgResponder.style.background = "aliceblue";
+    imgResponder.style.width = "25px";
+    var btnResponder = document.createElement("button");
+    btnResponder.style.background = "aliceblue";
+    btnResponder.appendChild(imgResponder);
+    btnResponder.addEventListener("click", function () {
+        debugger
+        var problema = {
+            idProblema: this.parentNode.parentNode.childNodes.item(5).textContent,
+            userEmail: this.parentNode.parentNode.childNodes.item(0).textContent,
+            local: this.parentNode.parentNode.childNodes.item(1).textContent,
+            image: this.parentNode.parentNode.childNodes.item(6).textContent,
+            imgUrl: this.parentNode.parentNode.childNodes.item(2).childNodes.item(0).currentSrc,
+            descricao: this.parentNode.parentNode.childNodes.item(3).textContent,
+            status: "",
+            resposta: ""
+        };
+
+        sessionStorage.setItem("problema", JSON.stringify(problema))
+
+        debugger
+        window.location.href = "resposta.html";
+    })
+
+    var tdResponder = document.createElement("td");
+    tdResponder.appendChild(btnResponder);
+    tdResponder.classList.add("responder");
+
+    var tdNomeImagem = document.createElement("td")
+    tdNomeImagem.innerHTML = obj.nomeImagem;
+    tdNomeImagem.classList.add("nome-imagem-class");
+
+    var tdStatusAtual = document.createElement("td")
+    tdStatusAtual.innerHTML = obj.status;
+    tdStatusAtual.classList.add("status-atual");
+
+    var tr = document.createElement("tr");
+    tr.appendChild(tdUserEmail);
+    tr.appendChild(tdLocal);
+    tr.appendChild(tdImg);
+    tr.appendChild(tdDesc);
+    tr.appendChild(tdStatus);
+    tr.appendChild(tdNOCorrencia);
+    tr.appendChild(tdNomeImagem);
+    tr.appendChild(tdResponder);
+    tr.appendChild(tdStatusAtual);
+
+    tabela.appendChild(tr);
+    desabilitarBotaoAnterior(tabela)
+}
 
 function preenchertabela(obj) {
+    var tabela = document.getElementById("tabela");
+
     var tdLocal = document.createElement("td")
     tdLocal.innerHTML = obj.local;
 
@@ -115,6 +257,34 @@ function preenchertabela(obj) {
     tdNomeImagem.innerHTML = obj.nomeImagem;
     tdNomeImagem.classList.add("nome-imagem-class");
 
+    var linkVerResposta = document.createElement("a");
+    linkVerResposta.innerHTML = "Ver resposta";
+    linkVerResposta.id = "link-resposta";
+    linkVerResposta.style.cursor = "pointer";
+    linkVerResposta.style.color = "lightblue";
+
+    linkVerResposta.addEventListener("click", function () {
+        var resposta = this.parentNode.parentNode.childNodes.item(9).textContent;
+
+        if (resposta === "" || resposta === "undefined") {
+            alert("Esse problema ainda não foi respondido!");
+
+            return;
+        }
+
+        sessionStorage.setItem("resposta", resposta);
+
+        window.location.href = "resposta.html";
+    });
+
+    var tdResposta = document.createElement("td");
+    tdResposta.appendChild(linkVerResposta);
+
+    var tdtextoResposta = document.createElement("td");
+    tdtextoResposta.classList.add("resposta");
+    tdtextoResposta.innerHTML = obj.resposta;
+    tdtextoResposta.style.display = "none";
+
     var tr = document.createElement("tr");
     tr.appendChild(tdLocal);
     tr.appendChild(tdImg);
@@ -122,19 +292,22 @@ function preenchertabela(obj) {
     tr.appendChild(tdStatus);
     tr.appendChild(tdNOCorrencia);
     tr.appendChild(tdNomeImagem);
+    tr.appendChild(tdResposta);
     tr.appendChild(tdRemover);
     tr.appendChild(tdUpdate);
-
+    tr.appendChild(tdtextoResposta);
 
     tabela.appendChild(tr);
-    desabilitarBotaoAnterior()
+    desabilitarBotaoAnterior(tabela);
 }
 
 
 btnAnterior.addEventListener("click", function () {
     btnProximo.disabled = false;
 
-    var trList = document.getElementById("tabela").parentElement.getElementsByTagName("tr");
+    setaIdTabela();
+
+    var trList = document.getElementById(idTabela).parentElement.getElementsByTagName("tr");
     var i;
 
     if (trList[5].style.display === "table-row") {
@@ -164,7 +337,9 @@ btnAnterior.addEventListener("click", function () {
 btnProximo.addEventListener("click", function () {
     btnAnterior.disabled = false;
 
-    var trList = document.getElementById("tabela").parentElement.getElementsByTagName("tr");
+    setaIdTabela();
+
+    var trList = document.getElementById(idTabela).parentElement.getElementsByTagName("tr");
     var i;
 
     for (i = 0; i < 4; i++) {
@@ -193,10 +368,10 @@ btnProximo.addEventListener("click", function () {
     }
 })
 
-function desabilitarBotaoAnterior() {
+function desabilitarBotaoAnterior(tabela) {
     btnProximo.disabled = true;
 
-    var trList = document.getElementById("tabela").parentElement.getElementsByTagName("tr");
+    var trList = tabela.parentElement.getElementsByTagName("tr");
     var btnAnterior = document.getElementById("anterior");
 
     if (trList[1] === undefined) {
@@ -214,5 +389,11 @@ function desabilitarBotaoAnterior() {
     } else {
         btnProximo.style.display = "none";
         btnAnterior.style.display = "none";
+    }
+}
+
+function setaIdTabela() {
+    if (localStorage.getItem("userEmail") === "admin@admin.com") {
+        idTabela = "tabela-adm";
     }
 }
