@@ -45,17 +45,9 @@ verProdutosCadastrados.addEventListener("click", function () {
                 objFinalizado.push(obj);
             }
 
-            // objetos.push(obj);
         });
 
         ordenarTabela(objCadastrado, objEmAndamento, objFinalizado);
-
-        // objetos.reverse();
-        // objetos.forEach(function(item) {
-        //     preenchertabela(item);
-
-        // });
-
         removeTdDaTabela();
 
         bgLoader.style.display = "none";

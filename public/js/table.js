@@ -183,6 +183,8 @@ function preenchertabela(obj) {
         deletarImagem(`${item}-image`);
         removerProblema(item);
         tabela.deleteRow(this.parentNode.parentNode.rowIndex);
+
+        window.location.reload();
     })
 
     var tdRemover = document.createElement("td");

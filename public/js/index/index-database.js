@@ -42,9 +42,8 @@ btnEnviar.addEventListener("click", function () {
             status: "Cadastrado"
         }
 
-        salvaImagemNoStorage(`${id}image`);
         cadastraProblema(id, problema);
-        setSession(id,`${id}image`);
+        setSession(id, `${id}image`);
         atualizarProblema("cadastro");
     }
 
@@ -109,35 +108,33 @@ function removerProblema(id) {
 //Update de um problema cadastrado
 function atualizarProblema(tipo) {
     let idProblema = sessionStorage.getItem("idProblema");
-    let nomeImg = sessionStorage.getItem("nomeImagem");
 
     let problema = {
         userUid: userUid,
         userEmail: userEmail,
         local: inputLocal.value,
-        nomeImagem: nomeImg,
+        nomeImagem: `$${idProblema}image`,
         imgUrl: inputImg.value,
         descricao: inputTextArea.value,
         status: "Cadastrado"
     }
 
     if (inputImg.type === "url") {
-        db.ref("problemas/" + idProblema).update({
-            userUid: problema.userUid,
-            userEmail: problema.userEmail,
-            local: problema.local,
-            image: problema.nomeImagem,
-            imgUrl: problema.imgUrl,
-            descricao: problema.descricao,
-            status: "Cadastrado"
-        })
+        db.ref("problemas/" + idProblema)
+            .update({
+                userUid: problema.userUid,
+                userEmail: problema.userEmail,
+                local: problema.local,
+                image: problema.nomeImagem,
+                imgUrl: problema.imgUrl,
+                descricao: problema.descricao,
+                status: "Cadastrado"
+            })
 
-        limparSessilStorage();
         window.location.href = "/index.html";
 
     } else {
         atualizaProblema(idProblema, problema, tipo);
-        limparSessilStorage();
     }
 }
 
@@ -185,7 +182,6 @@ function limparSessilStorage() {
 
 function setSession(idProblema, img) {
     sessionStorage.setItem("idProblema", idProblema);
-    sessionStorage.setItem("nomeImagem", img );
 
     inputImg.type = "file";
 }
