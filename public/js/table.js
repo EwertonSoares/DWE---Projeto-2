@@ -12,11 +12,84 @@ var idTabela = "tabela";
 function preenchertabelaAdm(obj) {
     var tabela = document.getElementById("tabela-adm");
 
-    var tdUserEmail = document.createElement("td")
-    tdUserEmail.innerHTML = obj.userEmail;
+    var tdUserEmail = criaHtml("td", obj.userEmail);
 
-    var tdLocal = document.createElement("td")
-    tdLocal.innerHTML = obj.local;
+    var tdLocal = criaHtml("td", obj.local);
+
+    var img = criaHtml("img", "");
+    img.src = obj.imgUrl;
+    img.classList.add("img-problema");
+
+    var tdImg = criaHtml("td", "");
+    tdImg.appendChild(img);
+
+    var tdDesc = criaHtml("td", obj.descricao);
+    tdDesc.classList.add("descricao-class");
+
+    var selectStatus = criaSelectEOption();
+
+    var option1 = criaHtml("option", obj.status);
+    option1.id = "opt-cadastrado";
+
+    var option2 = criaHtml("option", "Em andamento");
+    option2.id = "opt-em-andamento";
+
+    var option3 = criaHtml("option", "Finalizado");
+    option3.id = "opt-finalizado";
+
+    var option4 = criaHtml("option", "Cadastrado");
+    option4.id = "opt-Cadastrado";
+
+    selectStatus.appendChild(option1);
+    selectStatus.appendChild(option2);
+    selectStatus.appendChild(option3);
+    selectStatus.appendChild(option4);
+
+    checkStatus(obj, selectStatus, option2, option3, option4);
+
+    var tdStatus = criaHtml("td", "")
+    tdStatus.appendChild(selectStatus);
+
+    var tdNOCorrencia = criaHtml("td", obj.nOCorrencia)
+    tdNOCorrencia.classList.add("numOcorrencia");
+
+    var imgResponder = criaHtml("img", "")
+    imgResponder.src = "./img/responder.png";
+    imgResponder.style.background = "aliceblue";
+    imgResponder.style.width = "25px";
+
+    var btnResponder = criaBotaoResponder();
+    btnResponder.appendChild(imgResponder);
+
+    var tdResponder = criaHtml("td", "")
+    tdResponder.appendChild(btnResponder);
+    tdResponder.classList.add("responder");
+
+    var tdNomeImagem = criaHtml("td", obj.nomeImagem)
+    tdNomeImagem.classList.add("nome-imagem-class");
+
+    var tdStatusAtual = criaHtml("td", obj.status)
+    tdStatusAtual.classList.add("status-atual");
+
+    var tr = document.createElement("tr");
+    tr.appendChild(tdUserEmail);
+    tr.appendChild(tdLocal);
+    tr.appendChild(tdImg);
+    tr.appendChild(tdDesc);
+    tr.appendChild(tdStatus);
+    tr.appendChild(tdNOCorrencia);
+    tr.appendChild(tdNomeImagem);
+    tr.appendChild(tdResponder);
+    tr.appendChild(tdStatusAtual);
+
+    tabela.appendChild(tr);
+    desabilitarBotaoAnterior(tabela)
+}
+
+function preenchertabela(obj) {
+    var tabela = document.getElementById("tabela");
+
+    var tdLocal = criaHtml("td", obj.local);
 
     var img = document.createElement("img");
     img.src = obj.imgUrl;
@@ -28,6 +101,71 @@ function preenchertabelaAdm(obj) {
     tdDesc.innerHTML = obj.descricao;
     tdDesc.classList.add("descricao-class");
 
+    var tdStatus = document.createElement("td")
+    tdStatus.innerHTML = obj.status;
+
+    var tdNOCorrencia = document.createElement("td")
+    tdNOCorrencia.innerHTML = obj.nOCorrencia;
+    tdNOCorrencia.classList.add("numOcorrencia");
+
+    //Criando botão para remoçao de problema cadastrado
+    var imgRemover = criaHtml("img", "");
+    imgRemover.src = './img/lixeira.png';
+    imgRemover.id = "imgRemover"
+
+    var btnRemover = criaBotaoRemover(imgRemover);
+
+    var tdRemover = criaHtml("td", "");
+    tdRemover.appendChild(btnRemover);
+    tdRemover.classList.add("remover");
+
+    //Criando botão para update de problema cadastrado
+    var imgUpdate = criaHtml("img", "");
+    imgUpdate.src = './img/pencil.png';
+    imgUpdate.id = "imgUpdate"
+
+    var btnUpdate = criaBotaoUpdate(imgUpdate);
+
+    var tdUpdate = criaHtml("td", "")
+    tdUpdate.appendChild(btnUpdate);
+    tdUpdate.classList.add("update")
+
+    var tdNomeImagem = criaHtml("td", obj.nomeImagem);
+    tdNomeImagem.classList.add("nome-imagem-class");
+
+    var linkVerResposta = criaLinkResposta();
+
+    var tdResposta = criaHtml("td", "")
+    tdResposta.appendChild(linkVerResposta);
+
+    var tdtextoResposta = criaHtml("td", obj.resposta);
+    tdtextoResposta.classList.add("resposta");
+    tdtextoResposta.style.display = "none";
+
+    var tr = document.createElement("tr");
+    tr.appendChild(tdLocal);
+    tr.appendChild(tdImg);
+    tr.appendChild(tdDesc);
+    tr.appendChild(tdStatus);
+    tr.appendChild(tdNOCorrencia);
+    tr.appendChild(tdNomeImagem);
+    tr.appendChild(tdResposta);
+    tr.appendChild(tdRemover);
+    tr.appendChild(tdUpdate);
+    tr.appendChild(tdtextoResposta);
+
+    tabela.appendChild(tr);
+    desabilitarBotaoAnterior(tabela);
+}
+
+function criaHtml(obj, valor) {
+    let novoObj = document.createElement(obj);
+    novoObj.innerHTML = valor;
+
+    return novoObj;
+}
+
+function criaSelectEOption() {
 
     var selectStatus = document.createElement("select");
     selectStatus.id = "idStatus";
@@ -55,55 +193,31 @@ function preenchertabelaAdm(obj) {
         atualizarProblema(problema);
     });
 
-    var option1 = document.createElement("option");
-    option1.id = "opt-cadastrado";
-    option1.innerHTML = obj.status;
+    return selectStatus;
 
-    var option2 = document.createElement("option");
-    option2.id = "opt-em-analise";
-    option2.innerHTML = "Em andamento";
+}
 
-    var option3 = document.createElement("option");
-    option3.id = "opt-finalizado";
-    option3.innerHTML = "Finalizado";
-
-    var option4 = document.createElement("option");
-    option4.id = "opt-finalizado";
-    option4.innerHTML = "Cadastrado";
-
-    selectStatus.appendChild(option1);
-    selectStatus.appendChild(option2);
-    selectStatus.appendChild(option3);
-    selectStatus.appendChild(option4);
+function checkStatus(obj, selectStatus, option2, option3, option4) {
 
     if (obj.status === "Em andamento") {
         selectStatus.removeChild(option2)
-    }
-
-    if (obj.status === "Cadastrado") {
-        selectStatus.removeChild(option4)
     }
 
     if (obj.status === "Finalizado") {
         selectStatus.removeChild(option3)
     }
 
-    var tdStatus = document.createElement("td")
-    tdStatus.appendChild(selectStatus);
+    if (obj.status === "Cadastrado") {
+        selectStatus.removeChild(option4)
+    }
+}
 
-    var tdNOCorrencia = document.createElement("td")
-    tdNOCorrencia.innerHTML = obj.nOCorrencia;
-    tdNOCorrencia.classList.add("numOcorrencia");
-
-    var imgResponder = document.createElement("img");
-    imgResponder.src = "./img/responder.png";
-    imgResponder.style.background = "aliceblue";
-    imgResponder.style.width = "25px";
+function criaBotaoResponder() {
     var btnResponder = document.createElement("button");
     btnResponder.style.background = "aliceblue";
-    btnResponder.appendChild(imgResponder);
+
     btnResponder.addEventListener("click", function () {
-        debugger
+
         var problema = {
             idProblema: this.parentNode.parentNode.childNodes.item(5).textContent,
             userEmail: this.parentNode.parentNode.childNodes.item(0).textContent,
@@ -117,85 +231,13 @@ function preenchertabelaAdm(obj) {
 
         sessionStorage.setItem("problema", JSON.stringify(problema))
 
-        debugger
         window.location.href = "resposta.html";
     })
 
-    var tdResponder = document.createElement("td");
-    tdResponder.appendChild(btnResponder);
-    tdResponder.classList.add("responder");
-
-    var tdNomeImagem = document.createElement("td")
-    tdNomeImagem.innerHTML = obj.nomeImagem;
-    tdNomeImagem.classList.add("nome-imagem-class");
-
-    var tdStatusAtual = document.createElement("td")
-    tdStatusAtual.innerHTML = obj.status;
-    tdStatusAtual.classList.add("status-atual");
-
-    var tr = document.createElement("tr");
-    tr.appendChild(tdUserEmail);
-    tr.appendChild(tdLocal);
-    tr.appendChild(tdImg);
-    tr.appendChild(tdDesc);
-    tr.appendChild(tdStatus);
-    tr.appendChild(tdNOCorrencia);
-    tr.appendChild(tdNomeImagem);
-    tr.appendChild(tdResponder);
-    tr.appendChild(tdStatusAtual);
-
-    tabela.appendChild(tr);
-    desabilitarBotaoAnterior(tabela)
+    return btnResponder;
 }
 
-function preenchertabela(obj) {
-    var tabela = document.getElementById("tabela");
-
-    var tdLocal = document.createElement("td")
-    tdLocal.innerHTML = obj.local;
-
-    var img = document.createElement("img");
-    img.src = obj.imgUrl;
-    img.classList.add("img-problema");
-    var tdImg = document.createElement("td")
-    tdImg.appendChild(img);
-
-    var tdDesc = document.createElement("td")
-    tdDesc.innerHTML = obj.descricao;
-    tdDesc.classList.add("descricao-class");
-
-    var tdStatus = document.createElement("td")
-    tdStatus.innerHTML = obj.status;
-
-    var tdNOCorrencia = document.createElement("td")
-    tdNOCorrencia.innerHTML = obj.nOCorrencia;
-    tdNOCorrencia.classList.add("numOcorrencia");
-
-    //Criando botão para remoçao de problema cadastrado
-    var imgRemover = document.createElement("img");
-    imgRemover.src = './img/lixeira.png';
-    imgRemover.id = "imgRemover"
-
-    var btnRemover = document.createElement("button");
-    btnRemover.appendChild(imgRemover);
-    btnRemover.addEventListener("click", function () {
-        var item = this.parentNode.parentNode.childNodes.item(4).textContent;
-        deletarImagem(`${item}-image`);
-        removerProblema(item);
-        tabela.deleteRow(this.parentNode.parentNode.rowIndex);
-
-        window.location.reload();
-    })
-
-    var tdRemover = document.createElement("td");
-    tdRemover.appendChild(btnRemover);
-    tdRemover.classList.add("remover");
-
-    //Criando botão para update de problema cadastrado
-    var imgUpdate = document.createElement("img");
-    imgUpdate.src = './img/pencil.png';
-    imgUpdate.id = "imgUpdate"
-
+function criaBotaoUpdate(imgUpdate) {
     var btnUpdate = document.createElement("button");
     btnUpdate.appendChild(imgUpdate);
     btnUpdate.addEventListener("click", function () {
@@ -251,14 +293,27 @@ function preenchertabela(obj) {
         h2Message.innerHTML = "Edição de poblema cadastrado!";
     })
 
-    var tdUpdate = document.createElement("td");
-    tdUpdate.appendChild(btnUpdate);
-    tdUpdate.classList.add("update")
+    return btnUpdate;
+}
 
-    var tdNomeImagem = document.createElement("td")
-    tdNomeImagem.innerHTML = obj.nomeImagem;
-    tdNomeImagem.classList.add("nome-imagem-class");
+function criaBotaoRemover(imgRemover) {
+    
+    var btnRemover = document.createElement("button");
+    btnRemover.appendChild(imgRemover);
+    
+    btnRemover.addEventListener("click", function () {
+        var item = this.parentNode.parentNode.childNodes.item(4).textContent;
+        deletarImagem(`${item}-image`);
+        removerProblema(item);
+        tabela.deleteRow(this.parentNode.parentNode.rowIndex);
 
+        window.location.reload();
+    })
+
+    return btnRemover;
+}
+
+function criaLinkResposta() {
     var linkVerResposta = document.createElement("a");
     linkVerResposta.innerHTML = "Ver resposta";
     linkVerResposta.id = "link-resposta";
@@ -279,30 +334,8 @@ function preenchertabela(obj) {
         window.location.href = "resposta.html";
     });
 
-    var tdResposta = document.createElement("td");
-    tdResposta.appendChild(linkVerResposta);
-
-    var tdtextoResposta = document.createElement("td");
-    tdtextoResposta.classList.add("resposta");
-    tdtextoResposta.innerHTML = obj.resposta;
-    tdtextoResposta.style.display = "none";
-
-    var tr = document.createElement("tr");
-    tr.appendChild(tdLocal);
-    tr.appendChild(tdImg);
-    tr.appendChild(tdDesc);
-    tr.appendChild(tdStatus);
-    tr.appendChild(tdNOCorrencia);
-    tr.appendChild(tdNomeImagem);
-    tr.appendChild(tdResposta);
-    tr.appendChild(tdRemover);
-    tr.appendChild(tdUpdate);
-    tr.appendChild(tdtextoResposta);
-
-    tabela.appendChild(tr);
-    desabilitarBotaoAnterior(tabela);
+    return linkVerResposta;
 }
-
 
 btnAnterior.addEventListener("click", function () {
     btnProximo.disabled = false;
