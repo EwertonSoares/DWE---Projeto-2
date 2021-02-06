@@ -42,11 +42,13 @@ btnEnviar.addEventListener("click", function () {
             status: "Cadastrado"
         }
 
-        salvarproblemas(id, problema);
+        cadastraProblema(id, problema);
+        setSession(id, `${id}image`);
+        atualizarProblema("cadastro");
     }
 
     else {
-        atualizarProblema();
+        atualizarProblema("update");
     }
 });
 
@@ -74,6 +76,7 @@ function buscarProblemasCadastrados() {
                     descricao: snapshot.val()[elem.key].descricao,
                     status: snapshot.val()[elem.key].status,
                     userId: snapshot.val()[elem.key].userUid,
+                    resposta: snapshot.val()[elem.key].resposta,
                     nOCorrencia: elem.key
                 }
 
@@ -103,37 +106,35 @@ function removerProblema(id) {
 }
 
 //Update de um problema cadastrado
-function atualizarProblema() {
+function atualizarProblema(tipo) {
     let idProblema = sessionStorage.getItem("idProblema");
-    let nomeImg = sessionStorage.getItem("nomeImagem");
 
     let problema = {
         userUid: userUid,
         userEmail: userEmail,
         local: inputLocal.value,
-        nomeImagem: nomeImg,
+        nomeImagem: `$${idProblema}image`,
         imgUrl: inputImg.value,
         descricao: inputTextArea.value,
         status: "Cadastrado"
     }
 
     if (inputImg.type === "url") {
-        db.ref("problemas/" + idProblema).update({
-            userUid: problema.userUid,
-            userEmail: problema.userEmail,
-            local: problema.local,
-            image: problema.nomeImagem,
-            imgUrl: problema.imgUrl,
-            descricao: problema.descricao,
-            status: "Cadastrado"
-        })
+        db.ref("problemas/" + idProblema)
+            .update({
+                userUid: problema.userUid,
+                userEmail: problema.userEmail,
+                local: problema.local,
+                image: problema.nomeImagem,
+                imgUrl: problema.imgUrl,
+                descricao: problema.descricao,
+                status: "Cadastrado"
+            })
 
-        limparSessilStorage();
-        window.location.href = "https://registro-de-problemas-d501d.web.app/index.html";
+        window.location.href = "/index.html";
 
     } else {
-        atualizaProblema(idProblema, problema);
-        limparSessilStorage();
+        atualizaProblema(idProblema, problema, tipo);
     }
 }
 
@@ -177,4 +178,10 @@ function limparSessilStorage() {
     sessionStorage.removeItem("nomeImagem");
     sessionStorage.removeItem("urlImagem");
     sessionStorage.removeItem("idProblema");
+}
+
+function setSession(idProblema, img) {
+    sessionStorage.setItem("idProblema", idProblema);
+
+    inputImg.type = "file";
 }

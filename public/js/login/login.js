@@ -5,8 +5,12 @@ var lblMostrarSenha = document.getElementById("mostrar-senha");
 var acrieUmaconta = document.getElementById("crie-uma-conta");
 var spanErroLogin = document.getElementById("erro-ao-logar");
 var h2BemVindo = document.getElementById("bem-vindo");
-var btnVolta = document.getElementById("voltar");
+var verProdutosCadastrados = document.getElementById("ver-problemas-cadastrados");
 
+//Buscando todos dados no banco
+verProdutosCadastrados.addEventListener("click", function () {
+    window.location.href = "/problemas-cadastrados.html";
+});
 
 email.addEventListener("change", function () {
     email.style.borderColor = "#808080";
@@ -141,53 +145,4 @@ function validaEmailESenha(email, senha) {
     }
 
     return true;
-}
-
-btnVolta.addEventListener("click", function() {
-    document.getElementById("titulo").value = "Registro de problemas na cidade de campinas";
-    document.getElementById("titulo").style.marginBottom = "40px";
-    document.getElementById("visualizar-problemas-cadastrados").style.display = "block";
-    document.getElementById("esquerda").style.display = "block";
-    document.getElementById("direta").style.display = "block";
-    document.getElementById("interna").style.border = "flex";
-    btnVolta.style.display = "none";
-    
-    document.getElementById("tabela").style.display = "none";
-    document.getElementById("next-previous").style.display = "none";
-    document.getElementById("next-previous").style.width = "900px";
-    document.getElementById("next-previous").style.marginTop = "15px";
-    document.getElementById("next-previous").style.marginLeft = "236px";
-    document.getElementById("next-previous").style.textAlign = "center";
-})
-
-function esconderPaginaDeLogin() {
-    document.getElementById("titulo").value = "Problemas registrados em campinas";
-    document.getElementById("titulo").style.marginBottom = "0";
-    document.getElementById("visualizar-problemas-cadastrados").style.display = "none";
-    document.getElementById("esquerda").style.display = "none";
-    document.getElementById("direta").style.display = "none";
-    document.getElementById("interna").style.border = "none";
-    btnVolta.style.display = "block";
-
-    document.getElementById("tabela").style.display = "table";
-    document.getElementById("next-previous").style.display = "flex";
-    document.getElementById("next-previous").style.width = "900px";
-    document.getElementById("next-previous").style.marginTop = "15px";
-    document.getElementById("next-previous").style.marginLeft = "232px";
-    document.getElementById("next-previous").style.justifyContent = "center";
-    document.getElementById("proximo").style.display = "inline";
-    document.getElementById("anterior").style.display = "inline";
-
-    var tdList = document.getElementById("tabela").parentElement.getElementsByTagName("td");
-
-    var i;
-    for (i = 0; i <= tdList.length; i++) {
-        if (tdList[i].className === "remover") {
-            tdList[i].remove();
-        }
-
-        if (tdList[i].className === "update") {
-            tdList[i].remove();
-        }
-    }
 }

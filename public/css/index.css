@@ -141,3 +141,29 @@ a {cursor: pointer;}
 }
 
 #nome {color: blue;}
+
+#resposta {
+  display: block;
+  text-align: center;
+}
+
+#texto-resposta {
+  width: 80%;
+}
+
+#msg-resposta {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+#botoes-resposta {
+  display: inline;
+  margin: 5px 0 0 130px;
+}
+
+#btn-enviar-resposta, 
+#btn-cancelar-resposta {
+  width: 80px;
+  height: 30px;
+  cursor: pointer;
+} 

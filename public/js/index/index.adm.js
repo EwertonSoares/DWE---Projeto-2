@@ -4,15 +4,14 @@ var btnSim = document.getElementById("sim");
 var btnNao = document.getElementById("nao");
 var btnEnviar = document.getElementById("enviarProblema");
 
-var tabela = document.getElementById("tabela");
+var tabela = document.getElementById("tabela-adm");
 var formulario = document.getElementById("formulario");
 var cadastrarProblema = document.getElementById("cadastrar-problema");
-var listarProblemas = document.getElementById("listar-problemas");
+var listarProblemas = document.getElementById("lista-problemas");
 var alterarSenha = document.getElementById("altera-senha");
 var esquecisenha = document.getElementById("esqueci-a-senha");
 var sair = document.getElementById("logout");
 var loader = document.getElementById("backgroud-loader");
-
 
 window.addEventListener("load", function () {
     var logado = false;
@@ -46,20 +45,10 @@ sair.addEventListener("click", function logout() {
         });
 });
 
-cadastrarProblema.addEventListener("click", function () {
-    document.getElementById("local").value = "";
-    document.getElementById("inputImage").value = "";
-    document.getElementById("textArea").innerHTML = "";
-    document.getElementById("inputImage").style.display = "inlineblock";
-    document.getElementById("next-previous").style.display = "none";
-
-    redirecionaCadastraOcorrencia();
-});
-
 listarProblemas.addEventListener("click", function () {
     if (!checkSnap) {
 
-        h2Message.innerHTML = "Não há problemas cadastrados por você!";
+        h2Message.innerHTML = "Não há problemas cadastrados!";
         tabela.style.display = "none";
         formulario.style.display = "none";
         esquecisenha.style.display = "none";
@@ -69,7 +58,7 @@ listarProblemas.addEventListener("click", function () {
         return;
     }
 
-    window.location.href = "/index.html";
+    window.location.href = "/administrador.html";
 
 })
 
@@ -102,7 +91,7 @@ btnSim.addEventListener("click", function () {
 
 
 btnNao.addEventListener("click", function () {
-    window.location.href = "/index.html";
+    window.location.href = "/administrador.html";
 });
 
 

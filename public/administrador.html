@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Pagina inicial</title>
+    <title>Pagina inicial de administrador</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="./css/index.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="./css/style.css" media="screen" />
@@ -18,32 +18,29 @@
 
     <div id="container">
         <nav>
-            <a href="https://registro-de-problemas-d501d.web.app/index.html"><img src="img/home.svg" alt="home" /></a>
+            <a href="./administrador.html"><img src="img/home.svg" alt="home" /></a>
 
             <ul>
-                <li><a id="listar-problemas">Listar meus problemas cadastrados</a></li>
-                <li><a id="cadastrar-problema">Cadastrar novo problema</a></li>
+                <li><a id="lista-problemas">Listar todos problemas cadastrados</a></li>
                 <li><a id="altera-senha">Alterar senha</a></li>
+                <li id="feedback-adm"><a href="https://docs.google.com/forms/d/1dXL3ykOMnxI3YsmpbL7b93t8VDK08xAcUK7BmkLvwew/edit#response=ACYDBNhcrSohG4Vr_autHDrKKGk9_ehBbHAJhKyT3Ix_RS9ONK34GGlESxJe_nGJlmnuJjM" target="_blank">Feedbacks</a></li>
                 <li><a id="logout">Sair</a></li>
-
-                <li id="feedback"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfr2dEWBf7328LS1RVuTYKrnJY2KKUaG3f3wGl3f6V709TI5g/viewform?usp=sf_link" target="_blank">Deixe seu feedback</a></li>
             </ul>
         </nav>
 
         <div class="interna" id="interna">
             <span id="erroCampos">Todos os campos devem estar preenchidos</span>
-            <h2 id="h2Message">Problemas cadastrados por você!</h2>
+            <h2 id="messageH2">Problemas cadastrados!</h2>
 
             <!-- Tabela de problemas -->
-            <table id="tabela">
+            <table id="tabela-adm">
                 <tr>
+                    <th>Email</th>
                     <th>Local</th>
                     <th>imagem</th>
                     <th>Descrição</th>
                     <th>Status</th>
-                    <th>Resposta</th>                        
-                    <th>Deletar</th>
-                    <th>Atualizar</th>
+                    <th>Responder</th>
                 </tr>
             </table>
             <div id="next-previous">
@@ -76,19 +73,19 @@
                 <button type="submit" id="btnConfirmar">Enviar</button>
             </div>
 
-            <div class="rodape" id="rodape">
-                <div class="conteudo">
-                    <a href="https://www.facebook.com/ewerton.soares.5" target="_blank"><img src="./img/facebook.png"></a>
-                    <a href="https://www.instagram.com/ewerton.soares.5/?hl=pt-br" target="_blank"><img
-                            src="./img/instagram.png" target="_blank"></a>
-    
-                    <h2>
-                        Copyright © 2021 |
-                        <a id="nome" href="mailto:soares.ewerton@aluno.ifsp.edu.br" target="_blank">
-                            Ewerton Soares da Silva</a>
-                    </h2>
-                </div>
-    
+        </div>
+
+        <div class="rodape" id="rodape">
+            <div class="conteudo">
+                <a href="https://www.facebook.com/ewerton.soares.5" target="_blank"><img src="./img/facebook.png"></a>
+                <a href="https://www.instagram.com/ewerton.soares.5/?hl=pt-br" target="_blank"><img
+                        src="./img/instagram.png" target="_blank"></a>
+
+                <h2>
+                    Copyright © 2021 |
+                    <a id="nome" href="mailto:soares.ewerton@aluno.ifsp.edu.br" target="_blank">
+                        Ewerton Soares da Silva</a>
+                </h2>
             </div>
 
         </div>
@@ -113,8 +110,8 @@
 
         <script src="./js/app.js"></script>
 
-        <script src="./js/index/index.js"></script>
-        <script src="./js/index/index-database.js"></script>
+        <script src="./js/index/index-adm-database.js"></script>
+        <script src="./js/index/index.adm.js"></script>
         <script src="./js/index/index-form.js"></script>
         <script src="./js/table.js"></script>
         <script src="./js/main-database.js"></script>

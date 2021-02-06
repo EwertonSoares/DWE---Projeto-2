@@ -18,8 +18,14 @@ btnEnviar.addEventListener("click", function () {
             localStorage.setItem("acesso", true);
             localStorage.setItem("userUid", result.user.uid);
             localStorage.setItem("userEmail", result.user.email);
-    
-            window.location.href = "https://registro-de-problemas-d501d.web.app/index.html";
+
+            if (result.user.email === "admin@admin.com") {
+                window.location.href = "/administrador.html";
+
+                return;
+            }
+
+            window.location.href = "/index.html";
 
         })
         .catch(function (error) {

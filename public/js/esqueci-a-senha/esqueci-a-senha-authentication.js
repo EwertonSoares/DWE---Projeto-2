@@ -5,7 +5,7 @@ var loader = document.getElementById("backgroud-loader");
 var path = window.location.pathname;
 var email = document.getElementById("email");
 
-if (path === "/index.html") {
+if (path === "/index.html" || path === "/administrador.html") {
     email = document.getElementById("email-nova-senha");
 }
 
@@ -16,7 +16,7 @@ btnConfirmar.addEventListener("click", function () {
         .then(function () {
             loader.style.display = "none";
             alert(`Enviamos um email para de redifinição de senha para ${email.value}`);
-            window.location.href = "https://registro-de-problemas-d501d.web.app/index.html";
+            window.location.href = "/index.html";
 
         }).catch(function (error) {
             loader.style.display = "none";

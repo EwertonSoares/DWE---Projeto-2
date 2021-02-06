@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pagina inicial de administrador</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="./css/index.css" media="screen" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="container">
+        <button id="voltar-reposta">Voltar</button>
+        <div id="resposta">
+            <h2 id="msg-resposta">Resposta sobre o problema informado!</h2>
+            <textarea id="texto-resposta" maxlength="1000"></textarea>
+        </div>
+
+        <div id="botoes-resposta">
+            <button id="btn-enviar-resposta">Enviar</button>
+            <button id="btn-cancelar-resposta">Cancelar</button>
+        </div>
+
+        <div class="rodape" id="rodape">
+            <div class="conteudo">
+                <a href="https://www.facebook.com/ewerton.soares.5" target="_blank"><img src="./img/facebook.png"></a>
+                <a href="https://www.instagram.com/ewerton.soares.5/?hl=pt-br" target="_blank"><img
+                        src="./img/instagram.png" target="_blank"></a>
+
+                <h2>
+                    Copyright © 2021 |
+                    <a id="nome" href="mailto:soares.ewerton@aluno.ifsp.edu.br" target="_blank">
+                        Ewerton Soares da Silva</a>
+                </h2>
+            </div>
+
+        </div>
+
+        <div id="backgroud-loader">
+            <div class="loader"></div>
+        </div>
+
+        <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-database.js"></script>
+
+        <script src="./js/app.js"></script>
+        <!-- <script src="./js/index/index-adm-database.js"></script>
+        <script src="./js/index/index.adm.js"></script> -->
+        <script src="./js/resposta.js"></script>
+        <script src="./js/main-database.js"></script>
+    </div>
+
+
+</body>
+
+</html>

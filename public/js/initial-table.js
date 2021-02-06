@@ -1,20 +1,23 @@
-var verProdutosCadastrados = document.getElementById("ver-problemas-cadastrados");
+var btnVolta = document.getElementById("voltar");
 var bgLoader = document.getElementById("backgroud-loader");
-
 var checkSnap = true;
-const db = firebase.database();
+var db = firebase.database();
 
 //Buscando todos dados no banco
-verProdutosCadastrados.addEventListener("click", function () {
-    var objetos = [];
+window.addEventListener("load", function() {
+    // var objetos = [];
     bgLoader.style.display = "block";
+
+    var objFinalizado = [];
+    var objEmAndamento = [];
+    var objCadastrado = [];
 
     db.ref('problemas/').once('value', function (snapshot) {
         if (snapshot.val() === null) {
             checkSnap = false;
 
             document.getElementById("tabela").style.display = "none";
-            document.getElementById("h2Message").innerHTML = "Não há problemas cadastrados por você!";
+            document.getElementById("titulo").innerHTML = "Não há problemas cadastrados por você!";
             bgLoader.style.display = "none";
 
             return;
@@ -28,24 +31,44 @@ verProdutosCadastrados.addEventListener("click", function () {
                 descricao: snapshot.val()[elem.key].descricao,
                 status: snapshot.val()[elem.key].status,
                 userId: snapshot.val()[elem.key].userUid,
+                resposta: snapshot.val()[elem.key].resposta,
                 nOCorrencia: elem.key
             }
-            objetos.push(obj);
+
+            if (obj.status === "Cadastrado") {
+                objCadastrado.push(obj);
+            } else if (obj.status === "Em andamento") {
+                objEmAndamento.push(obj);
+            }
+            else {
+                objFinalizado.push(obj);
+            }
+
         });
 
-        objetos.reverse();
-        objetos.forEach(function(item) {
-            preenchertabela(item);
-
-        });
-
+        ordenarTabela(objCadastrado, objEmAndamento, objFinalizado);
         removeTdDaTabela();
 
         bgLoader.style.display = "none";
-        esconderPaginaDeLogin();
         mostrarQuatroItemsDaTabela();
     })
 });
+
+
+function ordenarTabela(objCadastrado, objEmAndamento, objFinalizado) {
+
+    objEmAndamento.forEach(function (item) {
+        preenchertabela(item);
+    })
+
+    objFinalizado.forEach(function (item) {
+        preenchertabela(item);
+    })
+
+    objCadastrado.forEach(function (item) {
+        preenchertabela(item);
+    })
+}
 
 function mostrarQuatroItemsDaTabela() {
     var trList = document.getElementById("tabela").parentElement.getElementsByTagName("tr");
@@ -72,4 +95,26 @@ function removeTdDaTabela() {
             tdList[i].style.display = "none";
         }
     }
+
+    for (i = 0; i < tdList.length; i++) {
+        if (tdList[i].className === "resposta") {
+            tdList[i].style.display = "none";
+        }
+    }
+
+    for (i = 0; i < tdList.length; i++) {
+        if (tdList[i].className === "remover") {
+            tdList[i].style.display = "none";
+        }
+    }
+
+    for (i = 0; i < tdList.length; i++) {
+        if (tdList[i].className === "update") {
+            tdList[i].style.display = "none";
+        }
+    }
 }
+
+btnVolta.addEventListener("click", function() {
+   window.location.href = "/login.html";
+})
