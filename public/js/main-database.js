@@ -10,6 +10,7 @@ async function atualizaProblema(id, problema, tipo) {
 
     await upload.on("state_changed", function () {
         upload.snapshot.ref.getDownloadURL()
+        
             .then(function (url) {
 
                 editaProblema(url, id, problema, tipo);

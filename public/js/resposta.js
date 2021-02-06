@@ -32,8 +32,7 @@ btnEnviarResposta.addEventListener("click", function () {
         status: sessionStorage.getItem("status"),
         resposta: txtResposta.value
     }
-    debugger
-
+    
     enviaResposta(problema);
 });
 
@@ -46,6 +45,9 @@ btnVoltar.addEventListener("click", function () {
 
     if (email === "admin@admin.com") {
         window.location.href = "/administrador.html";
+    }
+    else if (email === null) {
+        window.location.href = "/problemas-cadastrados.html";
     }
     else {
         window.location.href = "/index.html";
@@ -66,7 +68,6 @@ function enviaResposta(problema) {
         resposta: problema.resposta
     })
 
-    debugger
     alert("Resposta enviada");
     txtResposta.value = "";
 }

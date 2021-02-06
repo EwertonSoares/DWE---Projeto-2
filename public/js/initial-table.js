@@ -1,11 +1,10 @@
-var verProdutosCadastrados = document.getElementById("ver-problemas-cadastrados");
+var btnVolta = document.getElementById("voltar");
 var bgLoader = document.getElementById("backgroud-loader");
-
 var checkSnap = true;
-const db = firebase.database();
+var db = firebase.database();
 
 //Buscando todos dados no banco
-verProdutosCadastrados.addEventListener("click", function () {
+window.addEventListener("load", function() {
     // var objetos = [];
     bgLoader.style.display = "block";
 
@@ -18,7 +17,7 @@ verProdutosCadastrados.addEventListener("click", function () {
             checkSnap = false;
 
             document.getElementById("tabela").style.display = "none";
-            document.getElementById("h2Message").innerHTML = "Não há problemas cadastrados por você!";
+            document.getElementById("titulo").innerHTML = "Não há problemas cadastrados por você!";
             bgLoader.style.display = "none";
 
             return;
@@ -51,10 +50,10 @@ verProdutosCadastrados.addEventListener("click", function () {
         removeTdDaTabela();
 
         bgLoader.style.display = "none";
-        esconderPaginaDeLogin();
         mostrarQuatroItemsDaTabela();
     })
 });
+
 
 function ordenarTabela(objCadastrado, objEmAndamento, objFinalizado) {
 
@@ -115,3 +114,7 @@ function removeTdDaTabela() {
         }
     }
 }
+
+btnVolta.addEventListener("click", function() {
+   window.location.href = "/login.html";
+})

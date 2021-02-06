@@ -96,8 +96,6 @@ a {
 
 #esqueceu-a-senha{margin-top: -5px;}
 
-#tabela {display: none;}
-
 #visualizar-problemas-cadastrados a {
     position: absolute;
     margin-top: -34px;
@@ -106,7 +104,6 @@ a {
   }
 
   #voltar {
-    display: none;
     position: fixed;
     top: 0;
     width: 60px;
@@ -118,3 +115,11 @@ a {
 }
 
 #voltar:hover {background-color: #000000;}
+
+#tabela-titulo {margin-bottom: 0;}
+
+#next-previous {
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+}
