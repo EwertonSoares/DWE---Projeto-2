@@ -47,7 +47,8 @@ function listarTodosProblemasCadastrados() {
                 descricao: snapshot.val()[elem.key].descricao,
                 status: snapshot.val()[elem.key].status,
                 userId: snapshot.val()[elem.key].userUid,
-                nOCorrencia: elem.key
+                nOCorrencia: elem.key,
+                resposta: snapshot.val()[elem.key].resposta,
             }
 
             if (obj.status === "Cadastrado") {

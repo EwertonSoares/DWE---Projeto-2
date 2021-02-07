@@ -2,19 +2,20 @@ var btnVoltar = document.getElementById("voltar-reposta");
 var btnEnviarResposta = document.getElementById("btn-enviar-resposta");
 var btnCancelarResposta = document.getElementById("btn-cancelar-resposta");
 var txtResposta = document.getElementById("texto-resposta");
+var obj = JSON.parse(sessionStorage.getItem("problema"));
 
 var db = firebase.database();
 
 window.addEventListener("load", function () {
     var email = localStorage.getItem("userEmail");
-
-    txtResposta.value = sessionStorage.getItem("resposta");
     
     if (email !== "servidor@admin.com") {
+        txtResposta.value = sessionStorage.getItem("resposta");
         btnEnviarResposta.style.display = "none";
         btnCancelarResposta.style.display = "none";
     }
     else {
+        txtResposta.value = obj.resposta;
         sessionStorage.removeItem("resposta");
         btnEnviarResposta.style.display = "inline";
         btnCancelarResposta.style.display = "inline";
@@ -22,8 +23,6 @@ window.addEventListener("load", function () {
 })
 
 btnEnviarResposta.addEventListener("click", function () {
-    var obj = JSON.parse(sessionStorage.getItem("problema"));
-
     var problema = {
         idProblema: obj.idProblema,
         userEmail: obj.userEmail,
