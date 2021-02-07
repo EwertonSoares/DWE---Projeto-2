@@ -19,7 +19,7 @@ btnEnviar.addEventListener("click", function () {
             localStorage.setItem("userUid", result.user.uid);
             localStorage.setItem("userEmail", result.user.email);
 
-            if (result.user.email === "admin@admin.com") {
+            if (result.user.email === "servidor@admin.com") {
                 window.location.href = "/administrador.html";
 
                 return;

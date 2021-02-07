@@ -428,7 +428,7 @@ function desabilitarBotaoAnterior(tabela) {
 }
 
 function setaIdTabela() {
-    if (localStorage.getItem("userEmail") === "admin@admin.com") {
+    if (localStorage.getItem("userEmail") === "servidor@admin.com") {
         idTabela = "tabela-adm";
     }
 }

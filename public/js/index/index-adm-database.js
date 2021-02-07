@@ -6,6 +6,16 @@ var btnAnterior = document.getElementById("anterior");
 var database = firebase.database();
 var checkSnap = true;
 
+window.onscroll = function () { esconderRodape() };
+
+function esconderRodape() {
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        document.getElementById("rodape").style.display = "none";
+    } else {
+        document.getElementById("rodape").style.display = "block";
+    }
+}
+
 //Buscando todos dados no banco
 window.addEventListener("load", function () {
     document.getElementById("next-previous").style.display = "flex";

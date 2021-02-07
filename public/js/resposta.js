@@ -9,7 +9,7 @@ window.addEventListener("load", function () {
     var email = localStorage.getItem("userEmail");
 
     txtResposta.value = sessionStorage.getItem("resposta");
-    if (email !== "admin@admin.com") {
+    if (email !== "servidor@admin.com") {
         btnEnviarResposta.style.display = "none";
         btnCancelarResposta.style.display = "none";
     }
@@ -43,7 +43,7 @@ btnCancelarResposta.addEventListener("click", function () {
 btnVoltar.addEventListener("click", function () {
     var email = localStorage.getItem("userEmail");
 
-    if (email === "admin@admin.com") {
+    if (email === "servidor@admin.com") {
         window.location.href = "/administrador.html";
     }
     else if (email === null) {

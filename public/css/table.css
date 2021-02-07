@@ -3,13 +3,17 @@
 table { width: 900px; }
 
 table, th, td { 
+    text-align: center;
     color: white;
     background-color: #1C1C1C;
+    border: solid 0.5px;
+    padding: 8px;
     font-size: 12px;
-    text-align: center;
     opacity: 0.9;
 }
-
+table th {
+    background-color: #141488;
+}
 table button {
     background: none;
     border: none;
@@ -21,8 +25,8 @@ table button:active {
 }
 
 .img-problema {
-    width: 170px;
-    height: 100px;
+    width: 230px;
+    height: 150px;
 }
 
 .descricao-class {
@@ -58,3 +62,5 @@ table img {width: 20px;}
 
 #next-previous #anterior:hover,
 #next-previous #proximo:hover { background-color: #423e3e;}
+
+#local-tabela {width: 200px;}
