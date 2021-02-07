@@ -6,21 +6,12 @@ var btnAnterior = document.getElementById("anterior");
 var database = firebase.database();
 var checkSnap = true;
 
-window.onscroll = function () { esconderRodape() };
-
-function esconderRodape() {
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-        document.getElementById("rodape").style.display = "none";
-    } else {
-        document.getElementById("rodape").style.display = "block";
-    }
-}
-
 //Buscando todos dados no banco
 window.addEventListener("load", function () {
     document.getElementById("next-previous").style.display = "flex";
     document.getElementById("next-previous").style.margin = "5px 0 0 780px";
-    document.getElementById("messageH2").style.marginBottom = '20px';
+    document.getElementById("interna").style.marginTop = '5px';
+    document.getElementById("messageH2").style.marginBottom = '0px';
 
     listarTodosProblemasCadastrados();
 });
@@ -73,7 +64,7 @@ function listarTodosProblemasCadastrados() {
 
         removeTdDaTabela();
         bgLoader.style.display = "none";
-        mostrarQuatroItemsDaTabela();
+        mostrarDoisItemsDaTabela();
     })
 }
 
@@ -111,12 +102,12 @@ function ordenarTabela(objCadastrado, objEmAndamento, objFinalizado) {
 
 }
 
-function mostrarQuatroItemsDaTabela() {
+function mostrarDoisItemsDaTabela() {
     var trList = document.getElementById("tabela-adm").parentElement.getElementsByTagName("tr");
 
     var i;
     for (i = 0; i < trList.length; i++) {
-        if (i > 4) {
+        if (i > 2) {
             trList[i].style.display = "none";
         }
     }

@@ -6,7 +6,7 @@ var btnAnterior = document.getElementById("anterior");
 var btnProximo = document.getElementById("proximo");
 var userUid = localStorage.getItem("userUid");
 
-var n = [1, 2, 3, 4];
+var n = [1, 2];
 var idTabela = "tabela";
 
 function preenchertabelaAdm(obj) {
@@ -345,22 +345,22 @@ btnAnterior.addEventListener("click", function () {
     var trList = document.getElementById(idTabela).parentElement.getElementsByTagName("tr");
     var i;
 
-    if (trList[5].style.display === "table-row") {
+    if (trList[3].style.display === "table-row") {
         btnAnterior.disabled = true;
     }
 
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < 2; i++) {
         if (trList[n[i]] !== undefined) {
             trList[n[i]].style.display = "none";
         }
     }
 
-    for (i = 0; i < 4; i++) {
-        n[i] = n[i] - 4;
+    for (i = 0; i < 2; i++) {
+        n[i] = n[i] - 2;
 
     }
 
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < 2; i++) {
         if (trList[n[i]] !== undefined) {
             trList[n[i]].style.display = "table-row";
         } else {
@@ -377,16 +377,16 @@ btnProximo.addEventListener("click", function () {
     var trList = document.getElementById(idTabela).parentElement.getElementsByTagName("tr");
     var i;
 
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < 2; i++) {
         trList[n[i]].style.display = "none";
     }
 
-    for (i = 0; i < 4; i++) {
-        n[i] = n[i] + 4;
+    for (i = 0; i < 2; i++) {
+        n[i] = n[i] + 2;
 
     }
 
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < 2; i++) {
 
         if (trList[n[i]] !== undefined) {
             trList[n[i]].style.display = "table-row";
@@ -395,7 +395,7 @@ btnProximo.addEventListener("click", function () {
         }
     }
 
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < 2; i++) {
         if (n[i] === (trList.length - 1)) {
 
             btnProximo.disabled = true;
@@ -417,7 +417,7 @@ function desabilitarBotaoAnterior(tabela) {
         btnAnterior.disabled = true;
     }
 
-    if (trList.length > 4) {
+    if (trList.length > 2) {
         btnProximo.disabled = false;
         btnProximo.style.display = "block";
         btnAnterior.style.display = "block";
