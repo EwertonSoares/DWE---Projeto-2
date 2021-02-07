@@ -51,7 +51,7 @@ window.addEventListener("load", function() {
         removeTdDaTabela();
 
         bgLoader.style.display = "none";
-        mostrarQuatroItemsDaTabela();
+        mostrarDoisItemsDaTabela();
     })
 });
 
@@ -71,12 +71,12 @@ function ordenarTabela(objCadastrado, objEmAndamento, objFinalizado) {
     })
 }
 
-function mostrarQuatroItemsDaTabela() {
+function mostrarDoisItemsDaTabela() {
     var trList = document.getElementById("tabela").parentElement.getElementsByTagName("tr");
 
     var i;
     for (i = 0; i < trList.length; i++) {
-        if (i > 4) {
+        if (i > 2) {
             trList[i].style.display = "none";
         }
     }

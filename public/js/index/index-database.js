@@ -11,16 +11,6 @@ var message = "Registre uma nova ocorrencia de um problema";
 var checkSnap = true;
 const db = firebase.database();
 
-window.onscroll = function () { esconderRodape() };
-
-function esconderRodape() {
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-        document.getElementById("rodape").style.display = "none";
-    } else {
-        document.getElementById("rodape").style.display = "block";
-    }
-}
-
 window.addEventListener("load", function () {
     buscarProblemasCadastrados();
     document.getElementById("interna").style.marginTop = "10px";
@@ -92,7 +82,7 @@ function buscarProblemasCadastrados() {
                 objetos.push(obj);
             }
 
-            if (objetos.length > 4) {
+            if (objetos.length > 2) {
                 document.getElementById("next-previous").style.display = "flex";
             }
         });
@@ -107,7 +97,7 @@ function buscarProblemasCadastrados() {
         });
 
         removeTdDaTabela();
-        mostrarQuatroItemsDaTabela();
+        mostrarDoisItemsDaTabela();
         bgLoader.style.display = "none";
     })
 }
@@ -174,12 +164,12 @@ function removeTdDaTabela() {
     }
 }
 
-function mostrarQuatroItemsDaTabela() {
+function mostrarDoisItemsDaTabela() {
     var trList = document.getElementById("tabela").parentElement.getElementsByTagName("tr");
 
     var i;
     for (i = 0; i < trList.length; i++) {
-        if (i > 4) {
+        if (i > 2) {
             trList[i].style.display = "none";
         }
     }
