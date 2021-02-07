@@ -9,11 +9,13 @@ window.addEventListener("load", function () {
     var email = localStorage.getItem("userEmail");
 
     txtResposta.value = sessionStorage.getItem("resposta");
+    
     if (email !== "servidor@admin.com") {
         btnEnviarResposta.style.display = "none";
         btnCancelarResposta.style.display = "none";
     }
     else {
+        sessionStorage.removeItem("resposta");
         btnEnviarResposta.style.display = "inline";
         btnCancelarResposta.style.display = "inline";
     }
@@ -42,6 +44,7 @@ btnCancelarResposta.addEventListener("click", function () {
 
 btnVoltar.addEventListener("click", function () {
     var email = localStorage.getItem("userEmail");
+    sessionStorage.removeItem("resposta");
 
     if (email === "servidor@admin.com") {
         window.location.href = "/administrador.html";
@@ -68,6 +71,6 @@ function enviaResposta(problema) {
         resposta: problema.resposta
     })
 
-    alert("Resposta enviada");
-    txtResposta.value = "";
+    alert("Resposta enviada");        
+    window.location.href = "/problemas-cadastrados.html";
 }
