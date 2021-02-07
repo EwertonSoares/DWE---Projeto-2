@@ -17,7 +17,8 @@ window.addEventListener("load", function() {
             checkSnap = false;
 
             document.getElementById("tabela").style.display = "none";
-            document.getElementById("titulo").innerHTML = "Não há problemas cadastrados por você!";
+            document.getElementById("next-previous").style.display = "none";
+            document.getElementById("tabela-titulo").innerHTML = "Não há problemas cadastrados!";
             bgLoader.style.display = "none";
 
             return;

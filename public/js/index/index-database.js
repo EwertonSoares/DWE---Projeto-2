@@ -11,11 +11,20 @@ var message = "Registre uma nova ocorrencia de um problema";
 var checkSnap = true;
 const db = firebase.database();
 
+window.onscroll = function () { esconderRodape() };
+
+function esconderRodape() {
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        document.getElementById("rodape").style.display = "none";
+    } else {
+        document.getElementById("rodape").style.display = "block";
+    }
+}
+
 window.addEventListener("load", function () {
     buscarProblemasCadastrados();
-    document.getElementById("interna").style.marginTop = "0";
-    document.getElementById("next-previous").style.position = "fixed";
-    document.getElementById("next-previous").style.top = "515px";
+    document.getElementById("interna").style.marginTop = "10px";
+    document.getElementById("next-previous").style.marginTop = "10px";
     h2Message.style.marginTop = "20px";
     h2Message.style.marginBottom = "20px";
 })
@@ -83,7 +92,9 @@ function buscarProblemasCadastrados() {
                 objetos.push(obj);
             }
 
-            document.getElementById("next-previous").style.display = "flex";
+            if (objetos.length > 4) {
+                document.getElementById("next-previous").style.display = "flex";
+            }
         });
 
         if (objetos.length === 0) {
@@ -180,7 +191,7 @@ function limparSessilStorage() {
     sessionStorage.removeItem("idProblema");
 }
 
-function setSession(idProblema, img) {
+function setSession(idProblema) {
     sessionStorage.setItem("idProblema", idProblema);
 
     inputImg.type = "file";
