@@ -71,6 +71,10 @@ function preenchertabelaAdm(obj) {
     var tdStatusAtual = criaHtml("td", obj.status)
     tdStatusAtual.classList.add("status-atual");
 
+    var tdtextoResposta = criaHtml("td", obj.resposta);
+    tdtextoResposta.classList.add("resposta");
+    tdtextoResposta.style.display = "none";
+
     var tr = document.createElement("tr");
     tr.appendChild(tdUserEmail);
     tr.appendChild(tdLocal);
@@ -81,6 +85,7 @@ function preenchertabelaAdm(obj) {
     tr.appendChild(tdNomeImagem);
     tr.appendChild(tdResponder);
     tr.appendChild(tdStatusAtual);
+    tr.appendChild(tdtextoResposta);
 
     tabela.appendChild(tr);
     desabilitarBotaoAnterior(tabela)
@@ -170,6 +175,13 @@ function criaSelectEOption() {
     var selectStatus = document.createElement("select");
     selectStatus.id = "idStatus";
     selectStatus.addEventListener("change", function () {
+        
+        var resposta = this.parentNode.parentNode.childNodes.item(9).textContent;
+
+        if(resposta === "" || resposta === null || resposta === "undefined") {
+            resposta = "";
+        }
+
         var email = this.parentNode.parentNode.childNodes.item(0).textContent;
         var local = this.parentNode.parentNode.childNodes.item(1).textContent;
         var url = this.parentNode.parentNode.childNodes.item(2).childNodes.item(0).currentSrc;
@@ -185,7 +197,7 @@ function criaSelectEOption() {
             imgUrl: url,
             descricao: descricao,
             status: selectStatus.value,
-            resposta: "",
+            resposta: resposta,
             idProblema: id
 
         }
@@ -216,7 +228,12 @@ function criaBotaoResponder() {
     var btnResponder = document.createElement("button");
     btnResponder.style.background = "aliceblue";
 
-    btnResponder.addEventListener("click", function () {
+    btnResponder.addEventListener("click", function () { 
+        var resposta = this.parentNode.parentNode.childNodes.item(9).textContent;
+    debugger
+        if(resposta === "" || resposta === null || resposta === "undefined") {
+            resposta = "";
+        }
 
         var problema = {
             idProblema: this.parentNode.parentNode.childNodes.item(5).textContent,
@@ -226,7 +243,7 @@ function criaBotaoResponder() {
             imgUrl: this.parentNode.parentNode.childNodes.item(2).childNodes.item(0).currentSrc,
             descricao: this.parentNode.parentNode.childNodes.item(3).textContent,
             status: "",
-            resposta: ""
+            resposta: resposta
         };
 
         sessionStorage.setItem("problema", JSON.stringify(problema))

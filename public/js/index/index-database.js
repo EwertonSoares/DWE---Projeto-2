@@ -13,6 +13,7 @@ const db = firebase.database();
 
 window.addEventListener("load", function () {
     buscarProblemasCadastrados();
+    
     document.getElementById("interna").style.marginTop = "10px";
     document.getElementById("next-previous").style.marginTop = "10px";
     h2Message.style.marginTop = "20px";

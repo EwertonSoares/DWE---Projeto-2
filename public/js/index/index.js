@@ -12,10 +12,14 @@ var alterarSenha = document.getElementById("altera-senha");
 var esquecisenha = document.getElementById("esqueci-a-senha");
 var sair = document.getElementById("logout");
 var loader = document.getElementById("backgroud-loader");
-
+var emailInicial = document.getElementById("userEmail");
 
 window.addEventListener("load", function () {
     var logado = false;
+
+    emailInicial.innerHTML = `Bem vindo ${localStorage.getItem("userEmail")}`;
+    emailInicial.style.fontSize = "12px";
+    emailInicial.style.color = "black";
 
     if (localStorage.getItem("acesso") === "true") {
         logado = true;
