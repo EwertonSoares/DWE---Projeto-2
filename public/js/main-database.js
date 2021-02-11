@@ -72,7 +72,7 @@ function salvaImagemNoStorage(image) {
         return upload;
 
     } catch (e) {
-        console.log("Algo deu errado, a imagem não foi recuperada do firebase storage: " + e);
+        console.log("Tivemos um problema ao recuperar a imagem do firebase storage: " + e);
     }
 }
 
