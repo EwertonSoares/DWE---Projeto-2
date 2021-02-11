@@ -206,7 +206,7 @@ function criaSelectEOption() {
             idProblema: id
 
         }
-        
+
         atualizarProblema(problema);
     });
 
