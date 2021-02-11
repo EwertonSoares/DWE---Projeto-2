@@ -26,6 +26,7 @@ btnEnviarResposta.addEventListener("click", function () {
     var problema = {
         idProblema: obj.idProblema,
         userEmail: obj.userEmail,
+        userUid: obj.userUid,
         local: obj.local,
         image: obj.image,
         imgUrl: obj.imgUrl,
@@ -34,7 +35,7 @@ btnEnviarResposta.addEventListener("click", function () {
         resposta: txtResposta.value
     }
     
-    enviaResposta(problema);
+   enviaResposta(problema);
 });
 
 btnCancelarResposta.addEventListener("click", function () {
@@ -60,7 +61,7 @@ btnVoltar.addEventListener("click", function () {
 function enviaResposta(problema) {
 
     db.ref("problemas/" + problema.idProblema).update({
-        userUid: localStorage.getItem("userUid"),
+        userUid: problema.userUid,
         userEmail: problema.userEmail,
         local: problema.local,
         image: problema.image,
@@ -71,5 +72,4 @@ function enviaResposta(problema) {
     })
 
     alert("Resposta enviada");        
-    window.location.href = "/problemas-cadastrados.html";
 }

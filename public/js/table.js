@@ -75,6 +75,9 @@ function preenchertabelaAdm(obj) {
     tdtextoResposta.classList.add("resposta");
     tdtextoResposta.style.display = "none";
 
+    var uid = criaHtml("td", obj.userId);
+    uid.style.display = "none";
+
     var tr = document.createElement("tr");
     tr.appendChild(tdUserEmail);
     tr.appendChild(tdLocal);
@@ -86,6 +89,7 @@ function preenchertabelaAdm(obj) {
     tr.appendChild(tdResponder);
     tr.appendChild(tdStatusAtual);
     tr.appendChild(tdtextoResposta);
+    tr.appendChild(uid);
 
     tabela.appendChild(tr);
     desabilitarBotaoAnterior(tabela)
@@ -187,10 +191,11 @@ function criaSelectEOption() {
         var url = this.parentNode.parentNode.childNodes.item(2).childNodes.item(0).currentSrc;
         var descricao = this.parentNode.parentNode.childNodes.item(3).textContent;
         var id = this.parentNode.parentNode.childNodes.item(5).textContent;
+        var uid = this.parentNode.parentNode.childNodes.item(10).textContent;
         sessionStorage.setItem("status", selectStatus.value);
 
         var problema = {
-            userUid: userUid,
+            userUid: uid,
             userEmail: email,
             local: local,
             nomeImagem: `${id}image`,
@@ -201,7 +206,7 @@ function criaSelectEOption() {
             idProblema: id
 
         }
-
+        
         atualizarProblema(problema);
     });
 
@@ -230,7 +235,7 @@ function criaBotaoResponder() {
 
     btnResponder.addEventListener("click", function () { 
         var resposta = this.parentNode.parentNode.childNodes.item(9).textContent;
-    debugger
+    
         if(resposta === "" || resposta === null || resposta === "undefined") {
             resposta = "";
         }
@@ -238,6 +243,7 @@ function criaBotaoResponder() {
         var problema = {
             idProblema: this.parentNode.parentNode.childNodes.item(5).textContent,
             userEmail: this.parentNode.parentNode.childNodes.item(0).textContent,
+            userUid: this.parentNode.parentNode.childNodes.item(10).textContent,
             local: this.parentNode.parentNode.childNodes.item(1).textContent,
             image: this.parentNode.parentNode.childNodes.item(6).textContent,
             imgUrl: this.parentNode.parentNode.childNodes.item(2).childNodes.item(0).currentSrc,

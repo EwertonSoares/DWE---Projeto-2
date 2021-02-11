@@ -14,7 +14,7 @@ btnEnviar.addEventListener("click", function () {
 
     firebase.auth().signInWithEmailAndPassword(inputEmail.value, inputSenha.value)
         .then(function (result) {
-
+            
             localStorage.setItem("acesso", true);
             localStorage.setItem("userUid", result.user.uid);
             localStorage.setItem("userEmail", result.user.email);
